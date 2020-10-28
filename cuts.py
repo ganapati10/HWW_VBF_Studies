@@ -7,7 +7,7 @@
 _tmp = [
      'Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13',
      'Lepton_pt[0] > 25.',
-     'Lepton_pt[1] > 10.',
+     'Lepton_pt[1] > 13.',
      '(abs(Lepton_pdgId[1]) == 13 || Lepton_pt[1] > 13.)',
      '(nLepton >= 2 && Alt$(Lepton_pt[2], 0) < 10.)',
      'mll > 12.',
@@ -26,15 +26,16 @@ def addcut(name, exprs):
 # VH_2j_em
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 30.', 
+     'Alt$(CleanJet_pt[1], 0) > 20.', 
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
      'mth > 60.',
      'mth < 125.',
      'drll < 2.',
-     'mjj > 65.',
-     'mjj < 105.',
-     'detajj < 3.5',
+     #'mjj > 65.',
+     #'mjj < 105.',
+     'mjj > 200',
+     #'detajj < 3.5',
      'bVeto',
      #'Jet_qgl[CleanJet_jetIdx[0]] > 0.4',
      #'Jet_qgl[CleanJet_jetIdx[1]] > 0.3',
@@ -47,11 +48,12 @@ addcut('VH_2j_emu', _tmp)
 # VH_2j_topemu
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 30.',  
+     'Alt$(CleanJet_pt[1], 0) > 20.',  
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mjj > 65.',
-     'mjj < 105.',
+     #'mjj > 65.',
+     #'mjj < 105.',
+     'mjj > 200'
      'detajj < 3.5', 
      'bReq',
      'mll > 50.',
@@ -64,17 +66,18 @@ addcut('VH_2j_topemu', _tmp)
 # VH_2j_DYtautau
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 30.',  
+     'Alt$(CleanJet_pt[1], 0) > 20.',  
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
      'mth < 60.',
      'drll < 2.',
      'bVetoDY',
-     'mjj > 65.',
-     'mjj < 105.',
+     #'mjj > 65.',
+     #'mjj < 105.',
      'detajj < 3.5',
      'mll > 40.',
      'mll < 80.',
+     'mth < 60',
      ]
 
 addcut('VH_2j_DYtautau', _tmp)
