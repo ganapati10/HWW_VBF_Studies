@@ -342,7 +342,7 @@ plot['DATA']  = {
                   'color': 1 ,  
                   'isSignal' : 0,
                   'isData'   : 1 ,
-                  'isBlind'  : 0
+                  'isBlind'  : 1 #Is blind == 1 pinta solo MC, 0 pinta tambien datos.
               }
 
 
