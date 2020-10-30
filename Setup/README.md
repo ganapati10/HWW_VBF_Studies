@@ -47,9 +47,12 @@ basedir = '/afs/cern.ch/user/x/xjanssen/cms/HWW2015/'
 
 ```
 basedir = '/gpfs/users/blancoser/CMSSW_10_6_4'
+```
 
+Then:
 
-``` cd ../../..
+``` 
+cd ../../..
 
 scram b -j 4
 
