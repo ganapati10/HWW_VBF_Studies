@@ -38,7 +38,7 @@ cd LatinoAnalysis/Tools/python/
 
 cp userConfig_TEMPLATE.py userConfig.py
 
-mv NanoAODTools PhysicsTools
+mv NanoAODTools PhysicsTools/
 
 ```
 The userConfig.py must be changed in the next way:
