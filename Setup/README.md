@@ -38,7 +38,18 @@ cd LatinoAnalysis/Tools/python/
 
 cp userConfig_TEMPLATE.py userConfig.py
 
-cd ../../..
+```
+The userConfig.py must be changed in the next way:
+
+```
+basedir = '/afs/cern.ch/user/x/xjanssen/cms/HWW2015/'
+```
+
+```
+basedir = '/gpfs/users/blancoser/CMSSW_10_6_4'
+
+
+``` cd ../../..
 
 scram b -j 4
 
