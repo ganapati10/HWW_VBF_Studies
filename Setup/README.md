@@ -1,6 +1,6 @@
 ## Setup changes:
 
-All the links to Github has been changed in order to replace the:
+All the links to Github has to be changed in order to replace the:
 
 ```git@github.com:*```
 
