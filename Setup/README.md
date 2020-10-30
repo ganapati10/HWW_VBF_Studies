@@ -44,7 +44,7 @@ The userConfig.py must be changed in the next way:
 ```
 basedir = '/afs/cern.ch/user/x/xjanssen/cms/HWW2015/'
 ```
-
+To
 ```
 basedir = '/gpfs/users/blancoser/CMSSW_10_6_4'
 ```
