@@ -4,9 +4,9 @@ All the links to Github has been changed in order to replace the:
 
 ```git@github.com:*```
 
- for full links ```
-
-https://github.com/*```
+ for full links 
+ 
+ ```https://github.com/*```
 
 
 ## Setup process:
