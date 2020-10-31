@@ -46,20 +46,11 @@ Get some code from gitHub:
 
 ## Run code:
 
-Submit job and make plots:
+To submit the code, it should be done a Run.sh script to submit jobs in Slurm, the old way is for condor.
+
 
 ```
-mkShapesMulti.py --pycfg=configuration.py --inputDir=/gpfs/projects/cms/data/LatinosSkims/nanoAOD/ --treeName=Events --batchSplit=Samples,Files --doBatch=True
-
-mkShapesMulti.py --doHadd=1 --batchSplit=Samples,Files --doNotCleanup --nThreads=8
-
-mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_WW_2016.root --minLogC=0.01 --minLogCratio=0.01 --maxLogC=1000 --maxLogCratio=1000 --showIntegralLegend=1
-```
-
-On slurm, to send a job Run.sh to the queue:
-
-```
-sbatch -o logfile.log -e errofile.err --qos=gridui_sort --partition=cloudcms run.sh
+sbatch -o logfile.log -e errofile.err --qos=gridui_sort --partition=cloudcms Run.sh
 ```
 
 
