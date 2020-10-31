@@ -46,7 +46,7 @@ Get some code from gitHub:
 
 ## Run code:
 
-To submit the code, it should be done a Run.sh script to submit jobs in Slurm, the old way is for condor.
+It should be done a Run.sh script to submit jobs in Slurm, the old way is for condor.
 
 
 ```
