@@ -48,7 +48,7 @@ basedir = '/afs/cern.ch/user/x/xjanssen/cms/HWW2015/'
 ```
 To
 ```
-basedir = '/gpfs/users/blancoser/CMSSW_10_6_4'
+basedir = '/gpfs/users/blancoser/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2026_v6/'
 ```
 
 Then:
