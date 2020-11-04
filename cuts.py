@@ -77,7 +77,6 @@ _tmp = [
      'detajj < 3.5',
      'mll > 40.',
      'mll < 80.',
-     'mth < 60',
      ]
 
 addcut('VH_2j_DYtautau', _tmp)
