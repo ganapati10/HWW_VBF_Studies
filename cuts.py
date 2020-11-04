@@ -35,8 +35,6 @@ _tmp = [
      'drll < 2.',
      #'detajj < 3.5',
      'bVeto',
-     #'Jet_qgl[CleanJet_jetIdx[0]] > 0.4',
-     #'Jet_qgl[CleanJet_jetIdx[1]] > 0.3',
      ]
 
 addcut('VH_2j_emu', _tmp)
@@ -67,7 +65,7 @@ _tmp = [
      'mth < 60.',
      'drll < 2.',
      'bVetoDY',
-     'detajj < 3.5',
+     #'detajj < 3.5',
      'mll > 40.',
      'mll < 80.',
      ]
