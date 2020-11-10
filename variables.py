@@ -93,7 +93,7 @@ variables['jetpt1_0j'] = {'name'  : 'CleanJet_pt[0]*(CleanJet_pt[0]<30)',
                           'fold'  : 0}
 
 variables['mjj'] = {      'name'  : 'mjj',
-                          'range' : (50, 0., 400.),
+                          'range' : (25, 200., 400.),
                           'xaxis' : 'm_{jj} [GeV]',
                           'fold'  : 0}
 
