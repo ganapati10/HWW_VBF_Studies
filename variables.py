@@ -63,12 +63,12 @@ variables['events'] = {   'name'  : '1',
                           'fold'  : 3}
 
 variables['jeteta1'] = {  'name'  : 'CleanJet_eta[0]',
-                          'range' : (80, -5., 5.),
+                          'range' : (80, -4., 4.),
                           'xaxis' : '#eta 1st jet',
                           'fold'  : 0}
 
 variables['jeteta2'] = {  'name'  : 'CleanJet_eta[1]',
-                          'range' : (80, -5., 5.),
+                          'range' : (80, -4., 4.),
                           'xaxis' : '#eta 2nd jet',
                           'fold'  : 0}
 
@@ -158,7 +158,7 @@ variables['pt2'] = {      'name'  : 'Lepton_pt[1]',
                           'fold'  : 3}
 
 variables['ptll'] = {     'name'  : 'ptll',
-                          'range' : (40, 0., 200.),
+                          'range' : (40, 30., 200.),
                           'xaxis' : 'p_{T}^{ll} [GeV]',
                           'fold'  : 0}
 
