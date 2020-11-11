@@ -47,7 +47,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',  
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'detajj < 3.5', 
+     #'detajj < 3.5', 
      'bReq',
      'mll > 50.',
      ]
