@@ -22,43 +22,39 @@
               
 groupPlot['ZH_hww'] = {
                   'nameHR'    : 'ZH',
+                  'isSignal'  :  0,  
                   'color'     :  418, #kGreen
-                  'isSignal'  :  0,
-                  'isData'    :  0,
-                  'scale'     :  1
+                  'samples'   :  ['ZH_hww']
+                  
 }
 
 groupPlot['ggZH_hww'] = {
                   'nameHR'    : 'ggZH',
-                  'color'     :  851, #kAzure-9
                   'isSignal'  :  0,
-                  'isData'    :  0,
-                  'scale'     :  1
+                  'color'     :  851, #kAzure-9
+                  'samples'   :  ['ggZH_hww']
 }
 
 
 groupPlot['WH_hww'] = {
                   'nameHR'    : 'WH',
-                  'color'     :  810, #kOrange
                   'isSignal'  :  0,
-                  'isData'    :  0,
-                  'scale'     :  1
+                  'color'     :  810, #kOrange
+                  'samples'   :  ['WH_hww']
 }
 
 groupPlot['qqH_hww'] = {         
                   'nameHR'    : 'qqH (VBF)',   #VBF
-                  'color'     :  400, #kYellow
                   'isSignal'  :  0,
-                  'isData'    :  0,
-                  'scale'     :  1
+                  'color'     :  400, #kYellow
+                  'samples'   :  ['qqH_hww']
 }
 
 groupPlot['ggH_hww'] = {
                   'nameHR'    : 'ggH',
-                  'color'     :  632, #kRed
                   'isSignal'  :  0,
-                  'isData'    :  0,
-                  'scale'     :  1
+                  'color'     :  632, #kRed
+                  'samples'   :  ['ggH_hww']
 }
 
 
