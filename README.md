@@ -53,5 +53,8 @@ It should be done a Run.sh script to submit jobs in Slurm, the old way is for co
 sbatch -o logfile.log -e errofile.err --qos=gridui_sort --partition=cloudcms Run.sh
 ```
 
+## Plot ONLY Higgs processes:
+
+In order to do that, the files plot.py and structure.py must be modified. In plot.py, just comment (put # at the begining of each line) all plotGroup and plot diccionaries that you don't want. Then, set isSignal=0 and repeat this last step in structure.py. 
 
 
