@@ -25,7 +25,7 @@ git clone --branch 13TeV https://github.com/latinos/setup LatinosSetup
 rm -rf LatinoAnalysis
 ```
 
-Now, open LatinosSetup/SetupShapeOnly.sh and change a few links. The commented lines has been changed.
+Now, open LatinosSetup/SetupShapeOnly.sh and change a few links. The comment lines has been changed.
 The new file is the one in this folder.
 
 ```
