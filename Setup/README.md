@@ -23,7 +23,11 @@ cmsenv
 git clone --branch 13TeV https://github.com/latinos/setup LatinosSetup
 
 rm -rf LatinoAnalysis
+```
 
+Now, open LatinosSetup/SetipShapeOnly.sh and change a few links. The new file is the one in this folder.
+
+```
 source LatinosSetup/SetupShapeOnly.sh
 
 mv LatinoAnalysis/MultiDraw ./
