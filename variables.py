@@ -6,6 +6,16 @@
 #                          'fold'  : 3,                        # 0 = not fold (default), 1 = fold underflow bin, 2 = fold overflow bin, 3 = fold underflow and overflow
 #                          'linesToAdd' : ['.L /afs/cern.ch/user/p/piedra/work/VH2jBDT/VH2j_TMVAReader.C+']}
 
+#
+# Centrality
+#
+variables['Ctot'] = {
+     'name': 'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj)',
+     'range' : (20, -4, 6),
+     'xaxis' : 'Ctot',
+     'fold'  : 3,
+}
+
 variables['detajj'] = {   'name'  : 'detajj',
                           'range' : (40, 0., 4.),
                           'xaxis' : '|#Delta#eta_{jj}|',
