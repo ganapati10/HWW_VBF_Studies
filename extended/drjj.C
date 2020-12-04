@@ -1,7 +1,7 @@
 #include <iostream>
 
 
-float detaljmin(float jet1_eta,
+float drjj(float jet1_eta,
 		float jet2_eta,
 		float jet1_phi,
 		float jet2_hi){
