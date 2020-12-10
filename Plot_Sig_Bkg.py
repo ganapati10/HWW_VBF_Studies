@@ -54,7 +54,7 @@ class Plot_Sig_Bkg:
     
     
     
-  def makePlot(self, inputFile, outputDirPlots, variables, cuts, samples, plot, nuisances, legend, groupplot)
+  def makePlot(self, inputFile, outputDirPlots, variables, cuts, samples, plot, nuisances, legend, groupplot):
     
     print "=================="
     print "==== makePlot ===="
