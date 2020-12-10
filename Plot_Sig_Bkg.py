@@ -117,7 +117,7 @@ class Plot_Sig_Bkg:
         bkg  = 0
         data = 0
 
-        
+        ##-Loop above all samples in plot -> WW, Higgs, DY,..
         for samplesName, plotdef in plot:
           
           if 'samples' in variable and sampleName not in variable['samples']:
@@ -125,13 +125,14 @@ class Plot_Sig_Bkg:
 
           shapeName = cutName+"/"+variableName+'/histo_' + sampleName
           
+          #Check .root file
           if type(fileIn) is dict:
-            histo = fileIn[sampleName].Get(shapeName)
+            histo = fileIn[sampleName].Get(shapeName)     #Get the TH1 for each variable, cut and sample.
           else:
             histo = fileIn.Get(shapeName)
           print ' --> ', histo
           print 'new_histo_' + sampleName + '_' + cutName + '_' + variableName
-          histogram = histo.Clone('new_histo_' + sampleName + '_' + cutName + '_' + variableName)
+          histogram = histo.Clone('new_histo_' + sampleName + '_' + cutName + '_' + variableName)  #Open the .root file and create histogram
           
           if plotdef['isSignal'] == 1 :
             
@@ -144,6 +145,8 @@ class Plot_Sig_Bkg:
           elif plotdef['isData'] == 1 :
             
             data = data + histogram.GetEntries()
+         
+        ## End of samples loop. 
           
         cuts = {}
         
@@ -152,23 +155,25 @@ class Plot_Sig_Bkg:
           exec(handle)
           handle.close()      
         
+        ##----------------Get the value of the cut on each cutName for plot signal vs cut ------------------------------------
         for cut_k, cut_v in cuts.items():
           if cut_k == cutName:
             txt = cut_v[0].split("&&")
           for cuts_ind in txt:
             cut_ind = cuts_ind.split('>')
             
-            if len(var) < 2:
+            if len(cut_ind) < 2:
               cut_ind = cuts_ind.split('<')
               
-              if len(var) < 2:
+              if len(cut_ind) < 2:
                     cut_ind = cuts_ind.split('=')
             
             if cut_ind[0].strip() == cut_k.split("_")[0]:
                 
-                num = cut_ind[1]
-                print(num) ##Cambiar esto, arreglar
-
+                axis_value = cut_ind[1]     #Value for x axis in the plot
+                
+                
+         
 
          
         
