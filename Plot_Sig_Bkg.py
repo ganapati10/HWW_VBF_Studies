@@ -93,14 +93,8 @@ class Plot_Sig_Bkg:
       for cutName in self._cuts:
         print "cut_", cutName
         
-        if 'cuts' in variable and cutName not in variable['cuts']:
-          continue
-
-        if type(fileIn) is not dict and not fileIn.GetDirectory(cutName+"/"+variableName):
-          continue
-        
         #Just compute the variables equal to cuts: variable mjj with cut mjj_1
-        if variableName != cutName.strip('_')[0]:      #cutName must be variableName_i
+        if variableName != cutName.split('_')[0]:      #cutName must be variableName_i
           continue
           
         print "variableName =", variableName
@@ -155,7 +149,7 @@ class Plot_Sig_Bkg:
 
       legend = ROOT.TLegend(0.9, 0.87, 0.75, 0.82);
       
-      legend.AddEntry(histo, "mjj")
+      legend.AddEntry(tHisto, "mjj")
       
       tHisto.SetStats(False)
       
