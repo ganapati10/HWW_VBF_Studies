@@ -80,9 +80,7 @@ class Plot_Sig_Bkg:
       
       tcanvas = ROOT.TCanvas("Signal vs Background_" + variableName, "Signal vs Background_" + variableName, 800, 600) #Iniciate the canvas, one for each variable.
       
-      
       rang = variable['range']  # The range should be the same as cuts
-      
       tHisto = ROOT.TH1F(variableName, "Signal vs Background at " + variableName, rang[0], rang[1], rang[2])
 
       
@@ -125,31 +123,23 @@ class Plot_Sig_Bkg:
           histogram = histo.Clone('new_histo_' + sampleName + '_' + cutName + '_' + variableName)  #Open the .root file and create histogram
           
           if plotdef['isSignal'] == 1 :
-            
             sig = sig + histogram.GetEntries()
             
           elif plotdef['isSignal'] == 0 :
-            
             bkg = bkg + histogram.GetEntries()
             
           elif plotdef['isData'] == 1 :
-            
             data = data + histogram.GetEntries()
          
-        ## End of samples loop. 
-          
-        cuts = {}
         
-        if os.path.exists(opt.self._cuts) :
-          handle = open(opt.self._cuts,'r')
-          exec(handle)
-          handle.close()      
+        ## End of samples loop.     
 
-                
         tHisto.SetBinContent(cutName.split("_")[1], sig/ROOT.TMath.sqrt(bkg+sig))   #Fill the histograms   
         
-      #End of cuts loop
+        
+      #End cuts loop
       
+      #TH1F make up
       tHisto.SetMinimum(0.0)
       tHisto.SetMaximum(1.0)
       
@@ -172,9 +162,10 @@ class Plot_Sig_Bkg:
       tcanvas.Update()
       tcanvas.Draw() 
       
-      tcanvas.SaveAs(self._outputDirPlots + "/" + "Sig_vs_Bkg_" + variableName + ".png")
-
-  
+      tcanvas.SaveAs(self._outputDirPlots + "/" + "Sig_vs_Bkg_" + variableName + ".png")  #Save .png file
+    # End variable loop
+  #End makePlot function
+#End of Plot_Sig_Bkg class  
   
   
 
@@ -202,9 +193,7 @@ print '''
 usage = 'usage: %prog [options]'
 parser = optparse.OptionParser(usage)
 
-parser.add_option('--inputFile'      , dest='inputFile'      , help='input file with histograms'                 , default='input.root')
-
-
+parser.add_option('--inputFile', dest='inputFile', help='input file with histograms', default='input.root')
 
 hwwtools.addOptions(parser)
 hwwtools.loadOptDefaults(parser)
