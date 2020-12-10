@@ -54,11 +54,16 @@ class Plot_Sig_Bkg:
     
     
     
-  def makePlot(self, inputFile, outputDirPlots, variables, cuts, samples, plot, nuisances, legend, groupplot):
+  def makePlot(self, inputFile, outputDirPlots, variables, cuts, samples, plot, legend, groupplot):
     
     print "=================="
     print "==== makePlot ===="
     print "=================="
+    
+    import LatinoAnalysis.ShapeAnalysis.tdrStyle as tdrStyle
+    tdrStyle.setTDRStyle()
+        
+    ROOT.TGaxis.SetExponentOffset(-0.08, 0.00,"y")
     
     self._variables = variables
     self._samples   = samples
@@ -194,7 +199,7 @@ usage = 'usage: %prog [options]'
 parser = optparse.OptionParser(usage)
 
 parser.add_option('--inputFile', dest='inputFile', help='input file with histograms', default='input.root')
-parser.add_option('--pycfg', dest='configuration_Sig_Bkg.py', help='input configuration file', default='configuration_Sig_Bkg.py')
+parser.add_option('--outputDirPlots' , dest='outputDirPlots' , help='output directory', default='./')
 
 hwwtools.addOptions(parser)
 hwwtools.loadOptDefaults(parser)
@@ -248,7 +253,7 @@ if os.path.exists(opt.plotFile) :
   exec(handle)
   handle.close()
 
-plotter.makePlot( opt.inputFile ,opt.outputDirPlots, variables, cuts, samples, plot, nuisances, legend, groupPlot)
+plotter.makePlot( opt.inputFile ,opt.outputDirPlots, variables, cuts, samples, plot, legend, groupPlot)
 
 print '.... Now clossing....'
 
