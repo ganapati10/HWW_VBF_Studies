@@ -194,6 +194,7 @@ usage = 'usage: %prog [options]'
 parser = optparse.OptionParser(usage)
 
 parser.add_option('--inputFile', dest='inputFile', help='input file with histograms', default='input.root')
+parser.add_option('--pycfg', dest='configuration_Sig_Bkg.py', help='input configuration file', default='configuration_Sig_Bkg.py')
 
 hwwtools.addOptions(parser)
 hwwtools.loadOptDefaults(parser)
