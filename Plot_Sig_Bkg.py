@@ -2,6 +2,8 @@
 
 import json
 import sys
+argv = sys.argv
+sys.argv = argv[:1]
 from sys import exit
 import ROOT
 import optparse
@@ -18,6 +20,9 @@ import numpy as np
 import root_numpy as rnp
 
 
+#
+# Sergio Blanco - 10/12/2020
+#
 
 
 #
@@ -30,8 +35,6 @@ class Plot_Sig_Bkg:
   
   
   def __init__(self):
-    
-    self._tag = ''
     
     variables = {}
     self._variables = variables
@@ -49,8 +52,6 @@ class Plot_Sig_Bkg:
     outputDirPlots = {}
     self._outputDirPlots = outputDirPlots
     
-    
-    self._fileFormats = ['png']
     
     
   def makePlot(self, inputFile, outputDirPlots, variables, cuts, samples, plot, nuisances, legend, groupplot)
@@ -71,34 +72,19 @@ class Plot_Sig_Bkg:
     ROOT.gROOT.cd()
     
     
-    if os.path.isdir(inputFile):
-      # ONLY COMPATIBLE WITH OUTPUTS MERGED TO SAMPLE LEVEL!!
-      fileIn = {}
-      allFiles = os.listdir(inputFile)
-      for sampleName in self._samples:
-        fileIn[sampleName] = ROOT.TFile.Open(inputFile+'/plots_%s_ALL_%s.root' % (self._tag, sampleName))
-        if not fileIn[sampleName]:
-          raise RuntimeError('Input file for sample ' + sampleName + ' missing')
-      if os.path.exists(inputFile+'/plots_total.root'):
-        fileIn['total'] = ROOT.TFile.Open(inputFile+'/plots_total.root')
-          
-    else:
-      fileIn = ROOT.TFile(inputFile, "READ")
+    fileIn = ROOT.TFile(inputFile, "READ")
     
-    
-    
-    counter = 0
-    
-    list_canvas = {}
-    
+
     #Loop under variables
     for variableName, variable in self._variables.iteritems():
       
       tcanvas = ROOT.TCanvas("Signal vs Background_" + variableName, "Signal vs Background_" + variableName, 800, 600) #Iniciate the canvas, one for each variable.
       
-      list_canvas [counter] = tcanvas   #list the canvas
       
-      counter = counter + 1
+      rang = variable['range']  # The range should be the same as cuts
+      
+      tHisto = ROOT.TH1F(variableName, "Signal vs Background at " + variableName, rang[0], rang[1], rang[2])
+
       
       #For each cut in cuts.py
       for cutName in self._cuts:
@@ -108,6 +94,10 @@ class Plot_Sig_Bkg:
           continue
 
         if type(fileIn) is not dict and not fileIn.GetDirectory(cutName+"/"+variableName):
+          continue
+        
+        #Just compute the variables equal to cuts: variable mjj with cut mjj_1
+        if variableName != cutName.strip('_')[0]:      #cutName must be variableName_i
           continue
           
         print "variableName =", variableName
@@ -154,47 +144,127 @@ class Plot_Sig_Bkg:
           handle = open(opt.self._cuts,'r')
           exec(handle)
           handle.close()      
-        
-        ##----------------Get the value of the cut on each cutName for plot signal vs cut ------------------------------------
-        for cut_k, cut_v in cuts.items():
-          if cut_k == cutName:
-            txt = cut_v[0].split("&&")
-          for cuts_ind in txt:
-            cut_ind = cuts_ind.split('>')
-            
-            if len(cut_ind) < 2:
-              cut_ind = cuts_ind.split('<')
-              
-              if len(cut_ind) < 2:
-                    cut_ind = cuts_ind.split('=')
-            
-            if cut_ind[0].strip() == cut_k.split("_")[0]:
-                
-                axis_value = cut_ind[1]     #Value for x axis in the plot
-                
-                
-         
 
-         
+                
+        tHisto.SetBinContent(cutName.split("_")[1], sig/ROOT.TMath.sqrt(bkg+sig))   #Fill the histograms   
         
-        
-            
-          
-          
+      #End of cuts loop
       
+      tHisto.SetMinimum(0.0)
+      tHisto.SetMaximum(1.0)
       
+      tHisto.SetMarkerStyle(ROOT.kFullCircle)
+      tHisto.GetXaxis().SetTitle(variable['xaxis'])
+      tHisto.GetYaxis().SetTitle('#frac{S}{\sqrt{B+S}}')
+      tHisto.Draw()
+
+      legend = ROOT.TLegend(0.9, 0.87, 0.75, 0.82);
       
+      legend.AddEntry(histo, "mjj")
       
+      tHisto.SetStats(False)
       
-      #Continuara
+      tHisto.Draw("p")
       
+      legend.Draw()
+      
+      tcanvas.Modified()
+      tcanvas.Update()
+      tcanvas.Draw() 
+      
+      tcanvas.SaveAs(self._outputDirPlots + "/" + "Sig_vs_Bkg_" + variableName + ".png")
+
   
   
   
+
+#
+#
+#   PLOT MAKER
+#
+#   INITIALIZATE THE PLOT CLASS ABOVE
+#
+#
+
+
+
+
+print '''
+--------------------------------------------------------------------------------------------------
+   _ \   |         |         \  |         |                
+  |   |  |   _ \   __|      |\/ |   _` |  |  /   _ \   __| 
+  ___/   |  (   |  |        |   |  (   |    <    __/  |    
+ _|     _| \___/  \__|     _|  _| \__,_| _|\_\ \___| _|   
+ 
+--------------------------------------------------------------------------------------------------
+'''  
+
+usage = 'usage: %prog [options]'
+parser = optparse.OptionParser(usage)
+
+parser.add_option('--inputFile'      , dest='inputFile'      , help='input file with histograms'                 , default='input.root')
+
+
+
+hwwtools.addOptions(parser)
+hwwtools.loadOptDefaults(parser)
+(opt, args) = parser.parse_args()
+
+sys.argv.append( '-b' )
+ROOT.gROOT.SetBatch()
+
+print ""
+print "          configuration file =", opt.pycfg
+print "                        lumi =", opt.lumi
+print "                   inputFile =", opt.inputFile
+print "              outputDirPlots =", opt.outputDirPlots
+print ""
+
+
+plotter = Plot_Sig_Bkg()
+
+samples = OrderedDict()
+if opt.samplesFile == None :
+  print " Please provide the samples structure (not strictly needed in mkPlot, since list of samples read from plot.py) "    
+elif os.path.exists(opt.samplesFile) :
+  handle = open(opt.samplesFile,'r')
+  exec(handle)
+  handle.close()
+
+cuts = {}
+if os.path.exists(opt.cutsFile) :
+  handle = open(opt.cutsFile,'r')
+  exec(handle)
+  handle.close()
   
-  
-  
-  
+variables = {}
+if os.path.exists(opt.variablesFile) :
+  handle = open(opt.variablesFile,'r')
+  exec(handle)
+  handle.close()
+
+import LatinoAnalysis.ShapeAnalysis.utils as utils
+
+subsamplesmap = utils.flatten_samples(samples)
+categoriesmap = utils.flatten_cuts(cuts)
+
+utils.update_variables_with_categories(variables, categoriesmap)
+
+groupPlot = OrderedDict()
+plot = {}
+legend = {}
+if os.path.exists(opt.plotFile) :
+  handle = open(opt.plotFile,'r')
+  exec(handle)
+  handle.close()
+
+plotter.makePlot( opt.inputFile ,opt.outputDirPlots, variables, cuts, samples, plot, nuisances, legend, groupPlot)
+
+print '.... Now clossing....'
+
+
+
+
 
 
 
