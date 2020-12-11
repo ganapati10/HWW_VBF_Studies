@@ -76,8 +76,19 @@ class Plot_Sig_Bkg:
     
     ROOT.gROOT.cd()
     
-    
-    fileIn = ROOT.TFile(inputFile, "READ")
+    if os.path.isdir(inputFile):
+          # ONLY COMPATIBLE WITH OUTPUTS MERGED TO SAMPLE LEVEL!!
+          fileIn = {}
+          allFiles = os.listdir(inputFile)
+          for sampleName in self._samples:
+            fileIn[sampleName] = ROOT.TFile.Open(inputFile+'/plots_%s_ALL_%s.root' % (self._tag, sampleName))
+            if not fileIn[sampleName]:
+              raise RuntimeError('Input file for sample ' + sampleName + ' missing')
+          if os.path.exists(inputFile+'/plots_total.root'):
+            fileIn['total'] = ROOT.TFile.Open(inputFile+'/plots_total.root')
+              
+        else:
+          fileIn = ROOT.TFile(inputFile, "READ")
     
 
     #Loop under variables
