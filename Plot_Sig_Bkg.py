@@ -120,7 +120,10 @@ class Plot_Sig_Bkg:
           
           if 'samples' in variable and sampleName not in variable['samples']:
             continue
-
+            
+          if sampleName not in samples:
+            continue
+            
           shapeName = cutName+"/"+variableName+'/histo_' + sampleName
           
           #Check .root file
@@ -128,32 +131,30 @@ class Plot_Sig_Bkg:
             histo = fileIn[sampleName].Get(shapeName)     #Get the TH1 for each variable, cut and sample.
           else:
             histo = fileIn.Get(shapeName)
-          print ' --> ', histo
-          print 'new_histo_' + sampleName + '_' + cutName + '_' + variableName
           histogram = histo.Clone('new_histo_' + sampleName + '_' + cutName + '_' + variableName)  #Open the .root file and create histogram
           
           if plotdef['isSignal'] == 1 :
-            sig = sig + histogram.Integral()
+            sig = sig + histogram.GetEntries()
             
           elif plotdef['isSignal'] == 0 :
-            bkg = bkg + histogram.Integral()
+            bkg = bkg + histogram.GetEntries()
             
           elif plotdef['isData'] == 1 :
-            data = data + histogram.Integral()
+            data = data + histogram.GetEntries()
          
         
         ## End of samples loop.     
         if sig == 0 and bkg == 0:
           continue
-        tHisto.SetBinContent(cutName.split("_")[1], sig/ROOT.TMath.sqrt(bkg+sig))   #Fill the histograms   
-        
+        tHisto.SetBinContent(cutName.split("_")[1], sig/math.sqrt(bkg+sig))   #Fill the histograms   
+        print "-------------------------"
+        print "Signal = ", sig
+        print "Background = ", bkg
+        print "Value of S/sqrt(S+B) :", sig/math.sqrt(bkg+sig)
         
       #End cuts loop
       
       #TH1F make up
-      tHisto.SetMinimum(0.0)
-      tHisto.SetMaximum(1.0)
-      
       tHisto.SetMarkerStyle(ROOT.kFullCircle)
       tHisto.GetXaxis().SetTitle(variable['xaxis'])
       tHisto.GetYaxis().SetTitle('#frac{S}{\sqrt{B+S}}')
