@@ -20,7 +20,7 @@ cutsFile = 'cuts_Sig_Bkg.py'
 samplesFile = 'samples_ONE.py'
 
 # file with plot configuration                                                                                                                                                                              
-plotFile = 'Plot_Sig_Bkg.py'
+plotFile = 'plot.py'
 
 # luminosity to normalize to (in 1/fb)                                                                                                                                                                      
 lumi = 35.867
