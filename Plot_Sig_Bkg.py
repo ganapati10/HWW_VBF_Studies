@@ -122,17 +122,18 @@ class Plot_Sig_Bkg:
           histogram = histo.Clone('new_histo_' + sampleName + '_' + cutName + '_' + variableName)  #Open the .root file and create histogram
           
           if plotdef['isSignal'] == 1 :
-            sig = sig + histogram.GetEntries()
+            sig = sig + histogram.Integral()
             
           elif plotdef['isSignal'] == 0 :
-            bkg = bkg + histogram.GetEntries()
+            bkg = bkg + histogram.Integral()
             
           elif plotdef['isData'] == 1 :
-            data = data + histogram.GetEntries()
+            data = data + histogram.Integral()
          
         
         ## End of samples loop.     
-
+        if sig == 0 and bkg == 0:
+          continue
         tHisto.SetBinContent(cutName.split("_")[1], sig/ROOT.TMath.sqrt(bkg+sig))   #Fill the histograms   
         
         
