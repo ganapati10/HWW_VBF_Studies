@@ -24,6 +24,43 @@ variables['Ctot'] =  {
                           'xaxis' : 'Ctot',
                           'fold'  : 3,}
 
+variables['detajj'] = {   'name'  : 'detajj',
+                          'range' : (10, 0., 4.),
+                          'xaxis' : '|#Delta#eta_{jj}|',
+                          'fold'  : 0}
+
+variables['detal1j1'] = { 'name'  : 'abs(Lepton_eta[0]-CleanJet_eta[0])',
+                          'range' : (10, 0., 4.),
+                          'xaxis' : '#Delta#eta_{l1j1}',
+                          'fold'  : 0}
+
+variables['drll'] = {     'name'  : 'drll',
+                          'range' : (10, 0., 5.),
+                          'xaxis' : '#DeltaR_{ll}',
+                          'fold'  : 2}
+
+variables['pt1'] = {      'name'  : 'Lepton_pt[0]',     
+                          'range' : (20, 0., 200.),   
+                          'xaxis' : 'p_{T} 1st lepton [GeV]',
+                          'fold'  : 3}
+
+variables['jetpt1'] = {   'name'  : 'CleanJet_pt[0]*(CleanJet_pt[0]>30)',     
+                          'range' : (20, 0., 200.),   
+                          'xaxis' : 'p_{T} 1st jet',
+                          'fold'  : 2}
+
+variables['ptll'] = {     'name'  : 'ptll',
+                          'range' : (10, 30., 200.),
+                          'xaxis' : 'p_{T}^{ll} [GeV]',
+                          'fold'  : 0}
+
+variables['dphilljj'] = { 'name'  : 'abs(dphilljetjet)',     
+                          'range' : (10, 0., 3.2),   
+                          'xaxis' : '#Delta#phi_{lljj}',
+                          'fold'  : 3}
+
+
+
 
 
 
