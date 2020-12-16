@@ -26,6 +26,14 @@ variables['detal1j1'] = { 'name'  : 'Lepton_eta[0]-CleanJet_eta[0]',
                           'xaxis' : '#Delta#eta_{l1j1}',
                           'fold'  : 0}
 
+          
+variables['drjj'] = {     'name'  : 'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1])',
+                         'range' : (30, 0., 5.),
+                         'xaxis' : '#DeltaR_{jj}',
+                         'fold'  : 2}
+          
+          
+
 #variables['detaljmin'] = {'name'  : 'detaljmin(Lepton_eta[0], Lepton_eta[1], CleanJet_eta[0], CleanJet_eta[1])',
 #                          'range' : (40, -4., 4.),
 #                          'xaxis' : 'min #Delta#eta_{lj}',
