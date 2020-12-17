@@ -184,7 +184,7 @@ class Plot_Sig_Bkg:
       tpop.SetStats(False)
       tpoop.Draw("same");
       
-      axis = new TGaxis(ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymin(), ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymax(),0,rightmax,510,"+L");
+      axis = ROOT.TGaxis(ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymin(), ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymax(),0,rightmax,510,"+L");
       axis.SetLineColor(ROOT.kRed);
       axis.SetTextColor(ROOT.kRed);
       axis.Draw()
