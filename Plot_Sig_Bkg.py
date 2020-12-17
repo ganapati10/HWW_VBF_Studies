@@ -97,7 +97,8 @@ class Plot_Sig_Bkg:
       tcanvas = ROOT.TCanvas("Signal vs Background_" + variableName, "Signal vs Background_" + variableName, 800, 600) #Iniciate the canvas, one for each variable.
       
       rang = variable['range']  # The range should be the same as cuts
-      tHisto = ROOT.TH1F(variableName, "Signal vs Background at " + variableName, rang[0], rang[1], rang[2])
+      tHisto = ROOT.TH1F(variableName, "Signal vs Background for " + variableName, rang[0], rang[1], rang[2])
+      tpop = ROOT.TH1F("pop" + variableName, "Signal for " + variableName, rang[0], rang[1], rang[2])
 
       
       #For each cut in cuts.py
@@ -147,6 +148,7 @@ class Plot_Sig_Bkg:
         if sig == 0 and bkg == 0:
           continue
         tHisto.SetBinContent(cutName.split("_")[1], sig/math.sqrt(bkg+sig))   #Fill the histograms   
+        tpop.SetBinContent(cutName.split("_")[1], sig)
         print "-------------------------"
         print "Signal = ", sig
         print "Background = ", bkg
@@ -155,6 +157,8 @@ class Plot_Sig_Bkg:
       #End cuts loop
       
       #TH1F make up
+      ROOT.gStyle.SetOptStat(ROOT.kFALSE);
+      
       tHisto.SetMarkerStyle(ROOT.kFullCircle)
       tHisto.GetXaxis().SetTitle(variable['xaxis'])
       tHisto.GetYaxis().SetTitle('#frac{S}{\sqrt{B+S}}')
@@ -170,7 +174,21 @@ class Plot_Sig_Bkg:
       
       legend.Draw()
       
-      tcanvas.Modified()
+      tcanvas.Update()
+      
+      tpop.SetMarkerStyle(ROOT.kLine)
+      rightmax = 1.1*tpop.GetMaximum()
+      scale = ROOT.gPad.GetUymax()/rightmax
+      tpoop.SetLineColor(kRed);
+      tpoop.Scale(scale);
+      tpop.SetStats(False)
+      tpoop.Draw("same");
+      
+      axis = new TGaxis(ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymin(), ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymax(),0,rightmax,510,"+L");
+      axis.SetLineColor(ROOT.kRed);
+      axis.SetTextColor(ROOT.kRed);
+      axis.Draw()
+      
       tcanvas.Update()
       tcanvas.Draw() 
       
