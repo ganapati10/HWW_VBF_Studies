@@ -30,6 +30,7 @@ variables['detal1j1'] = { 'name'  : 'Lepton_eta[0]-CleanJet_eta[0]',
 variables['drjj'] = {     'name'  : 'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1])',
                          'range' : (30, 0., 5.),
                          'xaxis' : '#DeltaR_{jj}',
+                         #'linesToAdd': ['.L $CMSSW_BASE/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/drjj.C+'], #if want to use a script
                          'fold'  : 2}
           
           
