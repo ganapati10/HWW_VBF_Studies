@@ -9,12 +9,20 @@
 #
 # Centrality
 #
-variables['Ctot'] = {
-     'name': 'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj)',
-     'range' : (20, -4, 6),
-     'xaxis' : 'Ctot',
-     'fold'  : 3,
-}
+variables['Ctot'] = {     'name': 'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj)',
+                          'range' : (20, -4, 6),
+                          'xaxis' : 'Ctot',
+                          'fold'  : 3}
+
+variables['jet1_qgl'] = { 'name'  : 'Jet_qgl[0]',
+                          'range' : (20, 0., 1.),
+                          'xaxis' : 'Quark Gluon likelihood (1^{st} Jet)',
+                          'fold'  : 3}
+
+variables['jet2_qgl'] = { 'name'  : 'Jet_qgl[1]',
+                          'range' : (20, 0., 1.),
+                          'xaxis' : 'Quark Gluon likelihood (2^{nd} Jet)',
+                          'fold'  : 3}
 
 variables['detajj'] = {   'name'  : 'detajj',
                           'range' : (40, 0., 4.),
