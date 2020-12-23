@@ -185,16 +185,10 @@ class Plot_Sig_Bkg:
 
             tcanvas2 = ROOT.TCanvas("Events " + variableName, "Events " + variableName, 800, 600)
 
-            rightmax = tpop.GetMaximum()
-            f1 = ROOT.TF1("f1","1", tpop.GetXaxis().GetXmin(), tpop.GetXaxis().GetXmax())
-            if (rightmax!=0):
-                scale = (tHisto.GetMaximum() - tHisto.GetMinimum())/rightmax
-                tpop.Scale(scale)
-                tpop.Add(f1, tHisto.GetMinimum())
-
             tpop.SetLineColor(ROOT.kRed)
             tpop.GetYaxis().SetTitle("Signal events per cut (Cumulative)")
             tpop.GetXaxis().SetTitle(variable['xaxis'])
+            tpop.GetYaxis.SetLabelSize(0.02)
             tpop.SetStats(False)
             tpop.SetTitle("")
             tpop.Draw()
@@ -203,9 +197,9 @@ class Plot_Sig_Bkg:
             rightmax = tpopB.GetMaximum()
             f1 = ROOT.TF1("f1","1", tpopB.GetXaxis().GetXmin(), tpopB.GetXaxis().GetXmax())
             if (rightmax!=0):
-                scale = (tHisto.GetMaximum() - tHisto.GetMinimum())/rightmax
+                scale = (tpop.GetMaximum() - tpop.GetMinimum())/rightmax
                 tpopB.Scale(scale)
-                tpopB.Add(f1, tHisto.GetMinimum())
+                tpopB.Add(f1, tpop.GetMinimum())
 
             tpopB.SetLineColor(ROOT.kBlue)
             tpopB.SetStats(False)
