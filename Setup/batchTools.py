@@ -133,6 +133,8 @@ class batchJobs :
          jFile.write('#$ -N '+jName+'\n')
          jFile.write('export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch\n')
          jFile.write('export X509_USER_PROXY=/gwpool/users/'+os.environ["USER"]+'/.proxy\n')
+       elif 'ifca' in hostName:
+	 jFile.write('#$ -N '+jName+'\n')
        else:
          jFile.write('export X509_USER_PROXY=/user/'+os.environ["USER"]+'/.proxy\n')
          if self.USE_SINGULARITY : jFileSing.write('export X509_USER_PROXY=/user/'+os.environ["USER"]+'/.proxy\n')
@@ -146,7 +148,7 @@ class batchJobs :
        jFile.write('cd '+CMSSW+'\n')
        jFile.write('eval `scramv1 ru -sh`\n')
                
-       if 'knu' in hostName or 'hercules' in hostName:
+       if 'knu' in hostName or 'hercules' in hostName or 'ifca' in hostName:
          pass
        else:
          jFile.write('ulimit -c 0\n')
@@ -169,7 +171,7 @@ class batchJobs :
            jFile.write("cd /tmp/$LSB_JOBID \n")
            jFile.write("pwd \n")
          elif 'ifca' in hostName:
-           jFile.write("cd /gpfs/projects/cms/"+os.environ["USER"]+"/ \n") 
+           jFile.write("cd" + self.subDir + subDirExtra + " \n") 
          elif 'sdfarm' in hostName or 'knu' in hostName:
            jFile.write('cd '+self.subDir+subDirExtra+'\n')
            jFile.write('cd ${_CONDOR_SCRATCH_DIR}\n')
@@ -418,7 +420,7 @@ class batchJobs :
          # We write the JDS file for documentation / resubmission, but initial submission will be done in one go below
          jobid=os.system('condor_submit '+jdsFileName+' > ' +jidFile)
        elif 'ifca' in hostName :
-         jobid=os.system('qsub -P l.gaes -S /bin/bash -cwd -N Latino -o '+outFile+' -e '+errFile+' '+jobFile+' -j y > '+jidFile)
+         jobid=os.system('sbatch -o logfile.log -e errofile.err --qos=gridui_sort --partition=cloudcms' +jobFile)
        elif "pi.infn.it" in socket.getfqdn():
          queue="cms"
          jobid=os.system('bsub -q '+queue+' -o '+outFile+' -e '+errFile+' '+jobFile+' > '+jidFile)
