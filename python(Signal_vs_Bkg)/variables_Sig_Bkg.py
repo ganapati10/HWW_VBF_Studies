@@ -59,7 +59,25 @@ variables['dphilljj'] = { 'name'  : 'abs(dphilljetjet)',
                           'xaxis' : '#Delta#phi_{lljj}',
                           'fold'  : 3}
 
+variables['qgl0'] = {     'name'  : 'Jet_qgl[0]',
+                          'range' : (5, 0., 1.),
+                          'xaxis' : 'Quark Gluon likelihood (1^{st} Jet)',
+                          'fold'  : 3}
 
+variables['qgl01'] = {    'name'  : 'Jet_qgl[0]',
+                          'range' : (5, 0., 1.),
+                          'xaxis' : 'Quark Gluon likelihood (1^{st} Jet)',
+                          'fold'  : 3}
+
+variables['qgl1'] = {     'name'  : 'Jet_qgl[1]',
+                          'range' : (5, 0., 1.),
+                          'xaxis' : 'Quark Gluon likelihood (2^{nd} Jet)',
+                          'fold'  : 3}
+
+variables['qgl11'] = {    'name'  : 'Jet_qgl[1]',
+                          'range' : (5, 0., 1.),
+                          'xaxis' : 'Quark Gluon likelihood (2^{nd} Jet)',
+                          'fold'  : 3}
 
 
 
