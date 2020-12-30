@@ -10,10 +10,6 @@ _tmp = [
      'Lepton_pt[1] > 13.',
      '(abs(Lepton_pdgId[1]) == 13 || Lepton_pt[1] > 13.)',
      '(nLepton >= 2 && Alt$(Lepton_pt[2], 0) < 10.)',
-     'mll > 12.',
-     'ptll > 30.',
-     'PuppiMET_pt > 20.', 
-     'mjj > 200',
      ]
 
 supercut = ' && '.join(_tmp)
