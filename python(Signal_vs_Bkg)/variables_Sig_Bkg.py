@@ -79,6 +79,46 @@ variables['qgl11'] = {    'name'  : 'Jet_qgl[1]',
                           'xaxis' : 'Quark Gluon likelihood (2^{nd} Jet)',
                           'fold'  : 3}
 
+variables['jeteta1'] = {  'name'  : 'CleanJet_eta[0]',
+                          'range' : (10, -4., 4.),
+                          'xaxis' : '#eta 1st jet',
+                          'fold'  : 0}
+
+variables['mpmet'] = {    'name'  : 'mpmet',      
+                          'range' : (10, 0., 150.),  
+                          'xaxis' : 'min. (proj. tk. E_{T}^{miss}, proj. E_{T}^{miss}) [GeV]', 
+                          'fold'  : 3}
+
+variables['pfmet'] = {    'name'  : 'MET_pt',     
+                          'range' : (10, 0., 150.),   
+                          'xaxis' : 'PF MET [GeV]',
+                          'fold'  : 3}
+
+variables['puppimet'] = { 'name'  : 'PuppiMET_pt',
+                          'range' : (10, 0., 150.),
+                          'xaxis' : 'puppi MET [GeV]',
+                          'fold'  : 3}
+
+variables['rawmet'] = {   'name'  : 'RawMET_pt',     
+                          'range' : (10, 0., 150.),   
+                          'xaxis' : 'raw MET [GeV]',
+                          'fold'  : 3}
+
+variables['TkMET'] = {    'name'  : 'TkMET_pt',     
+                          'range' : (10, 0., 150.),   
+                          'xaxis' : 'tracker MET [GeV]',
+                          'fold'  : 3}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
