@@ -214,24 +214,25 @@ variables['TkMET'] = {    'name'  : 'TkMET_pt',
                           'xaxis' : 'tracker MET [GeV]',
                           'fold'  : 3}
 
-variables['btagDeepB'] = { 'name'  : 'Jet_btagDeepB[CleanJet_jetIdx]',     
-                          'range' : (25, -1., 1.),   
+variables['btagDeepB'] = { 'name'  : 'Jet_btagDeepB[CleanJet_jetIdx]',
+                          'range' : (25, 0., 1.),
                           'xaxis' : 'Deep B discriminator',
                           'fold'  : 3}
 
-variables['btagCSVv2'] = { 'name'  : 'Jet_btagCSVV2[CleanJet_jetIdx]',     
-                          'range' : (25, -1., 1.),   
-                          'xaxis' : 'Deep B discriminator',
+variables['btagCSVv2'] = { 'name'  : 'Jet_btagCSVV2[CleanJet_jetIdx]',
+                          'range' : (25, 0., 1.),
+                          'xaxis' : 'CSVv2 discriminator',
                           'fold'  : 3}
 
-variables['btagCMVA'] = { 'name'  : 'Jet_btagCMVA[CleanJet_jetIdx]',     
-                          'range' : (25, -1., 1.),   
-                          'xaxis' : 'Deep B discriminator',
+variables['btagCMVA'] = { 'name'  : 'Jet_btagCMVA[CleanJet_jetIdx]',
+                          'range' : (25, -1., 1.),
+                          'xaxis' : 'CMVA discriminator',
                           'fold'  : 3}
 
-variables['btagDeepB'] = { 'name'  : 'Jet_btagDeepFlavB[CleanJet_jetIdx]',     
-                          'range' : (25, -1., 1.),   
-                          'xaxis' : 'Deep B discriminator',
+variables['btagDeepFlavB'] = { 'name'  : 'Jet_btagDeepFlavB[CleanJet_jetIdx]',
+                          'range' : (25, 0., 1.),
+                          'xaxis' : 'Deep Flavour B discriminator',
                           'fold'  : 3}
+
 
 
