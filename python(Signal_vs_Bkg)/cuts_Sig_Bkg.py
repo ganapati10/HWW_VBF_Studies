@@ -459,7 +459,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 200.0'
+     'mth < 20.0'
      ]
 
 addcut('mth_1', _tmp)
@@ -471,7 +471,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 180.0'
+     'mth < 40.0'
      ]
 
 addcut('mth_2', _tmp)
@@ -483,7 +483,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 160.0'
+     'mth < 60.0'
      ]
 
 addcut('mth_3', _tmp)
@@ -495,7 +495,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 140.0'
+     'mth < 80.0'
      ]
 
 addcut('mth_4', _tmp)
@@ -507,7 +507,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 120.0'
+     'mth < 100.0'
      ]
 
 addcut('mth_5', _tmp)
@@ -519,7 +519,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 100.0'
+     'mth < 120.0'
      ]
 
 addcut('mth_6', _tmp)
@@ -531,7 +531,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 80.0'
+     'mth < 140.0'
      ]
 
 addcut('mth_7', _tmp)
@@ -543,7 +543,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 60.0'
+     'mth < 160.0'
      ]
 
 addcut('mth_8', _tmp)
@@ -555,7 +555,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 40.0'
+     'mth < 180.0'
      ]
 
 addcut('mth_9', _tmp)
@@ -567,7 +567,7 @@ _tmp = [
      'Alt$(CleanJet_pt[1], 0) > 20.',
      'abs(CleanJet_eta[0]) < 2.5',
      'abs(CleanJet_eta[1]) < 2.5',
-     'mth < 20.0'
+     'mth < 200.0'
      ]
 
 addcut('mth_10', _tmp)
