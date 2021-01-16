@@ -11,6 +11,7 @@ _tmp = [
      'Lepton_pt[1] > 13.',
      '(abs(Lepton_pdgId[1]) == 13 || Lepton_pt[1] > 13.)',
      '(nLepton >= 2 && Alt$(Lepton_pt[2], 0) < 10.)',
+     'Alt$(CleanJet_pt[1], 0) > 20.',
      ]
 
 supercut = ' && '.join(_tmp)
@@ -30,10 +31,7 @@ def addcut(name, exprs):
 #-------------------------------------------------------------------------------
 # VBF_drjj_1
 #-------------------------------------------------------------------------------
-_tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
+_tmp = [ 
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 0.5'
      ]
 
@@ -43,9 +41,6 @@ addcut('drjj_1', _tmp)
 # VBF_drjj_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 1.0'
      ]
 
@@ -55,9 +50,6 @@ addcut('drjj_2', _tmp)
 # VBF_drjj_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 1.5'
      ]
 
@@ -67,9 +59,6 @@ addcut('drjj_3', _tmp)
 # VBF_drjj_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 2.0'
      ]
 
@@ -79,9 +68,6 @@ addcut('drjj_4', _tmp)
 # VBF_drjj_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 2.5'
      ]
 
@@ -91,9 +77,6 @@ addcut('drjj_5', _tmp)
 # VBF_drjj_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 3.0'
      ]
 
@@ -103,9 +86,6 @@ addcut('drjj_6', _tmp)
 # VBF_drjj_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 3.5'
      ]
 
@@ -115,9 +95,6 @@ addcut('drjj_7', _tmp)
 # VBF_drjj_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 4.0'
      ]
 
@@ -127,9 +104,6 @@ addcut('drjj_8', _tmp)
 # VBF_drjj_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 4.5'
      ]
 
@@ -139,9 +113,6 @@ addcut('drjj_9', _tmp)
 # VBF_drjj_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 5.0'
      ]
 
@@ -153,9 +124,6 @@ addcut('drjj_10', _tmp)
 # VBF_mjj_1                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 0.0'
      ]
 
@@ -165,9 +133,6 @@ addcut('mjj_1', _tmp)
 # VBF_mjj_2                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 25.0'
      ]
 
@@ -177,9 +142,6 @@ addcut('mjj_2', _tmp)
 # VBF_mjj_3                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 50.0'
      ]
 
@@ -189,9 +151,6 @@ addcut('mjj_3', _tmp)
 # VBF_mjj_4                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 75.0'
      ]
 
@@ -201,9 +160,6 @@ addcut('mjj_4', _tmp)
 # VBF_mjj_5                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 100.0'
      ]
 
@@ -213,9 +169,6 @@ addcut('mjj_5', _tmp)
 # VBF_mjj_6                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 125.0'
      ]
 
@@ -225,9 +178,6 @@ addcut('mjj_6', _tmp)
 # VBF_mjj_7                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 150.0'
      ]
 
@@ -237,9 +187,6 @@ addcut('mjj_7', _tmp)
 # VBF_mjj_8                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 175.0'
      ]
 
@@ -249,9 +196,6 @@ addcut('mjj_8', _tmp)
 # VBF_mjj_9                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 200.0'
      ]
 
@@ -261,9 +205,6 @@ addcut('mjj_9', _tmp)
 # VBF_mjj_10                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 225.0'
      ]
 
@@ -274,9 +215,6 @@ addcut('mjj_10', _tmp)
 # VBF_mjj_11                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 250.0'
      ]
 
@@ -286,9 +224,6 @@ addcut('mjj_11', _tmp)
 # VBF_mjj_12                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 275.0'
      ]
 
@@ -298,9 +233,6 @@ addcut('mjj_12', _tmp)
 # VBF_mjj_13                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 300.0'
      ]
 
@@ -310,9 +242,6 @@ addcut('mjj_13', _tmp)
 # VBF_mjj_14                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 325.0'
      ]
 
@@ -322,9 +251,6 @@ addcut('mjj_14', _tmp)
 # VBF_mjj_15                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 350.0'
      ]
 
@@ -334,9 +260,6 @@ addcut('mjj_15', _tmp)
 # VBF_mjj_16                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mjj > 375.0'
      ]
 
@@ -353,9 +276,6 @@ addcut('mjj_16', _tmp)
 # VBF_mll_1                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 0.0'
      ]
 
@@ -365,9 +285,6 @@ addcut('mll_1', _tmp)
 # VBF_mll_2                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 25.0'
      ]
 
@@ -377,9 +294,6 @@ addcut('mll_2', _tmp)
 # VBF_mll_3                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 50.0'
      ]
 
@@ -389,9 +303,6 @@ addcut('mll_3', _tmp)
 # VBF_mll_4                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 75.0'
      ]
 
@@ -401,9 +312,6 @@ addcut('mll_4', _tmp)
 # VBF_mll_5                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 100.0'
      ]
 
@@ -413,9 +321,6 @@ addcut('mll_5', _tmp)
 # VBF_mll_6                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 125.0'
      ]
 
@@ -425,9 +330,6 @@ addcut('mll_6', _tmp)
 # VBF_mll_7                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 150.0'
      ]
 
@@ -437,9 +339,6 @@ addcut('mll_7', _tmp)
 # VBF_mll_8                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mll > 175.0'
      ]
 
@@ -456,9 +355,6 @@ addcut('mll_8', _tmp)
 # VBF_mth_1                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 20.0'
      ]
 
@@ -468,9 +364,6 @@ addcut('mth_1', _tmp)
 # VBF_mth_2                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 40.0'
      ]
 
@@ -480,9 +373,6 @@ addcut('mth_2', _tmp)
 # VBF_mth_3                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 60.0'
      ]
 
@@ -492,9 +382,6 @@ addcut('mth_3', _tmp)
 # VBF_mth_4                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 80.0'
      ]
 
@@ -504,9 +391,6 @@ addcut('mth_4', _tmp)
 # VBF_mth_5                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 100.0'
      ]
 
@@ -516,9 +400,6 @@ addcut('mth_5', _tmp)
 # VBF_mth_6                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 120.0'
      ]
 
@@ -528,9 +409,6 @@ addcut('mth_6', _tmp)
 # VBF_mth_7                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 140.0'
      ]
 
@@ -540,9 +418,6 @@ addcut('mth_7', _tmp)
 # VBF_mth_8                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 160.0'
      ]
 
@@ -552,9 +427,6 @@ addcut('mth_8', _tmp)
 # VBF_mth_9                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 180.0'
      ]
 
@@ -564,9 +436,6 @@ addcut('mth_9', _tmp)
 # VBF_mth_10                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.',
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mth < 200.0'
      ]
 
@@ -583,9 +452,6 @@ addcut('mth_10', _tmp)
 # VBF_njet_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Sum$(CleanJet_pt>20) > 0'
      ]
 
@@ -595,9 +461,6 @@ addcut('njet_1', _tmp)
 # VBF_njet_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Sum$(CleanJet_pt>20) > 1'
      ]
 
@@ -607,9 +470,6 @@ addcut('njet_2', _tmp)
 # VBF_njet_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Sum$(CleanJet_pt>20) > 2'
      ]
 
@@ -619,9 +479,6 @@ addcut('njet_3', _tmp)
 # VBF_njet_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Sum$(CleanJet_pt>20) > 3'
      ]
 
@@ -631,9 +488,6 @@ addcut('njet_4', _tmp)
 # VBF_njet_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Sum$(CleanJet_pt>20) > 5'
      ]
 
@@ -649,9 +503,6 @@ addcut('njet_5', _tmp)
 # VBF_Ctot_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > -4. '
      ]
 
@@ -662,9 +513,6 @@ addcut('Ctot_1', _tmp)
 # VBF_Ctot_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > -3. '
      ]
 
@@ -675,9 +523,6 @@ addcut('Ctot_2', _tmp)
 # VBF_Ctot_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > -2. '
      ]
 
@@ -688,9 +533,6 @@ addcut('Ctot_3', _tmp)
 # VBF_Ctot_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > -1. '
      ]
 
@@ -701,9 +543,6 @@ addcut('Ctot_4', _tmp)
 # VBF_Ctot_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > 0. '
      ]
 
@@ -713,9 +552,6 @@ addcut('Ctot_5', _tmp)
 # VBF_Ctot_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > 1. '
      ]
 
@@ -725,9 +561,6 @@ addcut('Ctot_6', _tmp)
 # VBF_Ctot_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > 2. '
      ]
 
@@ -737,9 +570,6 @@ addcut('Ctot_7', _tmp)
 # VBF_Ctot_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > 3. '
      ]
 
@@ -749,9 +579,6 @@ addcut('Ctot_8', _tmp)
 # VBF_Ctot_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > 4. '
      ]
 
@@ -761,9 +588,6 @@ addcut('Ctot_9', _tmp)
 # VBF_Ctot_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj) > 5. '
      ]
 
@@ -779,9 +603,6 @@ addcut('Ctot_10', _tmp)
 # VBF_detajj_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 0.4'
      ]
 
@@ -791,9 +612,6 @@ addcut('detajj_1', _tmp)
 # VBF_detajj_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 0.8'
      ]
 
@@ -803,9 +621,6 @@ addcut('detajj_2', _tmp)
 # VBF_detajj_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 1.2'
      ]
 
@@ -815,9 +630,6 @@ addcut('detajj_3', _tmp)
 # VBF_detajj_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 1.6'
      ]
 
@@ -827,9 +639,6 @@ addcut('detajj_4', _tmp)
 # VBF_detajj_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 2.0'
      ]
 
@@ -839,9 +648,6 @@ addcut('detajj_5', _tmp)
 # VBF_detajj_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 2.4 '
      ]
 
@@ -851,9 +657,6 @@ addcut('detajj_6', _tmp)
 # VBF_detajj_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 2.8'
      ]
 
@@ -863,9 +666,6 @@ addcut('detajj_7', _tmp)
 # VBF_detajj_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 3.2'
      ]
 
@@ -875,9 +675,6 @@ addcut('detajj_8', _tmp)
 # VBF_detajj_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 3.6'
      ]
 
@@ -887,9 +684,6 @@ addcut('detajj_9', _tmp)
 # VBF_detajj_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'detajj < 4.0'
      ]
 
@@ -906,9 +700,6 @@ addcut('detajj_10', _tmp)
 # VBF_detal1j1_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 0.4'
      ]
 
@@ -918,9 +709,6 @@ addcut('detal1j1_1', _tmp)
 # VBF_detal1j1_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 0.8'
      ]
 
@@ -930,9 +718,6 @@ addcut('detal1j1_2', _tmp)
 # VBF_detal1j1_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 1.2'
      ]
 
@@ -942,9 +727,6 @@ addcut('detal1j1_3', _tmp)
 # VBF_detal1j1_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 1.6'
      ]
 
@@ -954,9 +736,6 @@ addcut('detal1j1_4', _tmp)
 # VBF_detal1j1_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 2.0'
      ]
 
@@ -966,9 +745,6 @@ addcut('detal1j1_5', _tmp)
 # VBF_detal1j1_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 2.4'
      ]
 
@@ -978,9 +754,6 @@ addcut('detal1j1_6', _tmp)
 # VBF_detal1j1_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 2.8'
      ]
 
@@ -990,9 +763,6 @@ addcut('detal1j1_7', _tmp)
 # VBF_detal1j1_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 3.2'
      ]
 
@@ -1002,9 +772,6 @@ addcut('detal1j1_8', _tmp)
 # VBF_detal1j1_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 3.6'
      ]
 
@@ -1014,9 +781,6 @@ addcut('detal1j1_9', _tmp)
 # VBF_detal1j1_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(Lepton_eta[0]-CleanJet_eta[0]) < 4.0'
      ]
 
@@ -1033,9 +797,6 @@ addcut('detal1j1_10', _tmp)
 # VBF_drll_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 0.5'
      ]
 
@@ -1045,9 +806,6 @@ addcut('drll_1', _tmp)
 # VBF_drll_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 1.0'
      ]
 
@@ -1057,9 +815,6 @@ addcut('drll_2', _tmp)
 # VBF_drll_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 1.5'
      ]
 
@@ -1069,9 +824,6 @@ addcut('drll_3', _tmp)
 # VBF_drll_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 2.0'
      ]
 
@@ -1081,9 +833,6 @@ addcut('drll_4', _tmp)
 # VBF_drll_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 2.5'
      ]
 
@@ -1093,9 +842,6 @@ addcut('drll_5', _tmp)
 # VBF_drll_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 3.0'
      ]
 
@@ -1105,9 +851,6 @@ addcut('drll_6', _tmp)
 # VBF_drll_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 3.5'
      ]
 
@@ -1117,9 +860,6 @@ addcut('drll_7', _tmp)
 # VBF_drll_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 4.0'
      ]
 
@@ -1129,9 +869,6 @@ addcut('drll_8', _tmp)
 # VBF_drll_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 4.5'
      ]
 
@@ -1141,9 +878,6 @@ addcut('drll_9', _tmp)
 # VBF_drll_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'drll < 5.0'
      ]
 
@@ -1160,9 +894,6 @@ addcut('drll_10', _tmp)
 # VBF_pt1_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 10.0'
      ]
 
@@ -1172,9 +903,6 @@ addcut('pt1_1', _tmp)
 # VBF_pt1_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 20.0'
      ]
 
@@ -1184,9 +912,6 @@ addcut('pt1_2', _tmp)
 # VBF_pt1_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 30.0'
      ]
 
@@ -1196,9 +921,6 @@ addcut('pt1_3', _tmp)
 # VBF_pt1_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 40.0'
      ]
 
@@ -1208,9 +930,6 @@ addcut('pt1_4', _tmp)
 # VBF_pt1_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 50.0'
      ]
 
@@ -1220,9 +939,6 @@ addcut('pt1_5', _tmp)
 # VBF_pt1_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 60.0'
      ]
 
@@ -1232,9 +948,6 @@ addcut('pt1_6', _tmp)
 # VBF_pt1_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 70.0'
      ]
 
@@ -1244,9 +957,6 @@ addcut('pt1_7', _tmp)
 # VBF_pt1_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 80.0'
      ]
 
@@ -1256,9 +966,6 @@ addcut('pt1_8', _tmp)
 # VBF_pt1_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 90.0'
      ]
 
@@ -1268,9 +975,6 @@ addcut('pt1_9', _tmp)
 # VBF_pt1_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 100.0'
      ]
 
@@ -1280,9 +984,6 @@ addcut('pt1_10', _tmp)
 # VBF_pt1_11
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 110.0'
      ]
 
@@ -1292,9 +993,6 @@ addcut('pt1_11', _tmp)
 # VBF_pt1_12
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 120.0'
      ]
 
@@ -1304,9 +1002,6 @@ addcut('pt1_12', _tmp)
 # VBF_pt1_13
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 130.0'
      ]
 
@@ -1316,9 +1011,6 @@ addcut('pt1_13', _tmp)
 # VBF_pt1_14
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 140.0'
      ]
 
@@ -1328,9 +1020,6 @@ addcut('pt1_14', _tmp)
 # VBF_pt1_15
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 150.0'
      ]
 
@@ -1340,9 +1029,6 @@ addcut('pt1_15', _tmp)
 # VBF_pt1_16
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 160.0'
      ]
 
@@ -1352,9 +1038,6 @@ addcut('pt1_16', _tmp)
 # VBF_pt1_17
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 170.0'
      ]
 
@@ -1364,9 +1047,6 @@ addcut('pt1_17', _tmp)
 # VBF_pt1_18
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 180.0'
      ]
 
@@ -1376,9 +1056,6 @@ addcut('pt1_18', _tmp)
 # VBF_pt1_19
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 190.0'
      ]
 
@@ -1388,9 +1065,6 @@ addcut('pt1_19', _tmp)
 # VBF_pt1_20
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Lepton_pt[0] < 200.0'
      ]
 
@@ -1406,9 +1080,6 @@ addcut('pt1_20', _tmp)
 # VBF_jetpt1_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 10.0'
      ]
 
@@ -1418,9 +1089,6 @@ addcut('jetpt1_1', _tmp)
 # VBF_jetpt1_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 20.0'
      ]
 
@@ -1430,9 +1098,6 @@ addcut('jetpt1_2', _tmp)
 # VBF_jetpt1_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 30.0'
      ]
 
@@ -1442,9 +1107,6 @@ addcut('jetpt1_3', _tmp)
 # VBF_jetpt1_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 40.0'
      ]
 
@@ -1454,9 +1116,6 @@ addcut('jetpt1_4', _tmp)
 # VBF_jetpt1_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 50.0'
      ]
 
@@ -1466,9 +1125,6 @@ addcut('jetpt1_5', _tmp)
 # VBF_jetpt1_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 60.0'
      ]
 
@@ -1478,9 +1134,6 @@ addcut('jetpt1_6', _tmp)
 # VBF_jetpt1_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 70.0'
      ]
 
@@ -1490,9 +1143,6 @@ addcut('jetpt1_7', _tmp)
 # VBF_jetpt1_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 80.0'
      ]
 
@@ -1502,9 +1152,6 @@ addcut('jetpt1_8', _tmp)
 # VBF_jetpt1_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 90.0'
      ]
 
@@ -1514,9 +1161,6 @@ addcut('jetpt1_9', _tmp)
 # VBF_jetpt1_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 100.0'
      ]
 
@@ -1526,9 +1170,6 @@ addcut('jetpt1_10', _tmp)
 # VBF_jetpt1_11
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 110.0'
      ]
 
@@ -1538,9 +1179,6 @@ addcut('jetpt1_11', _tmp)
 # VBF_jetpt1_12
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 120.0'
      ]
 
@@ -1550,9 +1188,6 @@ addcut('jetpt1_12', _tmp)
 # VBF_jetpt1_13
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 130.0'
      ]
 
@@ -1562,9 +1197,6 @@ addcut('jetpt1_13', _tmp)
 # VBF_jetpt1_14
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 140.0'
      ]
 
@@ -1574,9 +1206,6 @@ addcut('jetpt1_14', _tmp)
 # VBF_jetpt1_15
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 150.0'
      ]
 
@@ -1586,9 +1215,6 @@ addcut('jetpt1_15', _tmp)
 # VBF_jetpt1_16
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 160.0'
      ]
 
@@ -1598,9 +1224,6 @@ addcut('jetpt1_16', _tmp)
 # VBF_jetpt1_17
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 170.0'
      ]
 
@@ -1610,9 +1233,6 @@ addcut('jetpt1_17', _tmp)
 # VBF_jetpt1_18
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 180.0'
      ]
 
@@ -1622,9 +1242,6 @@ addcut('jetpt1_18', _tmp)
 # VBF_jetpt1_19
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 190.0'
      ]
 
@@ -1634,9 +1251,6 @@ addcut('jetpt1_19', _tmp)
 # VBF_jetpt1_20
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'CleanJet_pt[0]*(CleanJet_pt[0]>30) < 200.0'
      ]
 
@@ -1653,9 +1267,6 @@ addcut('jetpt1_20', _tmp)
 # VBF_ptll_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 47.0'
      ]
 
@@ -1665,9 +1276,6 @@ addcut('ptll_1', _tmp)
 # VBF_ptll_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 64.0'
      ]
 
@@ -1677,9 +1285,6 @@ addcut('ptll_2', _tmp)
 # VBF_ptll_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 81.0'
      ]
 
@@ -1689,9 +1294,6 @@ addcut('ptll_3', _tmp)
 # VBF_ptll_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 98.0'
      ]
 
@@ -1701,9 +1303,6 @@ addcut('ptll_4', _tmp)
 # VBF_ptll_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 115.0'
      ]
 
@@ -1713,9 +1312,6 @@ addcut('ptll_5', _tmp)
 # VBF_ptll_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 132.0'
      ]
 
@@ -1725,9 +1321,6 @@ addcut('ptll_6', _tmp)
 # VBF_ptll_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 149.0'
      ]
 
@@ -1737,9 +1330,6 @@ addcut('ptll_7', _tmp)
 # VBF_ptll_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 166.0'
      ]
 
@@ -1749,9 +1339,6 @@ addcut('ptll_8', _tmp)
 # VBF_ptll_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 183.0'
      ]
 
@@ -1761,9 +1348,6 @@ addcut('ptll_9', _tmp)
 # VBF_ptll_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'ptll < 200.0'
      ]
 
@@ -1781,9 +1365,6 @@ addcut('ptll_10', _tmp)
 # VBF_dphilljj_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 0.0'
      ]
 
@@ -1793,9 +1374,6 @@ addcut('dphilljj_1', _tmp)
 # VBF_dphilljj_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 0.32'
      ]
 
@@ -1805,9 +1383,6 @@ addcut('dphilljj_2', _tmp)
 # VBF_dphilljj_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 0.64'
      ]
 
@@ -1817,9 +1392,6 @@ addcut('dphilljj_3', _tmp)
 # VBF_dphilljj_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 0.94'
      ]
 
@@ -1829,9 +1401,6 @@ addcut('dphilljj_4', _tmp)
 # VBF_dphilljj_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 1.28'
      ]
 
@@ -1841,9 +1410,6 @@ addcut('dphilljj_5', _tmp)
 # VBF_dphilljj_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 1.6'
      ]
 
@@ -1853,9 +1419,6 @@ addcut('dphilljj_6', _tmp)
 # VBF_dphilljj_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 1.92'
      ]
 
@@ -1865,9 +1428,6 @@ addcut('dphilljj_7', _tmp)
 # VBF_dphilljj_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 2.24'
      ]
 
@@ -1877,9 +1437,6 @@ addcut('dphilljj_8', _tmp)
 # VBF_dphilljj_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 2.56'
      ]
 
@@ -1889,9 +1446,6 @@ addcut('dphilljj_9', _tmp)
 # VBF_dphilljj_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(dphilljetjet) > 2.88'
      ]
 
@@ -1909,9 +1463,6 @@ addcut('dphilljj_10', _tmp)
 # VBF_qgl0_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[0] < 0.2'
      ]
 
@@ -1921,9 +1472,6 @@ addcut('qgl0_1', _tmp)
 # VBF_qgl0_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[0] < 0.4'
      ]
 
@@ -1933,9 +1481,6 @@ addcut('qgl0_2', _tmp)
 # VBF_qgl0_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[0] < 0.6'
      ]
 
@@ -1945,9 +1490,6 @@ addcut('qgl0_3', _tmp)
 # VBF_qgl0_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[0] < 0.8'
      ]
 
@@ -1957,9 +1499,6 @@ addcut('qgl0_4', _tmp)
 # VBF_qgl0_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[0] < 1.'
      ]
 
@@ -1976,9 +1515,6 @@ addcut('qgl0_5', _tmp)
 # VBF_qgl1_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[1] < 0.2'
      ]
 
@@ -1988,9 +1524,6 @@ addcut('qgl1_1', _tmp)
 # VBF_qgl1_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[1] < 0.4'
      ]
 
@@ -2000,9 +1533,6 @@ addcut('qgl1_2', _tmp)
 # VBF_qgl1_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[1] < 0.6'
      ]
 
@@ -2012,9 +1542,6 @@ addcut('qgl1_3', _tmp)
 # VBF_qgl1_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[1] < 0.8'
      ]
 
@@ -2024,80 +1551,12 @@ addcut('qgl1_4', _tmp)
 # VBF_qgl1_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_qgl[1] < 1.'
      ]
 
 addcut('qgl1_5', _tmp)
 
 
-#
-#
-# B Tagging
-#
-#
-
-
-#-------------------------------------------------------------------------------
-# VBF_btag_1
-#-------------------------------------------------------------------------------
-_tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5'
-     ]
-
-addcut('btag_1', _tmp)
-
-#-------------------------------------------------------------------------------
-# VBF_btag_2
-#-------------------------------------------------------------------------------
-_tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
-     'bVeto' #Deep B algorithm
-     ]
-
-addcut('btag_2', _tmp)
-
-#-------------------------------------------------------------------------------
-# VBF_btag_3
-#-------------------------------------------------------------------------------
-_tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
-     'bVetoSF'  #DeepCSV algorithm 
-     ]
-
-addcut('btag_3', _tmp)
-
-#-------------------------------------------------------------------------------
-# VBF_btag_4
-#-------------------------------------------------------------------------------
-_tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
-     'bReq'
-     ]
-
-addcut('btag_4', _tmp)
-
-#-------------------------------------------------------------------------------
-# VBF_btag_5
-#-------------------------------------------------------------------------------
-_tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
-     'bReqSF'
-     ]
-
-addcut('btag_5', _tmp)
 
 #
 #
@@ -2109,9 +1568,6 @@ addcut('btag_5', _tmp)
 # VBF_jeteta1_1
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 0.4'
      ]
 
@@ -2121,9 +1577,6 @@ addcut('jeteta1_1', _tmp)
 # VBF_jeteta1_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 0.8'
      ]
 
@@ -2133,9 +1586,6 @@ addcut('jeteta1_2', _tmp)
 # VBF_jeteta1_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 1.2'
      ]
 
@@ -2145,9 +1595,6 @@ addcut('jeteta1_3', _tmp)
 # VBF_jeteta1_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 1.6'
      ]
 
@@ -2157,9 +1604,6 @@ addcut('jeteta1_4', _tmp)
 # VBF_jeteta1_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 2.0'
      ]
 
@@ -2169,9 +1613,6 @@ addcut('jeteta1_5', _tmp)
 # VBF_jeteta1_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 2.4 '
      ]
 
@@ -2181,9 +1622,6 @@ addcut('jeteta1_6', _tmp)
 # VBF_jeteta1_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 2.8'
      ]
 
@@ -2193,9 +1631,6 @@ addcut('jeteta1_7', _tmp)
 # VBF_jeteta1_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 3.2'
      ]
 
@@ -2205,9 +1640,6 @@ addcut('jeteta1_8', _tmp)
 # VBF_jeteta1_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 3.6'
      ]
 
@@ -2217,9 +1649,6 @@ addcut('jeteta1_9', _tmp)
 # VBF_jeteta1_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'abs(CleanJet_eta[0]) < 4.0'
      ]
 
@@ -2236,9 +1665,6 @@ addcut('jeteta1_10', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 15.0'
      ]
 
@@ -2248,9 +1674,6 @@ addcut('mpmet_1', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 30.0'
      ]
 
@@ -2261,9 +1684,6 @@ addcut('mpmet_2', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 45.0'
      ]
 
@@ -2273,9 +1693,6 @@ addcut('mpmet_3', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 60.0'
      ]
 
@@ -2285,9 +1702,6 @@ addcut('mpmet_4', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 75.0'
      ]
 
@@ -2297,9 +1711,6 @@ addcut('mpmet_5', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 90.0'
      ]
 
@@ -2309,9 +1720,6 @@ addcut('mpmet_6', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 105.0'
      ]
 
@@ -2321,9 +1729,6 @@ addcut('mpmet_7', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 120.0'
      ]
 
@@ -2333,9 +1738,6 @@ addcut('mpmet_8', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 135.0'
      ]
 
@@ -2345,9 +1747,6 @@ addcut('mpmet_9', _tmp)
 # VBF_mpmet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'mpmet < 150.0'
      ]
 
@@ -2363,9 +1762,6 @@ addcut('mpmet_10', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 15.0'
      ]
 
@@ -2375,9 +1771,6 @@ addcut('puppimet_1', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 30.0'
      ]
 
@@ -2387,9 +1780,6 @@ addcut('puppimet_2', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 45.0'
      ]
 
@@ -2399,9 +1789,6 @@ addcut('puppimet_3', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 60.0'
      ]
 
@@ -2411,9 +1798,6 @@ addcut('puppimet_4', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 75.0'
      ]
 
@@ -2423,9 +1807,6 @@ addcut('puppimet_5', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 90.0'
      ]
 
@@ -2435,9 +1816,6 @@ addcut('puppimet_6', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 105.0'
      ]
 
@@ -2447,9 +1825,6 @@ addcut('puppimet_7', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 120.0'
      ]
 
@@ -2459,9 +1834,6 @@ addcut('puppimet_8', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 135.0'
      ]
 
@@ -2471,9 +1843,6 @@ addcut('puppimet_9', _tmp)
 # VBF_puppimet
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'PuppiMET_pt < 150.0'
      ]
 
@@ -2489,9 +1858,6 @@ addcut('puppimet_10', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.'
      ]
 
@@ -2501,9 +1867,6 @@ addcut('btagDeepB_1', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.1'
      ]
 
@@ -2513,9 +1876,6 @@ addcut('btagDeepB_2', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.2'
      ]
 
@@ -2525,9 +1885,6 @@ addcut('btagDeepB_3', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.3'
      ]
 
@@ -2537,9 +1894,6 @@ addcut('btagDeepB_4', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.4'
      ]
 
@@ -2549,9 +1903,6 @@ addcut('btagDeepB_5', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.5'
      ]
 
@@ -2561,9 +1912,6 @@ addcut('btagDeepB_6', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.6'
      ]
 
@@ -2573,9 +1921,6 @@ addcut('btagDeepB_7', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.7'
      ]
 
@@ -2585,9 +1930,6 @@ addcut('btagDeepB_8', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.8'
      ]
 
@@ -2597,9 +1939,6 @@ addcut('btagDeepB_9', _tmp)
 # VBF_btagDeepB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepB[CleanJet_jetIdx] > 0.9'
      ]
 
@@ -2616,9 +1955,6 @@ addcut('btagDeepB_10', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.'
      ]
 
@@ -2628,9 +1964,6 @@ addcut('btagCSVv2_1', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.1'
      ]
 
@@ -2640,9 +1973,6 @@ addcut('btagCSVv2_2', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.2'
      ]
 
@@ -2652,9 +1982,6 @@ addcut('btagCSVv2_3', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.3'
      ]
 
@@ -2664,9 +1991,6 @@ addcut('btagCSVv2_4', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.4'
      ]
 
@@ -2676,9 +2000,6 @@ addcut('btagCSVv2_5', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.5'
      ]
 
@@ -2688,9 +2009,6 @@ addcut('btagCSVv2_6', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.6'
      ]
 
@@ -2700,9 +2018,6 @@ addcut('btagCSVv2_7', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.7'
      ]
 
@@ -2712,9 +2027,6 @@ addcut('btagCSVv2_8', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.8'
      ]
 
@@ -2724,9 +2036,6 @@ addcut('btagCSVv2_9', _tmp)
 # VBF_btagCSVv2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCSVV2[CleanJet_jetIdx] > 0.9'
      ]
 
@@ -2742,9 +2051,6 @@ addcut('btagCSVv2_10', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.'
      ]
 
@@ -2754,9 +2060,6 @@ addcut('btagDeepFlavB_1', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.1'
      ]
 
@@ -2766,9 +2069,6 @@ addcut('btagDeepFlavB_2', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.2'
      ]
 
@@ -2778,9 +2078,6 @@ addcut('btagDeepFlavB_3', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.3'
      ]
 
@@ -2790,9 +2087,6 @@ addcut('btagDeepFlavB_4', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.4'
      ]
 
@@ -2802,9 +2096,6 @@ addcut('btagDeepFlavB_5', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.5'
      ]
 
@@ -2814,9 +2105,6 @@ addcut('btagDeepFlavB_6', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.6'
      ]
 
@@ -2826,9 +2114,6 @@ addcut('btagDeepFlavB_7', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.7'
      ]
 
@@ -2838,9 +2123,6 @@ addcut('btagDeepFlavB_8', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.8'
      ]
 
@@ -2850,9 +2132,6 @@ addcut('btagDeepFlavB_9', _tmp)
 # VBF_btagDeepFlavB
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagDeepFlavB[CleanJet_jetIdx] > 0.9'
      ]
 
@@ -2869,9 +2148,6 @@ addcut('btagDeepFlavB_10', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > -1.'
      ]
 
@@ -2881,9 +2157,6 @@ addcut('btagCMVA_1', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > -0.8'
      ]
 
@@ -2893,9 +2166,6 @@ addcut('btagCMVA_2', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > -0.6'
      ]
 
@@ -2905,9 +2175,6 @@ addcut('btagCMVA_3', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > -0.4'
      ]
 
@@ -2917,9 +2184,6 @@ addcut('btagCMVA_4', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > -0.2'
      ]
 
@@ -2929,9 +2193,6 @@ addcut('btagCMVA_5', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > 0.'
      ]
 
@@ -2941,9 +2202,6 @@ addcut('btagCMVA_6', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > 0.2'
      ]
 
@@ -2953,9 +2211,6 @@ addcut('btagCMVA_7', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > 0.4'
      ]
 
@@ -2965,9 +2220,6 @@ addcut('btagCMVA_8', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > 0.6'
      ]
 
@@ -2977,9 +2229,6 @@ addcut('btagCMVA_9', _tmp)
 # VBF_btagCMVA
 #-------------------------------------------------------------------------------
 _tmp = [
-     'Alt$(CleanJet_pt[1], 0) > 20.', 
-     'abs(CleanJet_eta[0]) < 2.5',
-     'abs(CleanJet_eta[1]) < 2.5',
      'Jet_btagCMVA[CleanJet_jetIdx] > 0.8'
      ]
 
