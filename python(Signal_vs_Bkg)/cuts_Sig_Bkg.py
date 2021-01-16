@@ -32,7 +32,7 @@ def addcut(name, exprs):
 # VBF_drjj_1
 #-------------------------------------------------------------------------------
 _tmp = [ 
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 0.5'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 0.5'
      ]
 
 addcut('drjj_1', _tmp)
@@ -41,7 +41,7 @@ addcut('drjj_1', _tmp)
 # VBF_drjj_2
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 1.0'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 1.0'
      ]
 
 addcut('drjj_2', _tmp)
@@ -50,7 +50,7 @@ addcut('drjj_2', _tmp)
 # VBF_drjj_3
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 1.5'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 1.5'
      ]
 
 addcut('drjj_3', _tmp)
@@ -59,7 +59,7 @@ addcut('drjj_3', _tmp)
 # VBF_drjj_4
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 2.0'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 2.0'
      ]
 
 addcut('drjj_4', _tmp)
@@ -68,7 +68,7 @@ addcut('drjj_4', _tmp)
 # VBF_drjj_5
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 2.5'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 2.5'
      ]
 
 addcut('drjj_5', _tmp)
@@ -77,7 +77,7 @@ addcut('drjj_5', _tmp)
 # VBF_drjj_6
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 3.0'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 3.0'
      ]
 
 addcut('drjj_6', _tmp)
@@ -86,7 +86,7 @@ addcut('drjj_6', _tmp)
 # VBF_drjj_7
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 3.5'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 3.5'
      ]
 
 addcut('drjj_7', _tmp)
@@ -95,7 +95,7 @@ addcut('drjj_7', _tmp)
 # VBF_drjj_8
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 4.0'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 4.0'
      ]
 
 addcut('drjj_8', _tmp)
@@ -104,7 +104,7 @@ addcut('drjj_8', _tmp)
 # VBF_drjj_9
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 4.5'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 4.5'
      ]
 
 addcut('drjj_9', _tmp)
@@ -113,7 +113,7 @@ addcut('drjj_9', _tmp)
 # VBF_drjj_10
 #-------------------------------------------------------------------------------
 _tmp = [
-     'TMath::sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 5.0'
+     'sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1]) < 5.0'
      ]
 
 addcut('drjj_10', _tmp)
