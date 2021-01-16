@@ -34,6 +34,11 @@ variables['detal1j1'] = { 'name'  : 'abs(Lepton_eta[0]-CleanJet_eta[0])',
                           'xaxis' : '#Delta#eta_{l1j1}',
                           'fold'  : 0}
 
+variables['detall'] = {   'name'  : 'abs(Lepton_eta[1]-Lepton_eta[0])',
+                          'range' : (10, 0., 4.),
+                          'xaxis' : '#Delta#eta_{l1j1}',
+                          'fold'  : 0}
+
 variables['drll'] = {     'name'  : 'drll',
                           'range' : (10, 0., 5.),
                           'xaxis' : '#DeltaR_{ll}',
@@ -94,8 +99,13 @@ variables['qgl11'] = {    'name'  : 'Jet_qgl[1]',
                           'xaxis' : 'Quark Gluon likelihood (2^{nd} Jet)',
                           'fold'  : 3}
 
-variables['jeteta1'] = {  'name'  : 'CleanJet_eta[0]',
-                          'range' : (10, -4., 4.),
+variables['jeteta1'] = {  'name'  : 'abs(CleanJet_eta[0])',
+                          'range' : (10, 0., 4.),
+                          'xaxis' : '#eta 1st jet',
+                          'fold'  : 0}
+
+variables['eta1'] = {     'name'  : 'abs(Lepton_eta[0])',
+                          'range' : (10, 0., 4.),
                           'xaxis' : '#eta 1st jet',
                           'fold'  : 0}
 
