@@ -36,7 +36,7 @@ variables['detal1j1'] = { 'name'  : 'abs(Lepton_eta[0]-CleanJet_eta[0])',
 
 variables['detall'] = {   'name'  : 'abs(Lepton_eta[1]-Lepton_eta[0])',
                           'range' : (10, 0., 4.),
-                          'xaxis' : '#Delta#eta_{l1j1}',
+                          'xaxis' : '#Delta#eta_{ll}',
                           'fold'  : 0}
 
 variables['drll'] = {     'name'  : 'drll',
@@ -106,7 +106,7 @@ variables['jeteta1'] = {  'name'  : 'abs(CleanJet_eta[0])',
 
 variables['eta1'] = {     'name'  : 'abs(Lepton_eta[0])',
                           'range' : (10, 0., 4.),
-                          'xaxis' : '#eta 1st jet',
+                          'xaxis' : '#eta 1st lepton',
                           'fold'  : 0}
 
 variables['mpmet'] = {    'name'  : 'mpmet',      
