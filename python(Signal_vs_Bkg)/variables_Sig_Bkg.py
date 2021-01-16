@@ -54,9 +54,24 @@ variables['ptll'] = {     'name'  : 'ptll',
                           'xaxis' : 'p_{T}^{ll} [GeV]',
                           'fold'  : 0}
 
+variables['dphill'] = {   'name'  : 'abs(dphill)',     
+                          'range' : (10, 0., 3.2),   
+                          'xaxis' : '#Delta#phi_{ll}',
+                          'fold'  : 3}
+
+variables['dphillj'] = { 'name'  : 'abs(dphilljet)',     
+                          'range' : (10, 0., 3.2),   
+                          'xaxis' : '#Delta#phi_{llj}',
+                          'fold'  : 3}
+
 variables['dphilljj'] = { 'name'  : 'abs(dphilljetjet)',     
                           'range' : (10, 0., 3.2),   
                           'xaxis' : '#Delta#phi_{lljj}',
+                          'fold'  : 3}
+
+variables['dphijjmet'] = { 'name'  : 'abs(dphijjmet)',     
+                          'range' : (10, 0., 3.2),   
+                          'xaxis' : '#Delta#phi_{jjmet}',
                           'fold'  : 3}
 
 variables['qgl0'] = {     'name'  : 'Jet_qgl[0]',
