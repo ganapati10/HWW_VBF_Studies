@@ -51,6 +51,8 @@ if    'iihe' in SITE:
   treeBaseDir = '/pnfs/iihe/cms/store/user/xjanssen/HWW2015'
 elif  'ifca' in SITE:
   treeBaseDir = '/gpfs/projects/cms/data/LatinosSkims/nanoAOD'
+elif  'cern' in SITE:
+  treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'  
 
 def makeMCDirectory(var=''):
     if var:
