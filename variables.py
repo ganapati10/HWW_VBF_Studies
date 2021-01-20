@@ -154,6 +154,11 @@ variables['njet'] = {     'name'  : 'Sum$(CleanJet_pt>30)',
                           'xaxis' : 'number of jets',
                           'fold'  : 2}
 
+variables['bjet'] = {     'name'  : 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.2217)',     
+                          'range' : (5, 0, 5),   
+                          'xaxis' : 'number of jets',
+                          'fold'  : 2}
+
 variables['nvtx'] = {     'name'  : 'PV_npvsGood',      
                           'range' : (50, 0, 50),  
                           'xaxis' : 'number of vertices', 
