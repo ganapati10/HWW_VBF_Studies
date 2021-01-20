@@ -18,6 +18,12 @@ variables['njet'] = {     'name'  : 'Sum$(CleanJet_pt>30)',
                           'range' : (5, 0, 5),   
                           'xaxis' : 'number of jets',
                           'fold'  : 2}
+
+variables['bjet'] = {     'name'  : 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.2217)',     
+                          'range' : (5, 0, 5),   
+                          'xaxis' : 'number of jets',
+                          'fold'  : 2}
+
 variables['Ctot'] =  {
                           'name': 'log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj)',
                           'range' : (10, -4, 6),
