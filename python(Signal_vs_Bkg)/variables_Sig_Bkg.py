@@ -161,7 +161,7 @@ variables['mlljj'] = {    'name'       : 'mlljj(Lepton_pt[0], Lepton_eta[0], Lep
                           'range'      : (16, 0., 400.),
                           'xaxis'      : 'm_{lljj}',
                           'fold'       : 3,
-                          'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/-----PATH---/mlljj.C++']}
+                          'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/mlljj.C++']}
 
 
 
