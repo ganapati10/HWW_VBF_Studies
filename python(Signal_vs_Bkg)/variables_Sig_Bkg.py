@@ -90,20 +90,12 @@ variables['qgl0'] = {     'name'  : 'Jet_qgl[0]',
                           'xaxis' : 'Quark Gluon likelihood (1^{st} Jet)',
                           'fold'  : 3}
 
-variables['qgl01'] = {    'name'  : 'Jet_qgl[0]',
-                          'range' : (5, 0., 1.),
-                          'xaxis' : 'Quark Gluon likelihood (1^{st} Jet)',
-                          'fold'  : 3}
 
 variables['qgl1'] = {     'name'  : 'Jet_qgl[1]',
                           'range' : (5, 0., 1.),
                           'xaxis' : 'Quark Gluon likelihood (2^{nd} Jet)',
                           'fold'  : 3}
 
-variables['qgl11'] = {    'name'  : 'Jet_qgl[1]',
-                          'range' : (5, 0., 1.),
-                          'xaxis' : 'Quark Gluon likelihood (2^{nd} Jet)',
-                          'fold'  : 3}
 
 variables['jeteta1'] = {  'name'  : 'abs(CleanJet_eta[0])',
                           'range' : (10, 0., 4.),
@@ -159,6 +151,20 @@ variables['btagDeepFlavB'] = { 'name'  : 'Jet_btagDeepFlavB[CleanJet_jetIdx]',
                           'range' : (10, 0., 1.),
                           'xaxis' : 'Deep Flavour B discriminator',
                           'fold'  : 3}
+
+########
+
+variables['ptlljjmet'] = { 'name'  : 'Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt',
+                          'range' : (16, 0., 400.),
+                          'xaxis' : 'p_{T} leptons+jets+MET',
+                          'fold'  : 3}
+
+variables['mlljj'] = { 'name'  : 'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1])',
+                          'range' : (16, 0., 400.),
+                          'xaxis' : 'm_{lljj}',
+                          'fold'  : 3,
+                          'linesToAdd' : ['.L /afs/cern.ch/work/-----PATH---/mlljj.C++']
+                     }
 
 
 
