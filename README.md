@@ -56,9 +56,9 @@ sbatch -o logfile.log -e errofile.err --qos=gridui_sort --partition=cloudcms Run
 Run in a interactive way. Do not do this for an usual job, just for test your code or do plots.
 
 ```
-mkShapesMulti.py --pycfg=configuration.py --inputDir=/gpfs/projects/cms/data/LatinosSkims/nanoAOD/ --treeName=Events
+mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=testmatch
 
-mkShapesMulti.py --doHadd=1 --doNotCleanup --nThreads=8
+mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files --doNotCleanup --nThreads=8
 
 mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_WW_2016.root --minLogC=0.01 --minLogCratio=0.01 --maxLogC=1000 --maxLogCratio=1000 --showIntegralLegend=1
 
