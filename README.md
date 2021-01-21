@@ -62,5 +62,7 @@ mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files 
 
 mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_WW_2016.root --minLogC=0.01 --minLogCratio=0.01 --maxLogC=1000 --maxLogCratio=1000 --showIntegralLegend=1
 
+Plot_Sig_Bkg.py --pycfg=configuration.py --inputFile=rootFile/plots_WW_2016.root
+
 ```
 
