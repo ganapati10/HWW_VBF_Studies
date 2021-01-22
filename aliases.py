@@ -109,6 +109,12 @@ aliases['multiJet'] = {
     'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
 }
 
+aliases['mlljj'] = {
+    'expr': 'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[\
+1])',
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/mlljj.C+']
+}
+
 # B tagging
 
 bAlgo = 'DeepB'
