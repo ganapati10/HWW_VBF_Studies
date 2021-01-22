@@ -2781,7 +2781,7 @@ addcut('btagCMVA_10', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 0.0'
+     'mlljj > 0.0'
      ]
 
 addcut('mlljj_1', _tmp)
@@ -2790,7 +2790,7 @@ addcut('mlljj_1', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 25.0'
+     'mlljj > 25.0'
      ]
 
 addcut('mlljj_2', _tmp)
@@ -2799,7 +2799,7 @@ addcut('mlljj_2', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 50.0'
+     'mlljj > 50.0'
      ]
 
 addcut('mlljj_3', _tmp)
@@ -2808,7 +2808,7 @@ addcut('mlljj_3', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 75.0'
+     'mlljj > 75.0'
      ]
 
 addcut('mlljj_4', _tmp)
@@ -2817,7 +2817,7 @@ addcut('mlljj_4', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 100.0'
+     'mlljj > 100.0'
      ]
 
 addcut('mlljj_5', _tmp)
@@ -2826,7 +2826,7 @@ addcut('mlljj_5', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 125.0'
+     'mlljj > 125.0'
      ]
 
 addcut('mlljj_6', _tmp)
@@ -2835,7 +2835,7 @@ addcut('mlljj_6', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 150.0'
+     'mlljj > 150.0'
      ]
 
 addcut('mlljj_7', _tmp)
@@ -2844,7 +2844,7 @@ addcut('mlljj_7', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 175.0'
+     'mlljj > 175.0'
      ]
 
 addcut('mlljj_8', _tmp)
@@ -2853,7 +2853,7 @@ addcut('mlljj_8', _tmp)
 # VBF_lljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 200.0'
+     'mlljj > 200.0'
      ]
 
 addcut('mlljj_9', _tmp)
@@ -2862,7 +2862,7 @@ addcut('mlljj_9', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 225.0'
+     'mlljj > 225.0'
      ]
 
 addcut('mlljj_10', _tmp)
@@ -2872,7 +2872,7 @@ addcut('mlljj_10', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 250.0'
+     'mlljj > 250.0'
      ]
 
 addcut('mlljj_11', _tmp)
@@ -2881,7 +2881,7 @@ addcut('mlljj_11', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 275.0'
+     'mlljj > 275.0'
      ]
 
 addcut('mlljj_12', _tmp)
@@ -2890,7 +2890,7 @@ addcut('mlljj_12', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 300.0'
+     'mlljj > 300.0'
      ]
 
 addcut('mlljj_13', _tmp)
@@ -2899,7 +2899,7 @@ addcut('mlljj_13', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 325.0'
+     'mlljj > 325.0'
      ]
 
 addcut('mlljj_14', _tmp)
@@ -2908,7 +2908,7 @@ addcut('mlljj_14', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 350.0'
+     'mlljj > 350.0'
      ]
 
 addcut('mlljj_15', _tmp)
@@ -2917,7 +2917,7 @@ addcut('mlljj_15', _tmp)
 # VBF_mlljj                                                                                                                                                                                                 
 #-------------------------------------------------------------------------------                                                                                                                            
 _tmp = [
-     'mlljj(Lepton_pt[0], Lepton_eta[0], Lepton_phi[0], Lepton_pt[1], Lepton_eta[1], Lepton_phi[1], CleanJet_pt[0], CleanJet_eta[0], CleanJet_phi[0], CleanJet_mass[0], CleanJet_pt[1], CleanJet_eta[1], CleanJet_phi[1], CleanJet_mass[1]) > 375.0'
+     'mlljj > 375.0'
      ]
 
 addcut('mlljj_16', _tmp)
