@@ -66,3 +66,12 @@ Plot_Sig_Bkg.py --pycfg=configuration.py --inputFile=rootFile/plots_WW_2016.root
 
 ```
 
+## Useful tools
+
+How to copy files from cloud server to computer, some ways:
+
+```
+scp aaa@server.com:folder/file  local/directory
+rsync -av aaa@server.com:folder/file  local/directory
+```
+
