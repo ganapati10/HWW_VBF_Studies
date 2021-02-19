@@ -33,41 +33,41 @@ HiggsXS = HiggsXSection()
 
 #### Luminosity
 
-#nuisances['lumi'] = {
-#    'name': 'lumi_13TeV_2016',
-#    'type': 'lnN',
-#    'samples': dict((skey, '1.025') for skey in mc if skey not in ['top', 'DY'])
-#}
-
-nuisances['lumi_Uncorrelated'] = {
+nuisances['lumi'] = {
     'name': 'lumi_13TeV_2016',
     'type': 'lnN',
-    'samples': dict((skey, '1.022') for skey in mc if skey not in ['WW', 'top', 'DY'])
+    'samples': dict((skey, '1.025') for skey in mc if skey not in ['top', 'DY'])
 }
 
-nuisances['lumi_XYFact'] = {
-    'name': 'lumi_13TeV_XYFact',
-    'type': 'lnN',
-    'samples': dict((skey, '1.009') for skey in mc if skey not in ['WW', 'top', 'DY'])
-}
-
-nuisances['lumi_BBDefl'] = {
-    'name': 'lumi_13TeV_BBDefl',
-    'type': 'lnN',
-    'samples': dict((skey, '1.004') for skey in mc if skey not in ['WW', 'top', 'DY'])
-}
-
-nuisances['lumi_DynBeta'] = {
-    'name': 'lumi_13TeV_DynBeta',
-    'type': 'lnN',
-    'samples': dict((skey, '1.005') for skey in mc if skey not in ['WW', 'top', 'DY'])
-}
-
-nuisances['lumi_Ghosts'] = {
-    'name': 'lumi_13TeV_Ghosts',
-    'type': 'lnN',
-   'samples': dict((skey, '1.004') for skey in mc if skey not in ['WW', 'top', 'DY'])
-}
+#nuisances['lumi_Uncorrelated'] = {
+#    'name': 'lumi_13TeV_2016',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.022') for skey in mc if skey not in ['WW', 'top', 'DY'])
+#}
+#
+#nuisances['lumi_XYFact'] = {
+#    'name': 'lumi_13TeV_XYFact',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.009') for skey in mc if skey not in ['WW', 'top', 'DY'])
+#}
+#
+#nuisances['lumi_BBDefl'] = {
+#    'name': 'lumi_13TeV_BBDefl',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.004') for skey in mc if skey not in ['WW', 'top', 'DY'])
+#}
+#
+#nuisances['lumi_DynBeta'] = {
+#    'name': 'lumi_13TeV_DynBeta',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.005') for skey in mc if skey not in ['WW', 'top', 'DY'])
+#}
+#
+#nuisances['lumi_Ghosts'] = {
+#    'name': 'lumi_13TeV_Ghosts',
+#    'type': 'lnN',
+#   'samples': dict((skey, '1.004') for skey in mc if skey not in ['WW', 'top', 'DY'])
+#}
 
 #### FAKES
 
@@ -804,62 +804,20 @@ nuisances['Topnorm']  = {
     }
 
 
-nuisances['DYnorm']  = {                                                                                                           
-    'name'  : 'DYnorm',                                                                                                            
-    'samples'  : {                                                                                                                 
-        'DY' : '1.00',
-        },                                                                                                                         
-    'type'  : 'rateParam',                                                                                                         
-   'cuts'  : [                                                                                                                    
-        'VBF',
-        'top',                                                                                                            #
-        'DY',                                                                                                          
-        #                                                                                                                          
-        ]                                                                                                                          
-    } 
-
-    
-
-nuisances['DYttnorm2j']  = {
-                 'name'  : 'CMS_hww_DYttnorm2j',
-                 'samples'  : {
-                     'DY' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                }
 nuisances['DYembnorm2j']  = {
                  'name'  : 'CMS_hww_DYttnorm2j',
                  'samples'  : {
                    'Dyemb' : '1.00',
                      },
                  'type'  : 'rateParam',
+                 'cuts'  : [
+                        'VBF',
+                        'top',
+                        'DY',
+                        #                                                                                                                         
+                        ]
                 }
 
-nuisances['WWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-              }
-
-
-nuisances['ggWWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j',
-               'samples'  : {
-                   'ggWW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-              }
-
-
-nuisances['Topnorm2j']  = {
-               'name'  : 'CMS_hww_Topnorm2j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-              }
 
 
 for n in nuisances.values():
