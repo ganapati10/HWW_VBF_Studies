@@ -4,6 +4,17 @@ import numpy as np
 from funcsigs import signature
 #from inspect import signature
 
+'''
+Bayesian Blocks method from astropy
+
+Code modified from python 3 -> python 2 
+
+References:
+The Astropy Project: Building an Open-science Project and Status of the v2.0 Core Package:
+           Astropy Collaboration
+           https://ui.adsabs.harvard.edu/abs/2018AJ....156..123A
+'''
+
 # TODO: implement other fitness functions from appendix B of Scargle 2012
 
 __all__ = ['FitnessFunc', 'Events', 'RegularEvents', 'PointMeasures',
