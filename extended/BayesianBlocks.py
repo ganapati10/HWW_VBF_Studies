@@ -1,4 +1,4 @@
-#!/usr/bin/env python                                                                                                                                                                                       
+#!/usr/bin/env python                                                                                                                                                                                     
 
 import json
 import sys
@@ -18,10 +18,14 @@ from collections import OrderedDict
 import math
 import numpy as np
 import root_numpy as rnp
+import warnings
+#from inspect import signature
+from funcsigs import signature
+import bayesian_blocks
 
 
-#                                                                                                                                                                                                           
-# Sergio Blanco - 02/03/2020                                                                                                                                                                                
+#                                                                                                                                                                                                          
+# Sergio Blanco - 02/03/2020                                                                                                                                                                              
 #                                                                                                                                                                                                           
 # Adaptation of Bayesian Blocks from https://jakevdp.github.io/blog/2012/09/12/dynamic-programming-in-python/ for rebin a ROOT histogram.
 #
@@ -29,9 +33,11 @@ import root_numpy as rnp
 #
 
 
-#                                                                                                                                                                                                           
-# ------------------ Make new Bins for histograms ---------------------------------------                                                                                                                   
-#                                                                                                                                                                                                           
+#                                                                                                                                                                                                          
+# ------------------ Make new Bins for histograms ---------------------------------------                                                                                                                  
+#                                                                                                                                                                                                         
+
+
 
 class BayesianBlocks:
 
@@ -64,159 +70,89 @@ class BayesianBlocks:
         print "==== makeBins ===="
         print "=================="
 
-
-      
-      ### All THE CONTENT OF THE CODE
-      
-      self._variables = variables
-      self._samples   = samples
-      self._cuts      = cuts
-      
-      ROOT.TH1.SetDefaultSumw2(True)
-
-      ROOT.gROOT.cd()
-      
-      fileIn = ROOT.TFile(inputFile, "READ")
-      
-      for cutName in self._cuts:
-        print "cut_", cutName
         
-        for variableName, variable in self._variables.iteritems():
+        
+        ### All THE CONTENT OF THE CODE
+        
+        self._variables = variables
+        self._samples   = samples
+        self._cuts      = cuts
+        
+        ROOT.TH1.SetDefaultSumw2(True)
+        
+        ROOT.gROOT.cd()
+        
+        fileIn = ROOT.TFile(inputFile, "READ")
+        
+        for cutName in self._cuts:
+            print "cut_", cutName
             
-            print "========================="
-            print "variable  ", variableName
-            print "========================="
-            print "Old range: ", variable['range']
-            
-            low = variable['range'][1]
-            high = variable['range'][2]
-            size = variable['range'][0]
-            step = (high-low)/size
-            
-            content = np.empty(size)
-            place = np.linspace(low, high, size)
-            
-            for sampleName, plotdef in plot.iteritems():
+            if cutName!='VBF':
+                continue
+
+            for variableName, variable in self._variables.iteritems():
                 
-                if 'samples' in variable and sampleName not in variable['samples']:
-                     continue
-                if sampleName not in self._samples:
-                     continue
-                if plotdef['isData']==1:
-                     continue
+                if (variableName == 'mll_top'): continue
+
+                print "========================="
+                print "variable  ", variableName
+                print "========================="
+                print "Old range: ", variable['range']
                 
-                shapeName = cutName+"/"+variableName+"/histo_" + sampleName
-                #Check .root file                                                                                                                                                                       
-                if type(fileIn) is dict:
-                    histo = fileIn[sampleName].Get(shapeName)     #Get the TH1 for each variable, cut and sample.                                                                                       
-                else:
-                    histo = fileIn.Get(shapeName)
+                low = variable['range'][1]
+                high = variable['range'][2]
+                size = variable['range'][0]
+                step = (high-low)/size
+                
+                content = np.zeros(size)
+                place = np.linspace(low, high, size)
+                total = 0
+                
+                for sampleName, plotdef in plot.iteritems():
                     
-                histogram = histo.Clone("new_histo_" + sampleName + "_" + cutName + "_" + variableName)  #Open the .root file and create histogram
+                    if 'samples' in variable and sampleName not in variable['samples']:
+                        continue
+                    if sampleName not in self._samples:
+                        continue
+                    if plotdef['isData']==1:
+                        continue
+                    
+                    shapeName = cutName+"/"+variableName+"/histo_" + sampleName
+                    #Check .root file                                                                                                                                                                      
+                    if type(fileIn) is dict:
+                        histo = fileIn[sampleName].Get(shapeName)     #Get the TH1 for each variable, cut and sample.                                                                                      
+                    else:
+                        histo = fileIn.Get(shapeName)
+                    
+                    histogram = histo.Clone("new_histo_" + sampleName + "_" + cutName + "_" + variableName)  #Open the .root file and create histogram
+                    
+                    for i in range(size):
+                        content[i] = content[i] + histogram.GetBinContent(i)
+
+                print "-----"
+                print "The content of the Histogram is:  "
+                print "-----"
+                print content                    
+            
+                content = content + 1
+                content = 2*np.round(content) #Factor two because of the low statistics //// Just for test: DON'T USE
+                new_bins = bayesian_blocks.bayesian_blocks(place, content)
                 
-                for i in range(size):
-                    content[i] = histogram.GetBinContent(i)
-            
-            data = []
-            j = 0
-            for rep in content:
-                for k in range(rep):
-                    data.append(place[j])
-                j = j + 1
-            
-            new_bins = bayesian_blocks(data)
-            
-            print "========================="
-            print "========================="
-            print "-----Bayesian Blocks-----"
-            print "New Binning for ", variableName
-            print "========================="
-            print "========================="
-            
-            print new_bins
-            
-            print ""
-            print ""
-            print "-------------------------------------------------------------------"
-      
-      
-      
-      
-      
-      
-      
-    def bayesian_blocks(t):
-        """Bayesian Blocks Implementation
+                print "========================="
+                print "========================="
+                print "-----Bayesian Blocks-----"
+                print "New Binning for ", variableName
+                print "========================="
+                print "========================="
+                
+                print new_bins
+                
+                print ""
+                print ""
+                print "-------------------------------------------------------------------"
+                
 
-        By Jake Vanderplas.  License: BSD
-        Based on algorithm outlined in http://adsabs.harvard.edu/abs/2012arXiv1207.5578S
 
-        Parameters
-        ----------
-        t : ndarray, length N
-            data to be histogrammed
-
-        Returns
-        -------
-        bins : ndarray
-            array containing the (N+1) bin edges
-
-        Notes
-        -----
-        This is an incomplete implementation: it may fail for some
-        datasets.  Alternate fitness functions and prior forms can
-        be found in the paper listed above.
-        """
-        # copy and sort the array
-        t = np.sort(t)
-        N = t.size
-
-        # create length-(N + 1) array of cell edges
-        edges = np.concatenate([t[:1],
-                                0.5 * (t[1:] + t[:-1]),
-                                t[-1:]])
-        block_length = t[-1] - edges
-
-        # arrays needed for the iteration
-        nn_vec = np.ones(N)
-        best = np.zeros(N, dtype=float)
-        last = np.zeros(N, dtype=int)
-
-        #-----------------------------------------------------------------
-        # Start with first data cell; add one cell at each iteration
-        #-----------------------------------------------------------------
-        for K in range(N):
-            # Compute the width and count of the final bin for all possible
-            # locations of the K^th changepoint
-            width = block_length[:K + 1] - block_length[K + 1]
-            count_vec = np.cumsum(nn_vec[:K + 1][::-1])[::-1]
-
-            # evaluate fitness function for these possibilities
-            fit_vec = count_vec * (np.log(count_vec) - np.log(width))
-            fit_vec -= 1.15  # 4 comes from the prior on the number of changepoints
-            fit_vec[1:] += best[:K]
-
-            # find the max of the fitness: this is the K^th changepoint
-            i_max = np.argmax(fit_vec)
-            last[K] = i_max
-            best[K] = fit_vec[i_max]
-
-        #-----------------------------------------------------------------
-        # Recover changepoints by iteratively peeling off the last block
-        #-----------------------------------------------------------------
-        change_points =  np.zeros(N, dtype=int)
-        i_cp = N
-        ind = N
-        while True:
-            i_cp -= 1
-            change_points[i_cp] = ind
-            if ind == 0:
-                break
-            ind = last[ind - 1]
-        change_points = change_points[i_cp:]
-
-        return edges[change_points]            
-     
 #                                                                                                                                                                                                           
 #                                                                                                                                                                                                           
 #   BIN MAKER                                                                                                                                                                                              
@@ -311,26 +247,3 @@ if __name__=='__main__':
       
       
       
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-
-
-
