@@ -104,6 +104,8 @@ class mkPlot2D:
             thsBackground = ROOT.THStack ("thsBackground_" + cutName + "_" + variableName,"thsBackground_" + cutName + "_" + variableName)
             #print 'really before thstack ... three'
 
+            sigSupList    = []
+            sigSupList_grouped    = []
             
             for sampleName, plotdef in plot.iteritems():
                 if 'samples' in variable and sampleName not in variable['samples']:
@@ -215,160 +217,25 @@ class mkPlot2D:
               for histo in sigSupList_grouped:
                 histo.Draw("hist same")   
                 
+          if len(sigSupList) != 0 and groupFlag==False:
+              for hist in sigSupList:
+                hist.Draw("hist same")
+  
+          #     - then the DATA  
+          if tgrData.GetN() != 0:
+            tgrData.Draw("P0")
+          else : # never happening if at least one data histogram is provided
+            for sampleName, plotdef in plot.iteritems():
+              if 'samples' in variable and sampleName not in variable['samples']:
+                continue
+              if plotdef['isData'] == 1 :
+                histos[sampleName].Draw("p same")
           
+           
+          tcanvas.cd()
+          tcanvas.Draw()
+          tcanvas.SaveAs(self._outputDirPlots + "/" + "c_2D" + variableName + ".png")  #Save .png file 
           
-                    
-                    
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-                #Just compute the variables equal to cuts: variable mjj with cut mjj_1                                                                                                                      
-                if variableName != cutName.split('_')[0]:      #cutName must be variableName_i                                                                                                              
-                    #print variableName + "not equal to " + cutName.split('_')[0]                                                                                                                           
-                    continue
-
-                print "variableName =", variableName
-
-                # Define variables for store bin content of histograms                                                                                                                                      
-                sig  = 0
-                bkg  = 0
-                data = 0
-
-                print "Compute of Signal and Background processes"
-                #print "Signal = 0"                                                                                                                                                                         
-                #print "Background = 0"                                                                                                                                                                     
-
-                ##-Loop above all samples in plot -> WW, Higgs, DY,..                                                                                                                                       
-                for sampleName, plotdef in plot.iteritems():
-
-                    if 'samples' in variable and sampleName not in variable['samples']:
-                        continue
-
-                    if sampleName not in self._samples:
-                        continue
-
-
-                    shapeName = cutName+"/"+variableName+"/histo_" + sampleName
-                    print(shapeName)
-
-                    #Check .root file                                                                                                                                                                       
-                    if type(fileIn) is dict:
-                        histo = fileIn[sampleName].Get(shapeName)     #Get the TH1 for each variable, cut and sample.                                                                                       
-                    else:
-                        histo = fileIn.Get(shapeName)
-
-                    histogram = histo.Clone("new_histo_" + sampleName + "_" + cutName + "_" + variableName)  #Open the .root file and create histogram                                                      
-
-                    if plotdef['isSignal'] == 1 :
-                        sig = sig + histogram.GetEntries()
-
-                    elif plotdef['isSignal'] == 0 :
-                        bkg = bkg + histogram.GetEntries()
-
-                    elif plotdef['isData'] == 1 :
-                        data = data + histogram.GetEntries()
-
-                    #print "------new sample " + sampleName + "------"                                                                                                                                      
-                    #print "Signal = ", sig                                                                                                                                                                 
-                    #print "Background = ", bkg                                                                                                                                                             
-
-                ## End of samples loop.                                                                                                                                                                     
-
-                if sig == 0 and bkg == 0:
-                    print "Error: Non content in Signal/Background variables"
-                    continue
-
-                tHisto.SetBinContent(int(cutName.split("_")[1]), sig/math.sqrt(bkg+sig))   #Fill the histograms                                                                                             
-                tpop.SetBinContent(int(cutName.split("_")[1]), sig)
-                tpopB.SetBinContent(int(cutName.split("_")[1]), bkg)
-
-                print "--------------------------------------------------------"
-                print "New histogram computed, variable " + cutName
-                print "Signal = ", sig
-                print "Background = ", bkg
-                print("Value of S/sqrt(S+B) : " + str(sig/math.sqrt(bkg+sig)))
-
-
-            #End cuts loop                                                                                                                                                                                  
-
-            #TH1F make up                                                                                                                                                                                   
-            #tHisto.SetMinimum(0.0)                                                                                                                                                                         
-            #tHisto.SetMaximum(1.0)                                                                                                                                                                         
-
-
-            tHisto.SetMarkerStyle(ROOT.kFullCircle)
-            tHisto.GetXaxis().SetTitle(variable['xaxis'])
-            tHisto.GetYaxis().SetTitle('#S/\sqrt{B+S}')
-            tHisto.SetTitle("")
-            tHisto.Draw()
-
-            legend = ROOT.TLegend(0.9, 0.87, 0.75, 0.82)
-
-            legend.AddEntry(tHisto, variable['xaxis'])
-
-            tHisto.SetStats(False)
-
-            tHisto.Draw("p")
-
-            #legend.Draw()                                                                                                                                                                                  
-
-            tcanvas.Update()
-            tcanvas.Draw()
-
-            tcanvas2 = ROOT.TCanvas("Events " + variableName, "Events " + variableName, 800, 600)
-
-            tpop.SetLineColor(ROOT.kRed)
-            tpop.GetYaxis().SetTitle("Signal events per cut (Cumulative)")
-            tpop.GetXaxis().SetTitle(variable['xaxis'])
-            tpop.GetYaxis.SetLabelSize(0.02)
-            tpop.SetStats(False)
-            tpop.SetTitle("")
-            tpop.Draw()
-            tcanvas2.Update()
-
-            rightmax = tpopB.GetMaximum()
-            f1 = ROOT.TF1("f1","1", tpopB.GetXaxis().GetXmin(), tpopB.GetXaxis().GetXmax())
-            if (rightmax!=0):
-                scale = (tpop.GetMaximum() - tpop.GetMinimum())/rightmax
-                tpopB.Scale(scale)
-                tpopB.Add(f1, tpop.GetMinimum())
-
-            tpopB.SetLineColor(ROOT.kBlue)
-            tpopB.SetStats(False)
-            tpopB.SetTitle("")
-            tpopB.Draw("SAME")
-
-            axis2 = ROOT.TGaxis(ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymin(), ROOT.gPad.GetUxmax(), ROOT.gPad.GetUymax(),0,rightmax,510,"+L")
-            axis2.SetLineColor(ROOT.kBlue)
-            axis2.SetTextColor(ROOT.kBlue)
-            axis2.SetTitle("Background events per cut (Cumulative)")
-            axis2.SetTitleOffset(1.)
-            axis2.SetLabelSize(0.02)
-            axis2.Draw()
-
-            tcanvas2.Update()
-
-            tcanvas2.Draw()
-
-            tcanvas.SaveAs(self._outputDirPlots + "/" + "Sig_vs_Bkg_" + variableName + ".png")  #Save .png file                                                                                             
-            tcanvas2.SaveAs(self._outputDirPlots + "/" + "Population_" + variableName + ".png")  #Save .png file                                                                                            
-        # End variable loop                                                                                                                                                                                 
-    #End makePlot function                                                                                                                                                                                  
-#End of Plot_Sig_Bkg class                                                                                                                                                                                  
-
-
 
 #                                                                                                                                                                                                           
 #                                                                                                                                                                                                           
