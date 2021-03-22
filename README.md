@@ -75,3 +75,37 @@ scp aaa@server.com:folder/file  local/directory
 rsync -av aaa@server.com:folder/file  local/directory
 ```
 
+## Make datacards and combine 
+
+```
+mkDatacards.py --pycfg=configuration.py --inputFile=rootFile/plots_WW_2016.root
+
+pushd datacards
+
+combineCards.py VBF/events/datacard.txt DY/events/datacard.txt top/events/datacard.txt > datacard_combined.txt
+
+text2workspace.py datacard_combined.txt -m 125
+
+popd
+```
+
+## Impact plots (Asimov dataset)
+
+```
+combineTool.py -M Impacts --expectSignal=1 -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --doInitialFit
+
+combineTool.py -M Impacts --expectSignal=1 -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --doFits --job-mode=interactive --parallel=10
+
+combineTool.py -M Impacts --expectSignal=1 -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 -o impacts.json
+
+plotImpacts.py -i impacts.json -o impacts
+```
+
+## Compute significance
+
+```
+combine -M Significance --expectSignal=1 -t -1 -m 125 datacards/datacard_combined.txt
+```
+
+
+
