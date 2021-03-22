@@ -53,7 +53,7 @@ It should be done a Run.sh script to submit jobs in Slurm, the old way is for co
 sbatch -o logfile.log -e errofile.err --qos=gridui_sort --partition=cloudcms Run.sh
 ```
 
-Run in a interactive way. Do not do this for an usual job, just for test your code or do plots.
+Run and make plots with LatinoAnalysis tools:
 
 ```
 mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=testmatch
