@@ -8,16 +8,16 @@ tag = 'WW_2016'
 outputDir = 'rootFile'
 
 # file with TTree aliases                                                                                                                                                                                  
-aliasesFile = 'aliases_test.py'
+aliasesFile = 'aliases.py'
 
 # file with list of variables                                                                                                                                                                              
 variablesFile = 'variables_fit.py'
 
 # file with list of cuts                                                                                                                                                                                   
-cutsFile = 'cuts_fit.py'
+cutsFile = 'cuts.py'
 
 # file with list of samples                                                                                                                                                                                
-samplesFile = 'samples_fit2.py'
+samplesFile = 'samples.py'
 
 # file with plot configuration                                                                                                                                                                             
 plotFile = 'plot_fit.py'
