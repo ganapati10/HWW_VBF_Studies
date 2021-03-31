@@ -114,32 +114,32 @@ aliases['multiLepton'] = {
 }
 
 liases['mlljj'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/mlljj.cc+' ],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/mlljj.cc+' ],
     'class' : 'mlljj'
 }
 
 aliases['mjjj'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/mjjj.cc+' ],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/mjjj.cc+' ],
     'class' : 'mjjj'
 }
 
 aliases['jetdis'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/GetJetDis.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/GetJetDis.cc+'],
     'class' : 'GetJetDis'
 }
 
 aliases['alpha1'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/alpha1.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/alpha1.cc+'],
     'class' : 'alpha1'
 }
 
 aliases['alpha2'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/alpha2.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/alpha2.cc+'],
     'class' : 'alpha2'
 }
 
 aliases['alpha3'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/alpha3.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/alpha3.cc+'],
     'class' : 'alpha3'
 }
 
