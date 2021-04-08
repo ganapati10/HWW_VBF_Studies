@@ -89,7 +89,7 @@ groupPlot['VBF']  = {
 
 groupPlot['ggF']  = {
                   'nameHR' : "Higgs ggF",
-                  'isSignal' : 0,
+                  'isSignal' : 2,
                   'color'    : 632,   # kBlue                                                                                                                                                              
                   'samples'  : ['ggH_hww']
               }

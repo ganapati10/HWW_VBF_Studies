@@ -125,7 +125,7 @@ if useEmbeddedDY:
     'weight': 'METFilter_DATA*LepWPCut*Muon_ttHMVA_SF*embedtotal*genWeight',
     'weights': [],
     'isData': ['all'],
-    'FilesPerJob': 20
+    'FilesPerJob': 2
   }
 
   for run_, sd in DataRun:
@@ -175,7 +175,7 @@ if useDYtt:
         'name': files,
         'weight': mcCommonWeight+embed_tautauveto + "*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                          Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )",
-        'FilesPerJob': 5,
+        'FilesPerJob': 2,
     }
     addSampleWeight(samples,'DY','DYJetsToTT_MuEle_M-50','DY_NLO_pTllrw')
     addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO_ext1','DY_LO_pTllrw')
@@ -188,7 +188,7 @@ else:
         'name': files,
         'weight': mcCommonWeight+embed_tautauveto + "*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                          Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )",
-        'FilesPerJob': 8,
+        'FilesPerJob': 2,
     }
     addSampleWeight(samples,'DY','DYJetsToLL_M-50','DY_NLO_pTllrw')
     addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO_ext1','DY_LO_pTllrw')
@@ -208,7 +208,7 @@ samples['top'] = {
     'name': files,
     'weight': mcCommonWeight+embed_tautauveto,
     'FilesPerJob': 1,
-    #'EventsPerJob': 100000
+    'EventsPerJob': 20000
 }
 
 addSampleWeight(samples,'top','TTTo2L2Nu_PSWeights','Top_pTrw')
@@ -224,7 +224,7 @@ samples['WW'] = {
 
 samples['WWewk'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK_noTop'),
-    'weight': mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)*(lhe_mW1[0] > 60. && lhe_mW1[0] < 100. && lhe_mW2[0] > 60. && lhe_mW2[0] < 100.)', #filter tops and Higgs, limit w mass
+    'weight': mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)', #filter tops and Higgs, limit w mass
     'FilesPerJob': 4
 }
 
@@ -241,7 +241,7 @@ files = nanoGetSampleFiles(mcDirectory, 'GluGluToWWToENEN') + \
 samples['ggWW'] = {
     'name': files,
     'weight': mcCommonWeight+embed_tautauveto + '*1.53/1.4', # updating k-factor
-    'FilesPerJob': 10
+    'FilesPerJob': 4
 }
 
 ######## Vg ########
@@ -252,7 +252,7 @@ files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
 samples['Vg'] = {
     'name': files,
     'weight': mcCommonWeightNoMatch+embed_tautauveto + '*!(Gen_ZGstar_mass > 0)',
-    'FilesPerJob': 10
+    'FilesPerJob': 4
 }
 
 ######## VgS ########
@@ -264,7 +264,7 @@ files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
 samples['VgS'] = {
     'name': files,
     'weight': mcCommonWeight+embed_tautauveto + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
-    'FilesPerJob': 5,
+    'FilesPerJob': 4,
     'subsamples': {
       'L': 'gstarLow',
       'H': 'gstarHigh'

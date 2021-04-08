@@ -91,7 +91,7 @@ aliases['Top_pTrw'] = {
 }
 
 aliases['nCleanGenJet'] = {
-    'linesToAdd': ['.L %s/Differential/ngenjet.cc+' % configurations],
+    'linesToAdd': ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/Differential/ngenjet.cc+'],
     'class': 'CountGenJet',
     'samples': mc
 }
@@ -113,61 +113,65 @@ aliases['multiLepton'] = {
     'expr': 'Alt$(Lepton_pt[1], 0) > 30.'
 }
 
-liases['mlljj'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/mlljj.cc+' ],
+aliases['mlljj'] = {
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/mlljj.cc+' ],
     'class' : 'mlljj'
 }
 
 aliases['mjjj'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/mjjj.cc+' ],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/mjjj.cc+' ],
     'class' : 'mjjj'
 }
 
 aliases['jetdis'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/GetJetDis.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/GetJetDis.cc+'],
     'class' : 'GetJetDis'
 }
 
 aliases['alpha1'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/alpha1.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/alpha1.cc+'],
     'class' : 'alpha1'
 }
 
 aliases['alpha2'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/alpha2.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/alpha2.cc+'],
     'class' : 'alpha2'
 }
 
 aliases['alpha3'] = {
-    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2017_v7/extended/alpha3.cc+'],
+    'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/alpha3.cc+'],
     'class' : 'alpha3'
 }
 
 
 #### MELA DEFINITIONS ####
 
-mes = ['RecoLevel_me_VBF_hsm', 'RecoLevel_me_VBF_hm', 'RecoLevel_me_VBF_hp', 'RecoLevel_me_VBF_hl', 'RecoLevel_me_VBF_mixhm', 'RecoLevel_me_VBF_mixhp', 'RecoLevel_me_VBF_mixhl', 'RecoLevel_me_VBF_S_hsm', 'RecoLevel_me_VBF_S_hm', 'RecoLevel_me_VBF_S_hp', 'RecoLevel_me_VBF_S_hl', 'RecoLevel_me_VBF_S_mixhm', 'RecoLevel_me_VBF_S_mixhp', 'RecoLevel_me_VBF_S_mixhl', 'RecoLevel_me_VBF_TU_hsm', 'RecoLevel_me_VBF_TU_hm', 'RecoLevel_me_VBF_TU_hp', 'RecoLevel_me_VBF_TU_hl', 'RecoLevel_me_VBF_TU_mixhm', 'RecoLevel_me_VBF_TU_mixhp', 'RecoLevel_me_VBF_TU_mixhl', 'RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'RecoLevel_me_QCD_mixhm', 'RecoLevel_me_QCD_mixhp', 'RecoLevel_me_QCD_mixhl']
+mes = ['RecoLevel_me_VBF_hsm', 'RecoLevel_me_VBF_hm', 'RecoLevel_me_VBF_hp', 'RecoLevel_me_VBF_hl', 'RecoLevel_me_VBF_mixhm', 'RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'Q2V1', 'Q2V2', 'costheta1', 'costheta2', 'costhetastar', 'phi', 'phi1']
 
 mes2 = ['RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'RecoLevel_me_QCD_mixhm', 'RecoLevel_me_QCD_mixhp', 'RecoLevel_me_QCD_mixhl']
 
 for me in mes:
     aliases[me]={
     'linesToAdd': [
-    #'gSystem->Load("%s/src/ZZMatrixElement/MELA/data/%s/libmcfm_707.so","", kTRUE);'%(os.getenv('CMSSW_BASE'), os.getenv('SCRAM_ARCH')),
-    #'gSystem->Load("libZZMatrixElementMELA.so","", kTRUE);',
+    #'gSystem->Load("%s/src/ZZMatrixElement/MELA/data/%s/libmcfm_707.so","", kTRUE);'%(os.getenv('CMSSW_BASE'), os.getenv('SCRAM_ARCH')),                                                                   
+    #'gSystem->Load("libZZMatrixElementMELA.so","", kTRUE);',                                                                                                                                               
     'gSystem->Load("%s/src/JHUGenMELA/MELA/data/%s/libmcfm_707.so","", kTRUE);'%(os.getenv('CMSSW_BASE'), os.getenv('SCRAM_ARCH')),
     'gSystem->Load("libJHUGenMELAMELA.so","", kTRUE);',
-    '.L %s/patches/RecoLevelME_patch.cc+' % configurations],
+    '.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/patches/RecoLevelME_patch.cc+'],
     'class': 'RecoLevelME',
     'args': (me,)
     }
-
 
 aliases['kd_smvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/RecoLevel_me_VBF_hsm))' }
 aliases['kd_hmvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hm)))' }
 aliases['kd_hpvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hp)))' }
 aliases['kd_hlvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hl)))' }
 aliases['kd_vbf']       = { 'expr': 'max(max(kd_smvbf, kd_hmvbf), max(kd_hpvbf, kd_hlvbf))' }
+
+aliases['D_alt']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_QCD_hsm**2)' } #MELA VBF/ggF discriminant from paper                                                    
+aliases['D_alt_QCD']     = { 'expr': '(RecoLevel_me_QCD_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_QCD_hsm**2)' }
+aliases['D_int']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(2*sqrt(RecoLevel_me_VBF_hsm**2 * RecoLevel_me_QCD_hsm**2))' }
+
 
 ########
 
@@ -210,22 +214,26 @@ aliases['multiJet'] = {
 
 if btag_algo=="deepcsv":
     aliases['bVeto'] = {
-        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) == 0'
+        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 4.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) == 0'
     }
     
     aliases['bReq'] = {
-        'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) >= 1'
+        'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 4.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) >= 1'
     }
   
 elif btag_algo=="deepflav":
     aliases['bVeto'] = {
-        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >  0.0521) == 0'
+        'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 4.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >  0.0521) == 0'
     }
     
     aliases['bReq'] = {
-        'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >  0.0521) >= 1'
+        'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 4.5 && Jet_btagDeepFlavB[CleanJet_jetIdx] >  0.0521) >= 1'
     }
 
+
+aliases['topcr'] = {
+    'expr': 'mll>80 && ((zeroJet && !bVeto) || bReq)'
+}
 
 # B tag scale factors
 if btag_algo=="deepcsv":
@@ -271,7 +279,7 @@ elif btag_algo=="deepflav":
             'gSystem->Load("libCondFormatsBTauObjects.so");',
             'gSystem->Load("libCondToolsBTau.so");',
             'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_RELEASE_BASE'),
-            '.L %s/patches/btagsfpatch.cc+' % configurations
+            '.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/patches/btagsfpatch.cc+' 
         ],
         'class': 'BtagSF',
         'args': (btagSFSource,'central','deepjet'),
@@ -370,7 +378,7 @@ aliases['SFweightMuDown'] = {
 }
 
 aliases['Weight2MINLO'] = {
-    'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
+    'linesToAdd': ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/Differential/weight2MINLO.cc+'],
     'class': 'Weight2MINLO',
     'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE'),
     'samples' : [skey for skey in samples if 'ggH_hww' in skey],
@@ -391,7 +399,7 @@ thus = [
 
 for thu in thus:
     aliases[thu+'_2'] = {
-        'linesToAdd': ['.L %s/Differential/gghuncertainty.cc+' % configurations],
+        'linesToAdd': ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/Differential/gghuncertainty.cc+'],
         'class': 'GGHUncertainty',
         'args': (thu,),
         'samples': ['ggH_hww']
