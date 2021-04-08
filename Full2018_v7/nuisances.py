@@ -32,7 +32,7 @@ HiggsXS = HiggsXSection()
 #### Luminosity
 
 nuisances['lumi'] = {
-    'name': 'lumi_13TeV_2017',
+    'name': 'lumi_13TeV_2018',
     'type': 'lnN',
     'samples': dict((skey, '1.025') for skey in mc if skey not in ['top', 'DY'])
 }
