@@ -2,32 +2,32 @@
 
 treeName = 'Events'
 
-tag = 'WW_2016_2D'
+tag = 'WW_2017_2D'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile'
 
 # file with TTree aliases
-aliasesFile = 'aliases_test.py'
+aliasesFile = 'aliases.py'
 
 # file with list of variables
-variablesFile = 'variables_fit2D.py'
+variablesFile = 'variables_2D.py'
 
 # file with list of cuts
-cutsFile = 'cuts_fit.py' 
+cutsFile = 'cuts.py' 
 
 # file with list of samples
-samplesFile = 'samples_fit2.py' 
+samplesFile = 'samples.py' 
 
 # file with plot configuration
-plotFile = 'plot_fit.py' 
+plotFile = 'plot.py' 
 
 # luminosity to normalize to (in 1/fb)
-lumi = 35.867
+lumi = 41.53
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'plotWW_2016'
+outputDirPlots = 'plotWW_2017'
 
 # used by mkDatacards to define output directory for datacards
 outputDirDatacard = 'datacards'
