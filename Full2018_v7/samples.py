@@ -29,7 +29,7 @@ except NameError:
 ################# SKIMS ########################
 ################################################
 
-mcProduction = 'Autumn2018_102X_nAODv7_Full2018v7'
+mcProduction = 'Autumn18_102X_nAODv7_Full2018v7'
 
 dataReco = 'Run2018_102X_nAODv7_Full2018v7'
 
@@ -83,14 +83,13 @@ DataRun = [
     ['D','Run2018D-02Apr2020-v1']
 ]
 
-DataSets = ['MuonEG','SingleMuon','SingleElectron','DoubleMuon', 'DoubleEG']
+DataSets = ['MuonEG','DoubleMuon','SingleMuon','EGamma']
 
 DataTrig = {
-    'MuonEG'         : ' Trigger_ElMu' ,
-    'SingleMuon'     : '!Trigger_ElMu && Trigger_sngMu' ,
-    'SingleElectron' : '!Trigger_ElMu && !Trigger_sngMu && Trigger_sngEl',
-    'DoubleMuon'     : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && Trigger_dblMu',
-    'DoubleEG'       : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && !Trigger_dblMu && Trigger_dblEl'
+            'MuonEG'         : 'Trigger_ElMu' ,
+            'DoubleMuon'     : '!Trigger_ElMu && Trigger_dblMu' ,
+            'SingleMuon'     : '!Trigger_ElMu && !Trigger_dblMu && Trigger_sngMu' ,
+            'EGamma'         : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && (Trigger_sngEl || Trigger_dblEl)' ,
 }
 
 #########################################
@@ -134,15 +133,15 @@ if useEmbeddedDY:
 
   if runDYveto:
       # Vetoed MC: Needed for uncertainty
-      files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu_PSWeights') + \
-          nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop') + \
-          nanoGetSampleFiles(mcDirectory, 'ST_tW_top') + \
+      files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
+          nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1') + \
+          nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1') + \
           nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu') + \
-          nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK_noTop') + \
+          nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK') + \
           nanoGetSampleFiles(mcDirectory, 'GluGluToWWToTNTN') + \
-          nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
+          nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext1') + \
           nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
-          nanoGetSampleFiles(mcDirectory, 'ZZTo4L') + \
+          nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext1') + \
           nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q') + \
           nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
           nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
@@ -153,15 +152,15 @@ if useEmbeddedDY:
           'FilesPerJob': 1, # There's some error about not finding sample-specific variables like "nllW" when mixing different samples into a single job; so split them all up instead
       }
     
-      addSampleWeight(samples, 'Dyveto', 'TTTo2L2Nu_PSWeights', mcCommonWeight + '*((topGenPt * antitopGenPt > 0.) * (TMath::Sqrt((0.103*TMath::Exp(-0.0118*topGenPt) - 0.000134*topGenPt + 0.973) * (0.103*TMath::Exp(-0.0118*antitopGenPt) - 0.000134*antitopGenPt + 0.973))) + (topGenPt * antitopGenPt <= 0.))')
-      addSampleWeight(samples, 'Dyveto', 'ST_tW_antitop', mcCommonWeight)
-      addSampleWeight(samples, 'Dyveto', 'ST_tW_top', mcCommonWeight)
+      addSampleWeight(samples, 'Dyveto', 'TTTo2L2Nu', mcCommonWeight + '*((topGenPt * antitopGenPt > 0.) * (TMath::Sqrt((0.103*TMath::Exp(-0.0118*topGenPt) - 0.000134*topGenPt + 0.973) * (0.103*TMath::Exp(-0.0118*antitopGenPt) - 0.000134*antitopGenPt + 0.973))) + (topGenPt * antitopGenPt <= 0.))')
+      addSampleWeight(samples, 'Dyveto', 'ST_tW_antitop_ext1', mcCommonWeight)
+      addSampleWeight(samples, 'Dyveto', 'ST_tW_top_ext1', mcCommonWeight)
       addSampleWeight(samples, 'Dyveto', 'WWTo2L2Nu', mcCommonWeight + '*nllW')
-      addSampleWeight(samples, 'Dyveto', 'WpWmJJ_EWK_noTop', mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)')
+      addSampleWeight(samples, 'Dyveto', 'WpWmJJ_EWK', mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)')
       addSampleWeight(samples, 'Dyveto', 'GluGluToWWToTNTN', mcCommonWeight + '*1.53/1.4')
-      addSampleWeight(samples, 'Dyveto', 'ZZTo2L2Nu', mcCommonWeight + '*1.11')
+      addSampleWeight(samples, 'Dyveto', 'ZZTo2L2Nu_ext1', mcCommonWeight + '*1.11')
       addSampleWeight(samples, 'Dyveto', 'ZZTo2L2Q', mcCommonWeight + '*1.11')
-      addSampleWeight(samples, 'Dyveto', 'ZZTo4L', mcCommonWeight + '*1.11')
+      addSampleWeight(samples, 'Dyveto', 'ZZTo4L_ext1', mcCommonWeight + '*1.11')
       addSampleWeight(samples, 'Dyveto', 'WZTo2L2Q', mcCommonWeight + '*1.11')
       addSampleWeight(samples, 'Dyveto', 'ZGToLLG', ' ( ' + mcCommonWeightNoMatch + '*(!(Gen_ZGstar_mass > 0))' + ' ) + ( ' + mcCommonWeight + ' * ((Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4) * 0.94 + (Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4) * 1.14) * (Gen_ZGstar_mass > 0)' + ' ) ') # Vg contribution + VgS contribution
       addSampleWeight(samples, 'Dyveto', 'WZTo3LNu_mllmin01', mcCommonWeight + '*((Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4) * 0.94 + (Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4) * 1.14) * (Gen_ZGstar_mass > 0.1)')
@@ -274,9 +273,9 @@ addSampleWeight(samples, 'VgS', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
 
 ############ VZ ############
 
-files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
+files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext1') + \
     nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
-    nanoGetSampleFiles(mcDirectory, 'ZZTo4L') + \
+    nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext2') + \
     nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
 
 samples['VZ'] = {
@@ -368,7 +367,7 @@ samples['ttH_hww'] = {
 ############ H->TauTau ############
 
 samples['ggH_htt'] = {
-    'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToTauTau_M125_ext1'),
+    'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToTauTau_M125'),
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
@@ -438,7 +437,5 @@ samples['DATA'] = {
 for _, sd in DataRun:
   for pd in DataSets:
     files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
-    print(files)
-    
     samples['DATA']['name'].extend(files)
     samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
