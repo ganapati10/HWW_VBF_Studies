@@ -212,7 +212,7 @@ aliases['multiJet'] = {
 
 # B tagging
 
-if btag_algo=="deepcsv":
+if btag_algo=="deepB":
     aliases['bVeto'] = {
         'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 4.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) == 0'
     }
