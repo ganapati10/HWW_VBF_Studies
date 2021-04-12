@@ -5,7 +5,7 @@
 #include "vector"
 #include "TLorentzVector.h"
 #include "TMath.h"
-//#include "ZZMatrixElement/MELA/interface/Mela.h"
+//#include "ZZMatrixElement/MELA/interface/Mela.h" //Use ZZMatrixElement or JHUGen(recommended)
 #include "JHUGenMELA/MELA/interface/Mela.h"
 #include "TSystem.h"
 #include <map>
@@ -36,7 +36,6 @@ protected:
   FloatArrayReader* CleanJet_pt{};
   FloatArrayReader* CleanJet_eta{};
   FloatArrayReader* CleanJet_phi{};
-  //FloatArrayReader* CleanJet_mass{};
 
   IntArrayReader* Lepton_pdgId{};
   UIntValueReader*  nLepton{};
@@ -100,29 +99,29 @@ RecoLevelME::evaluate(unsigned)
   if(ncleanjet>=2 && nlep>1){
     //STEP-1
     //4-vectors of the leptons
-
+    //Select one electron and one muon
+	  
     int muons = 0;
     int electrons = 0;
     for (unsigned int ilep = 0; ilep<nlep; ilep++){
      if (abs(Lepton_pdgId->At(ilep)) == 13){
     	++muons;
     	if (muons == 1 && Lepton_pt->At(ilep) > 13){
-    	  L1.SetPtEtaPhiM(Lepton_pt->At(ilep), Lepton_eta->At(ilep), Lepton_phi->At(ilep), 0.0);
+    	  L1.SetPtEtaPhiM(Lepton_pt->At(ilep), Lepton_eta->At(ilep), Lepton_phi->At(ilep), 0.0); //Muon
     	}
       }
       if (abs(Lepton_pdgId->At(ilep)) == 11){
     	++electrons;
     	if (electrons == 1 && Lepton_pt->At(ilep) > 13){
-    	  L2.SetPtEtaPhiM(Lepton_pt->At(ilep), Lepton_eta->At(ilep), Lepton_phi->At(ilep), 0.0);
+    	  L2.SetPtEtaPhiM(Lepton_pt->At(ilep), Lepton_eta->At(ilep), Lepton_phi->At(ilep), 0.0); //Electron
     	}
      }
     }
 
     if (muons<1 || electrons<1){
-      return -9999;
+      return -9999; //If there is not an electron and muon
     }
-    //L1.SetPtEtaPhiM(Lepton_pt->At(0), Lepton_eta->At(0), Lepton_phi->At(0), 0.0);
-    //L2.SetPtEtaPhiM(Lepton_pt->At(1), Lepton_eta->At(1), Lepton_phi->At(1), 0.0);
+    
     LL = L1 + L2;
     //Reconstructing Higgs 4 vector with MET
     double nunu_px = Pmet_pt*cos(Pmet_phi);
@@ -133,8 +132,8 @@ RecoLevelME::evaluate(unsigned)
     double nunu_e = sqrt(nunu_px*nunu_px + nunu_py*nunu_py + nunu_pz*nunu_pz + nunu_m*nunu_m);
     NuNu.SetPxPyPzE(nunu_px, nunu_py, nunu_pz, nunu_e);
     Higgs = LL + NuNu;
-    //double hm = Higgs.M();
 
+    //Selection for 2 jets
     int jetn = 0;
     bool use3jet = false;
     for (unsigned int ijet = 0; ijet<ncleanjet; ijet++){
@@ -149,10 +148,7 @@ RecoLevelME::evaluate(unsigned)
 
     }
 
-    if (jetn < 2) return -9999;
-
-    //J1.SetPtEtaPhiM(CleanJet_pt->At(0), CleanJet_eta->At(0), CleanJet_phi->At(0), 0.0);
-    //J2.SetPtEtaPhiM(CleanJet_pt->At(1), CleanJet_eta->At(1), CleanJet_phi->At(1), 0.0);
+    if (jetn < 2) return -9999; //low number of jets
 
     SimpleParticleCollection_t daughter;
     SimpleParticleCollection_t associated;
@@ -170,7 +166,6 @@ RecoLevelME::evaluate(unsigned)
       //associated.push_back(SimpleParticle_t(0,J3));
       //}
 
-
     if (Higgs.Pt() == 0 || Higgs.M()==0){
       return -9999;
     }
@@ -187,7 +182,8 @@ RecoLevelME::evaluate(unsigned)
     float RecoLevel_me_VBF_hm = 0.;
     float RecoLevel_me_VBF_hp = 0.;
     float RecoLevel_me_VBF_hl = 0.;
-
+	
+    //VBF Angles
     float Q2V1 = 0.;
     float Q2V2 = 0.;
 
@@ -244,8 +240,7 @@ RecoLevelME::evaluate(unsigned)
     mela->computeProdP(RecoLevel_me_QCD_hl, true);
     MatrixElementsMap.insert({"RecoLevel_me_QCD_hl", RecoLevel_me_QCD_hl});
 
-    //float required_matrixelement = MatrixElementsMap.find(name_)->second; 
-
+    //Reset Event and return results
     mela->resetInputEvent(); 
     
     float required_matrixelement = MatrixElementsMap.find(name_)->second;
@@ -253,7 +248,8 @@ RecoLevelME::evaluate(unsigned)
     return (double)required_matrixelement;
     
   }
-  else return -9999;
+  //End if(nCleanJet>=2 && nLepton>1)
+  else return -9999; 
 }
 void
 RecoLevelME::bindTree_(multidraw::FunctionLibrary& _library)
@@ -263,7 +259,6 @@ RecoLevelME::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(CleanJet_pt, "CleanJet_pt");
   _library.bindBranch(CleanJet_eta, "CleanJet_eta");
   _library.bindBranch(CleanJet_phi, "CleanJet_phi");
-  //_library.bindBranch(CleanJet_mass, "CleanJet_mass");
   //Leptons
   _library.bindBranch(Lepton_pdgId, "Lepton_pdgId");
   _library.bindBranch(nLepton, "nLepton");
