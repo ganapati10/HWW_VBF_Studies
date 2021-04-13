@@ -66,3 +66,26 @@ cd ../../..
 scram b -j 4
 
 ```
+
+## Setup Combine framework
+
+The next lines are the instructions to be followed for installing the Combine framework. Please, start from your src path:
+
+```
+mkdir combine
+cd combine
+
+cmsrel CMSSW_10_2_13
+
+cd CMSSW_10_2_13/src
+cmsenv
+git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
+git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+
+scramv1 b clean
+scramv1 b -j 8
+
+
+
+
+
