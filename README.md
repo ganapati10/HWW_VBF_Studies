@@ -77,9 +77,15 @@ rsync -av aaa@server.com:folder/file  local/directory
 
 ## Make datacards and combine 
 
+The datacards should be made in your work directory. Then, the datacard.txt has to be copied to the combine datacards folder.
+
 ```
 mkDatacards.py --pycfg=configuration.py --inputFile=rootFile/plots_WW_2016.root
+```
 
+Now, in the combine folder after coping the datacard:
+
+```
 pushd datacards
 
 combineCards.py VBF/events/datacard.txt DY/events/datacard.txt top/events/datacard.txt > datacard_combined.txt
