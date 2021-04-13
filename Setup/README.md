@@ -84,8 +84,3 @@ git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
 
 scramv1 b clean
 scramv1 b -j 8
-
-
-
-
-
