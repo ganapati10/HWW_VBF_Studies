@@ -97,10 +97,10 @@ RecoLevelME::evaluate(unsigned)
 
   //Conditions to select the event
   if(ncleanjet>=2 && nlep>1){
+	 
     //STEP-1
     //4-vectors of the leptons
     //Select one electron and one muon
-	  
     int muons = 0;
     int electrons = 0;
     for (unsigned int ilep = 0; ilep<nlep; ilep++){
@@ -119,7 +119,7 @@ RecoLevelME::evaluate(unsigned)
     }
 
     if (muons<1 || electrons<1){
-      return -9999; //If there is not an electron and muon
+      return -9999; //If there is not an electron and a muon
     }
     
     LL = L1 + L2;
@@ -138,7 +138,7 @@ RecoLevelME::evaluate(unsigned)
     bool use3jet = false;
     for (unsigned int ijet = 0; ijet<ncleanjet; ijet++){
 
-      if (CleanJet_pt->At(ijet)>30){
+      if (CleanJet_pt->At(ijet)>30){ //Jet pt condition
 	++jetn;
 	if (jetn==1) J1.SetPtEtaPhiM(CleanJet_pt->At(0), CleanJet_eta->At(0), CleanJet_phi->At(0), 0.0);
 	if (jetn==2) J2.SetPtEtaPhiM(CleanJet_pt->At(1), CleanJet_eta->At(1), CleanJet_phi->At(1), 0.0);
@@ -154,7 +154,7 @@ RecoLevelME::evaluate(unsigned)
     SimpleParticleCollection_t associated;
     SimpleParticleCollection_t mother;
 
-    daughter.push_back(SimpleParticle_t(25, Higgs)); 
+    daughter.push_back(SimpleParticle_t(25, Higgs)); //If studing productions it's only necessary the Higgs 4-vector
 
     //daughter.push_back(SimpleParticle_t(13, L1));
     //daughter.push_back(SimpleParticle_t(11, L2));
@@ -172,7 +172,7 @@ RecoLevelME::evaluate(unsigned)
 
     //MELA MATRIX ELEMENTS CALCULATION (STEP-2)
     //mela->setCandidateDecayMode(TVar::CandidateDecay_Stable);
-    mela->setCandidateDecayMode(TVar::CandidateDecay_WW);
+    mela->setCandidateDecayMode(TVar::CandidateDecay_WW); //Decay to WW
     mela->setInputEvent(&daughter, &associated, 0, false);
     //mela->setInputEvent(&daughter_coll, &associated_coll, 0, 0);
     mela->setCurrentCandidateFromIndex(0);
@@ -194,9 +194,10 @@ RecoLevelME::evaluate(unsigned)
     float phi = 0.;
     float phi1 = 0.;
 
+    //Compute and save VBF angles
     mela->setProcess(TVar::HSMHiggs, TVar::JHUGen, TVar::JJVBF);
     mela->computeVBFAngles(Q2V1, Q2V2, costheta1, costheta2, phi, costhetastar, phi1);
-    mela->computeProdP(RecoLevel_me_VBF_hsm, true);
+    mela->computeProdP(RecoLevel_me_VBF_hsm, true);	  
     MatrixElementsMap.insert({"Q2V1", Q2V1});
     MatrixElementsMap.insert({"Q2V2", Q2V2});
     MatrixElementsMap.insert({"costheta1", costheta1});
