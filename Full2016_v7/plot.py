@@ -35,7 +35,7 @@ groupPlot['DY']  = {
                   'nameHR' : "DY",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
+                  'samples'  : ['DY', 'Dyemb']
               }
 
 
@@ -89,7 +89,7 @@ groupPlot['VBF']  = {
 
 groupPlot['ggF']  = {
                   'nameHR' : "Higgs ggF",
-                  'isSignal' : 0,
+                  'isSignal' : 2,
                   'color'    : 632,   # kBlue                                                                                                                                                              
                   'samples'  : ['ggH_hww']
               }
@@ -100,13 +100,13 @@ groupPlot['ggF']  = {
 # keys here must match keys in samples.py    
 #
 
-#if useEmbeddedDY:
-#    plot['Dyemb']  = {  
-#                  'color': 418,    # kGreen+2
-#                  'isSignal' : 0,
-#                  'isData'   : 0, 
-#                  'scale'    : 1.0,
-#              }
+if useEmbeddedDY:
+    plot['Dyemb']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+              }
                     
 plot['DY']  = {  
                   'color': 418,    # kGreen+2
@@ -363,7 +363,7 @@ plot['DATA']  = {
                   'color': 1 ,  
                   'isSignal' : 0,
                   'isData'   : 1 ,
-                  'isBlind'  : 1
+                  'isBlind'  : 0
               }
 
 

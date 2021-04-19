@@ -15,7 +15,8 @@ def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
+    mc_emb = [skey for skey in samples if skey != 'DATA' and skey != 'Dyveto' and not skey.startswith('Fake')]
+    mc = [skey for skey in mc_emb if skey != 'Dyemb']
 except NameError:
     mc = []
     cuts = {}
@@ -124,8 +125,8 @@ nuisances['fake_mu_stat'] = {
 }
 
 ##### B-tagger
-
-for shift in ['jes', 'lf', 'hf', 'hfstats1', 'hfstats2', 'lfstats1', 'lfstats2', 'cferr1', 'cferr2']:
+#hf
+for shift in ['jes', 'lf', 'hfstats1', 'hfstats2', 'lfstats1', 'lfstats2', 'cferr1', 'cferr2']:
     btag_syst = ['(btagSF%sup)/(btagSF)' % shift, '(btagSF%sdown)/(btagSF)' % shift]
 
     name = 'CMS_btag_%s' % shift
@@ -147,7 +148,7 @@ nuisances['trigg'] = {
     'name': 'CMS_eff_hwwtrigger_2016',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, trig_syst) for skey in mc)
+    'samples': dict((skey, trig_syst) for skey in mc_emb)
 }
 
 prefire_syst = ['PrefireWeight_Up/PrefireWeight', 'PrefireWeight_Down/PrefireWeight']
@@ -156,7 +157,7 @@ nuisances['prefire'] = {
     'name': 'CMS_eff_prefiring_2016',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, prefire_syst) for skey in mc if skey not in ['DY'])
+    'samples': dict((skey, prefire_syst) for skey in mc)
 }
 
 ##### Electron Efficiency and energy scale
@@ -165,7 +166,7 @@ nuisances['eff_e'] = {
     'name': 'CMS_eff_e_2016',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc)
+    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc_emb)
 }
 
 nuisances['electronpt'] = {
@@ -180,6 +181,18 @@ nuisances['electronpt'] = {
     'AsLnN': '1'
 }
 
+if useEmbeddedDY:
+  nuisances['electronpt_emb'] = {
+    'name': 'CMS_scale_e_2016',
+    'kind': 'suffix',
+    'type': 'shape',
+    'mapUp' : 'ElepTup',
+    'mapDown': 'ElepTdo',
+    'samples': {'Dyemb': ['1', '1']},
+    'folderUp': treeBaseDir+'/Embedding2016_102X_nAODv7_Full2016v7/DATAl1loose2016v7__l2loose__l2tightOR2016v7__Embedding__EmbElepTup_suffix/',
+    'folderDown': treeBaseDir+'/Embedding2016_102X_nAODv7_Full2016v7/DATAl1loose2016v7__l2loose__l2tightOR2016v7__Embedding__EmbElepTdo_suffix/',
+    'AsLnN': '1'
+  }
 
 ##### Muon Efficiency and energy scale
 
@@ -188,7 +201,7 @@ nuisances['eff_m'] = {
     'kind': 'weight',
     'type': 'shape',
     #'samples': dict((skey, ['ttHMVA_2l_mu_SF_Up', 'ttHMVA_2l_mu_SF_Down']) for skey in mc_emb)
-    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc)
+    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc_emb)
 }
 
 nuisances['muonpt'] = {
@@ -203,6 +216,18 @@ nuisances['muonpt'] = {
     'AsLnN': '1'
 }
 
+if useEmbeddedDY:
+  nuisances['muonpt_emb'] = {
+    'name': 'CMS_scale_m_2016',
+    'kind': 'suffix',
+    'type': 'shape',
+    'mapUp' : 'MupTup',
+    'mapDown': 'MupTdo',
+    'samples': {'Dyemb': ['1', '1']},
+    'folderUp': treeBaseDir+'/Embedding2016_102X_nAODv7_Full2016v7/DATAl1loose2016v7__l2loose__l2tightOR2016v7__Embedding__EmbMupTup_suffix/',
+    'folderDown': treeBaseDir+'/Embedding2016_102X_nAODv7_Full2016v7/DATAl1loose2016v7__l2loose__l2tightOR2016v7__Embedding__EmbMupTdo_suffix/',
+    'AsLnN': '1'
+  }
 
 ##### Jet energy scale
 
@@ -236,7 +261,7 @@ for js in jes_systs:
         'type': 'shape',
         'mapUp': js+'up',
         'mapDown': js+'do',
-        'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VZ','Vg','VgS']),
+        'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['DY']),
         'folderUp': folderup,
         'folderDown': folderdo,
         'AsLnN': '1'
@@ -251,11 +276,25 @@ nuisances['met'] = {
     'type': 'shape',
     'mapUp': 'METup',
     'mapDown': 'METdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['DY']),
+    'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': makeMCDirectory('METup_suffix'),
     'folderDown': makeMCDirectory('METdo_suffix'),
     'AsLnN': '1'
 }
+
+##### DY vetoing
+
+if useEmbeddedDY:
+  if runDYveto:
+    nuisances['embedveto']  = {
+                    'name'  : 'CMS_embed_veto_2016',
+                    'kind'  : 'weight',
+                    'type'  : 'shape',
+                    'samples'  : {
+                       'Dyemb'    : ['1', '1'],
+                       'Dyveto'   : ['0.1', '-0.1'],
+                    }
+             }
 
 ##### Pile-Up
 
@@ -319,7 +358,7 @@ nuisances['UE']  = {
                 'name'  : 'UE_CUET',
                 'skipCMS' : 1,
                 'type': 'lnN',
-                'samples': dict((skey, '1.015') for skey in mc if skey not in ['DY']),
+                'samples': dict((skey, '1.015') for skey in mc if skey not in ['WW', 'top']),
 }
 
 
@@ -340,6 +379,7 @@ nuisances['singleTopToTTbar'] = {
     'samples': apply_on
 }
 
+'''
 ## Top pT reweighting uncertainty
 
 nuisances['TopPtRew'] = {
@@ -350,6 +390,7 @@ nuisances['TopPtRew'] = {
     #'samples': {'top': ["1.", "1./Top_pTrw"]},
     'symmetrize': True
 }
+'''
 
 nuisances['VgStar'] = {
     'name': 'CMS_hww_VgStarScale',
@@ -588,15 +629,15 @@ nuisances['CRSR_accept_top']  = {
 #   see https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiggsWG/SignalModelingTools
 
 thus = [
-    ('THU_ggH_Mu', 'ggH_mu'),
-    ('THU_ggH_Res', 'ggH_res'),
-    ('THU_ggH_Mig01', 'ggH_mig01'),
-    ('THU_ggH_Mig12', 'ggH_mig12'),
-    ('THU_ggH_VBF2j', 'ggH_VBF2j'),
-    ('THU_ggH_VBF3j', 'ggH_VBF3j'),
-    ('THU_ggH_PT60', 'ggH_pT60'),
-    ('THU_ggH_PT120', 'ggH_pT120'),
-    ('THU_ggH_qmtop', 'ggH_qmtop')
+    ('THU_ggH_Mu', 'ggH_mu_2'),
+    ('THU_ggH_Res', 'ggH_res_2'),
+    ('THU_ggH_Mig01', 'ggH_mig01_2'),
+    ('THU_ggH_Mig12', 'ggH_mig12_2'),
+    ('THU_ggH_VBF2j', 'ggH_VBF2j_2'),
+    ('THU_ggH_VBF3j', 'ggH_VBF3j_2'),
+    ('THU_ggH_PT60', 'ggH_pT60_2'),
+    ('THU_ggH_PT120', 'ggH_pT120_2'),
+    ('THU_ggH_qmtop', 'ggH_qmtop_2')
 ]
 
 for name, vname in thus:
@@ -744,27 +785,16 @@ nuisances['Topnorm']  = {
     'samples'  : {
         'top' : '1.00',
         },
-    'type'  : 'rateParam',
-    'cuts'  : [
-        'VBF',
-        'top',
-        'DY',
-        #                                                                                                                         
-        ]
+    'type'  : 'rateParam'
     }
 
 
-nuisances['DYnorm2j']  = {
+nuisances['DYembnorm2j']  = {
                  'name'  : 'CMS_hww_DYttnorm2j',
                  'samples'  : {
-                   'DY' : '1.00',
+                   'Dyemb' : '1.00',
                      },
-                 'type'  : 'rateParam',
-                 'cuts'  : [
-                     'VBF',
-                     'top',
-                     'DY',
-                     ]
+                 'type'  : 'rateParam'
                 }
 
 
