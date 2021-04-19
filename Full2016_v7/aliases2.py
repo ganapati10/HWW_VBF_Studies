@@ -297,5 +297,28 @@ aliases['alpha3'] = {
     'class' : 'alpha3'
 }
 
+mes = ['RecoLevel_me_VBF_hsm', 'RecoLevel_me_VBF_hm', 'RecoLevel_me_VBF_hp', 'RecoLevel_me_VBF_hl', 'RecoLevel_me_VBF_mixhm', 'RecoLevel_me_VBF_mixhp', 'RecoLevel_me_VBF_mixhl', 'RecoLevel_me_VBF_S_hsm', 'RecoLevel_me_VBF_S_hm', 'RecoLevel_me_VBF_S_hp', 'RecoLevel_me_VBF_S_hl', 'RecoLevel_me_VBF_S_mixhm', 'RecoLevel_me_VBF_S_mixhp', 'RecoLevel_me_VBF_S_mixhl', 'RecoLevel_me_VBF_TU_hsm', 'RecoLevel_me_VBF_TU_hm', 'RecoLevel_me_VBF_TU_hp', 'RecoLevel_me_VBF_TU_hl', 'RecoLevel_me_VBF_TU_mixhm', 'RecoLevel_me_VBF_TU_mixhp', 'RecoLevel_me_VBF_TU_mixhl', 'RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'RecoLevel_me_QCD_mixhm', 'RecoLevel_me_QCD_mixhp', 'RecoLevel_me_QCD_mixhl']
+
+mes2 = ['RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'RecoLevel_me_QCD_mixhm', 'RecoLevel_me_QCD_mixhp', 'RecoLevel_me_QCD_mixhl']
+
+for me in mes:
+    aliases[me]={
+    'linesToAdd': [
+    #'gSystem->Load("%s/src/ZZMatrixElement/MELA/data/%s/libmcfm_707.so","", kTRUE);'%(os.getenv('CMSSW_BASE'), os.getenv('SCRAM_ARCH')),
+    #'gSystem->Load("libZZMatrixElementMELA.so","", kTRUE);',
+    'gSystem->Load("%s/src/JHUGenMELA/MELA/data/%s/libmcfm_707.so","", kTRUE);'%(os.getenv('CMSSW_BASE'), os.getenv('SCRAM_ARCH')),
+    'gSystem->Load("libJHUGenMELAMELA.so","", kTRUE);',
+    '.L %s/patches/RecoLevelME_patch.cc+' % configurations],
+    'class': 'RecoLevelME',
+    'args': (me,)
+    }
+
+
+aliases['kd_smvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/RecoLevel_me_VBF_hsm))' }
+aliases['kd_hmvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hm)))' }
+aliases['kd_hpvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hp)))' }
+aliases['kd_hlvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hl)))' }
+aliases['kd_vbf']       = { 'expr': 'max(max(kd_smvbf, kd_hmvbf), max(kd_hpvbf, kd_hlvbf))' }
+
 
 
