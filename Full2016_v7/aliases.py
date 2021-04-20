@@ -267,6 +267,9 @@ aliases['lhe_mW2'] = {
 }
 
 
+##### Variables #####
+
+
 aliases['mlljj'] = {
     'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/mlljj.cc+' ],
     'class' : 'mlljj'
@@ -296,6 +299,10 @@ aliases['alpha3'] = {
     'linesToAdd' : ['.L /afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/WW/Full2016_v6/extended/alpha3.cc+'],
     'class' : 'alpha3'
 }
+
+
+##### MELA FRAMEWORK #####
+
 
 mes = ['RecoLevel_me_VBF_hsm', 'RecoLevel_me_VBF_hm', 'RecoLevel_me_VBF_hp', 'RecoLevel_me_VBF_hl', 'RecoLevel_me_VBF_mixhm', 'RecoLevel_me_VBF_mixhp', 'RecoLevel_me_VBF_mixhl', 'RecoLevel_me_VBF_S_hsm', 'RecoLevel_me_VBF_S_hm', 'RecoLevel_me_VBF_S_hp', 'RecoLevel_me_VBF_S_hl', 'RecoLevel_me_VBF_S_mixhm', 'RecoLevel_me_VBF_S_mixhp', 'RecoLevel_me_VBF_S_mixhl', 'RecoLevel_me_VBF_TU_hsm', 'RecoLevel_me_VBF_TU_hm', 'RecoLevel_me_VBF_TU_hp', 'RecoLevel_me_VBF_TU_hl', 'RecoLevel_me_VBF_TU_mixhm', 'RecoLevel_me_VBF_TU_mixhp', 'RecoLevel_me_VBF_TU_mixhl', 'RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'RecoLevel_me_QCD_mixhm', 'RecoLevel_me_QCD_mixhp', 'RecoLevel_me_QCD_mixhl']
 
