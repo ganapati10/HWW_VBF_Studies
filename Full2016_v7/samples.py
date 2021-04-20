@@ -207,7 +207,7 @@ files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
 
 samples['top'] = {
     'name': files,
-    'weight': mcCommonWeight, #+ embed_tautauveto,
+    'weight': mcCommonWeight + embed_tautauveto,
     'FilesPerJob': 1,
     'EventsPerJob': 20000
 }
@@ -218,20 +218,20 @@ addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 
 samples['WW'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu'),
-    'weight': mcCommonWeight + '*nllW', # temporary - nllW module not run on PS and UE variation samples
-    #'weight': mcCommonWeight +embed_tautauveto + '*nllW', # temporary
+    #'weight': mcCommonWeight + '*nllW', # temporary - nllW module not run on PS and UE variation samples
+    'weight': mcCommonWeight + embed_tautauveto + '*nllW', # temporary
     'FilesPerJob': 1
 }
 
 samples['WWewk'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK_noTop'),
-    'weight': mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)*(lhe_mWm > 60. && lhe_mWm < 100. && lhe_mWp > 60. && lhe_mWp < 100.)', #filter tops and Higgs, limit w mass
+    'weight': mcCommonWeight + embed_tautauveto + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)*(lhe_mWm > 60. && lhe_mWm < 100. && lhe_mWp > 60. && lhe_mWp < 100.)', #filter tops and Higgs, limit w mass
     'FilesPerJob': 4
 }
 
 samples['ggWW'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'GluGluWWTo2L2Nu_MCFM'),
-    'weight': mcCommonWeight + '*1.53/1.4', # updating k-factor
+    'weight': mcCommonWeight + embed_tautauveto + '*1.53/1.4', # updating k-factor
     'FilesPerJob': 4
 }
 
@@ -242,7 +242,7 @@ files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
 
 samples['Vg'] = {
     'name': files,
-    'weight': mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0)',
+    'weight': mcCommonWeightNoMatch + embed_tautauveto + '*!(Gen_ZGstar_mass > 0)',
     'FilesPerJob': 4
 }
 
@@ -254,7 +254,7 @@ files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
 
 samples['VgS'] = {
     'name': files,
-    'weight': mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
+    'weight': mcCommonWeight + embed_tautauveto + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
     'FilesPerJob': 4,
     'subsamples': {
       'L': 'gstarLow',
@@ -274,7 +274,7 @@ files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
 
 samples['VZ'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.11',
+    'weight': mcCommonWeight + embed_tautauveto + '*1.11',
     'FilesPerJob': 4
 }
 
