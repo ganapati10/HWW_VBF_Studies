@@ -178,7 +178,7 @@ if useEmbeddedDY:
 
 files=[]
 if useDYtt:
-  files = nanoGetSampleFiles(mcDirectory, 'DYJetsToTT_MuEle_M-50') + \
+  files = nanoGetSampleFiles(mcDirectory, 'DYJetsToTT_MuEle_M-50_ext1') + \
           nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO')
 
 else:
@@ -193,7 +193,7 @@ samples['DY'] = {
     'suppressNegativeNuisances' :['all'],
     'FilesPerJob': 2,
 }
-addSampleWeight(samples,'DY','DYJetsToTT_MuEle_M-50', 'DY_NLO_pTllrw')
+addSampleWeight(samples,'DY','DYJetsToTT_MuEle_M-50_ext1', 'DY_NLO_pTllrw')
 addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO', 'DY_LO_pTllrw')
 
 ###### Top #######
