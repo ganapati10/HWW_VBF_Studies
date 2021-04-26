@@ -246,6 +246,7 @@ RecoLevelME::evaluate(unsigned)
     float RecoLevel_me_ZZ_bkg = 0.;
     float RecoLevel_me_Zgamma_bkg = 0.;
     float RecoLevel_me_WWZZ_bkg = 0.;
+    float RecoLevel_me_ZJets_bkg = 0.;
 
     mela->setProcess(TVar::bkgWW, TVar::JHUGen, TVar::JJVBF);
     mela->computeProdP(RecoLevel_me_WW_bkg, true);
@@ -262,6 +263,10 @@ RecoLevelME::evaluate(unsigned)
     mela->setProcess(TVar::bkgWWZZ, TVar::JHUGen, TVar::JJVBF);
     mela->computeProdP(RecoLevel_me_WWZZ_bkg, true);
     MatrixElementsMap.insert({"RecoLevel_me_WWZZ_bkg", RecoLevel_me_WWZZ_bkg});
+	  
+    mela->setProcess(TVar::bkgZJets, TVar::JHUGen, TVar::JJVBF);
+    mela->computeProdP(RecoLevel_me_ZJets_bkg, true);
+    MatrixElementsMap.insert({"RecoLevel_me_ZJets_bkg", RecoLevel_me_ZJets_bkg});
 	  
 
     //Reset Event and return results
