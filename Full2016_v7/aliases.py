@@ -303,10 +303,13 @@ aliases['alpha3'] = {
 
 ##### MELA FRAMEWORK #####
 
-
-mes = ['RecoLevel_me_VBF_hsm', 'RecoLevel_me_VBF_hm', 'RecoLevel_me_VBF_hp', 'RecoLevel_me_VBF_hl', 'RecoLevel_me_VBF_mixhm', 'RecoLevel_me_VBF_mixhp', 'RecoLevel_me_VBF_mixhl', 'RecoLevel_me_VBF_S_hsm', 'RecoLevel_me_VBF_S_hm', 'RecoLevel_me_VBF_S_hp', 'RecoLevel_me_VBF_S_hl', 'RecoLevel_me_VBF_S_mixhm', 'RecoLevel_me_VBF_S_mixhp', 'RecoLevel_me_VBF_S_mixhl', 'RecoLevel_me_VBF_TU_hsm', 'RecoLevel_me_VBF_TU_hm', 'RecoLevel_me_VBF_TU_hp', 'RecoLevel_me_VBF_TU_hl', 'RecoLevel_me_VBF_TU_mixhm', 'RecoLevel_me_VBF_TU_mixhp', 'RecoLevel_me_VBF_TU_mixhl', 'RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'RecoLevel_me_QCD_mixhm', 'RecoLevel_me_QCD_mixhp', 'RecoLevel_me_QCD_mixhl']
+mes = ['RecoLevel_me_VBF_hsm', 'RecoLevel_me_VBF_hm', 'RecoLevel_me_VBF_hp', 'RecoLevel_me_VBF_hl', 'RecoLevel_me_VBF_mixhm', 
+       'RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl',
+       'Q2V1', 'Q2V2', 'costheta1', 'costheta2', 'costhetastar', 'phi', 'phi1', 
+       'RecoLevel_me_WW_bkg', 'RecoLevel_me_ZZ_bkg', 'RecoLevel_me_Zgamma_bkg', 'RecoLevel_me_WWZZ_bkg']
 
 mes2 = ['RecoLevel_me_QCD_hsm', 'RecoLevel_me_QCD_hm', 'RecoLevel_me_QCD_hp', 'RecoLevel_me_QCD_hl', 'RecoLevel_me_QCD_mixhm', 'RecoLevel_me_QCD_mixhp', 'RecoLevel_me_QCD_mixhl']
+
 
 for me in mes:
     aliases[me]={
@@ -326,6 +329,14 @@ aliases['kd_hmvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_
 aliases['kd_hpvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hp)))' }
 aliases['kd_hlvbf']     = { 'expr': '1/(1+((RecoLevel_me_QCD_hsm)/(RecoLevel_me_VBF_hl)))' }
 aliases['kd_vbf']       = { 'expr': 'max(max(kd_smvbf, kd_hmvbf), max(kd_hpvbf, kd_hlvbf))' }
+
+aliases['D_alt']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_QCD_hsm**2)' } #MELA VBF/ggF discriminant from paper                                                   
+aliases['D_alt_QCD']     = { 'expr': '(RecoLevel_me_QCD_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_QCD_hsm**2)' }
+aliases['D_int']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(2*sqrt(RecoLevel_me_VBF_hsm**2 * RecoLevel_me_QCD_hsm**2))' }
+
+aliases['D_WWZZ']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_WWZZ_bkg**2)' } #MELA VBF/WW discriminant
+aliases['D_ZGamma']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_Zgamma_bkg**2)' } #MELA VBF/ZGamma* discriminant
+
 
 
 
