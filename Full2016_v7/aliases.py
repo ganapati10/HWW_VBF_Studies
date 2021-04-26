@@ -334,7 +334,8 @@ aliases['D_alt']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hs
 aliases['D_alt_QCD']     = { 'expr': '(RecoLevel_me_QCD_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_QCD_hsm**2)' }
 aliases['D_int']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(2*sqrt(RecoLevel_me_VBF_hsm**2 * RecoLevel_me_QCD_hsm**2))' }
 
-aliases['D_WWZZ']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_WWZZ_bkg**2)' } #MELA VBF/WW discriminant
+aliases['D_WW']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_WW_bkg**2)' } #MELA VBF/WW discriminant
+aliases['D_WWZZ']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_WWZZ_bkg**2)' } #MELA VBF/WW-ZZ discriminant
 aliases['D_ZGamma']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_Zgamma_bkg**2)' } #MELA VBF/ZGamma* discriminant
 aliases['D_ZJets']     = { 'expr': '(RecoLevel_me_VBF_hsm**2)/(RecoLevel_me_VBF_hsm**2 + RecoLevel_me_ZJets_bkg**2)' } #MELA VBF/ZJets discriminant
 
