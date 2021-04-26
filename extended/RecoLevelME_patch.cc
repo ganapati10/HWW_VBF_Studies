@@ -240,6 +240,29 @@ RecoLevelME::evaluate(unsigned)
     mela->setProcess(TVar::H0_g1prime2, TVar::JHUGen, TVar::JJQCD);
     mela->computeProdP(RecoLevel_me_QCD_hl, true);
     MatrixElementsMap.insert({"RecoLevel_me_QCD_hl", RecoLevel_me_QCD_hl});
+	  
+    //->WW/ZZ/Zgamma non-Higgs Backgrounds                                                                                                                                                                                      
+    float RecoLevel_me_WW_bkg = 0.;
+    float RecoLevel_me_ZZ_bkg = 0.;
+    float RecoLevel_me_Zgamma_bkg = 0.;
+    float RecoLevel_me_WWZZ_bkg = 0.;
+
+    mela->setProcess(TVar::bkgWW, TVar::JHUGen, TVar::JJVBF);
+    mela->computeProdP(RecoLevel_me_WW_bkg, true);
+    MatrixElementsMap.insert({"RecoLevel_me_WW_bkg", RecoLevel_me_WW_bkg});
+	  
+    mela->setProcess(TVar::bkgZZ, TVar::JHUGen, TVar::JJVBF);
+    mela->computeProdP(RecoLevel_me_ZZ_bkg, true);
+    MatrixElementsMap.insert({"RecoLevel_me_ZZ_bkg", RecoLevel_me_ZZ_bkg});
+
+    mela->setProcess(TVar::bkgZGamma, TVar::JHUGen, TVar::JJVBF);
+    mela->computeProdP(RecoLevel_me_Zgamma_bkg, true);
+    MatrixElementsMap.insert({"RecoLevel_me_Zgamma_bkg", RecoLevel_me_Zgamma_bkg});
+	  
+    mela->setProcess(TVar::bkgWWZZ, TVar::JHUGen, TVar::JJVBF);
+    mela->computeProdP(RecoLevel_me_WWZZ_bkg, true);
+    MatrixElementsMap.insert({"RecoLevel_me_WWZZ_bkg", RecoLevel_me_WWZZ_bkg});
+	  
 
     //Reset Event and return results
     mela->resetInputEvent(); 
