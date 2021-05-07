@@ -275,7 +275,7 @@ RecoLevelME::evaluate(unsigned)
     //->WW non-Higgs Backgrounds                                                                                                                                                                                      
     float RecoLevel_me_WW_bkg = 0.;
 
-    mela->setProcess(TVar::bkgWW, TVar::JHUGen, TVar::ZZGG);
+    mela->setProcess(TVar::bkgWW, TVar::MCFM, TVar::ZZGG);
     mela->computeProdP(RecoLevel_me_WW_bkg, true);
     MatrixElementsMap.insert({"RecoLevel_me_WW_bkg", RecoLevel_me_WW_bkg});
 	  
