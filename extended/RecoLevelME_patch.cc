@@ -241,32 +241,43 @@ RecoLevelME::evaluate(unsigned)
     mela->computeProdP(RecoLevel_me_QCD_hl, true);
     MatrixElementsMap.insert({"RecoLevel_me_QCD_hl", RecoLevel_me_QCD_hl});
 	  
-    //->WW/ZZ/Zgamma non-Higgs Backgrounds                                                                                                                                                                                      
-    float RecoLevel_me_WW_bkg = 0.;
-    float RecoLevel_me_ZZ_bkg = 0.;
-    float RecoLevel_me_Zgamma_bkg = 0.;
-    float RecoLevel_me_WWZZ_bkg = 0.;
-    float RecoLevel_me_ZJets_bkg = 0.;
+    mela->resetInputEvent();
 
-    mela->setProcess(TVar::bkgWW, TVar::JHUGen, TVar::JJVBF);
+    //Approximate solution                                                                                                                                                                                  
+    TLorentzVector Nu1(0.,0.,0.,0.);
+    TLorentzVector Nu2(0.,0.,0.,0.);
+    TLorentzVector W1(0.,0.,0.,0.);
+    TLorentzVector W2(0.,0.,0.,0.);
+
+    Nu1.SetPxPyPzE(-L2.Px(), -L2.Py(), 0, L2.Px()*L2.Px()+L2.Py()*L2.Py());
+    Nu2.SetPxPyPzE(-L1.Px(), -L1.Py(), 0, L1.Px()*L1.Px()+L1.Py()*L1.Py());
+
+
+    SimpleParticleCollection_t daughter_bkg;
+    SimpleParticleCollection_t associated_bkg;                                                                                                                                                             
+
+    W1 = L1 + Nu1;
+    W2 = L2 + Nu2;
+
+    daughter_bkg.push_back(SimpleParticle_t(24*lep1/abs(lep1), W1));
+    daughter_bkg.push_back(SimpleParticle_t(24*lep2/abs(lep2), W2));
+
+    associated_bkg.push_back(SimpleParticle_t(0,J1));
+    associated_bkg.push_back(SimpleParticle_t(0,J2));
+
+    //MELA FOR WW Background                                                                                                                                                                                
+    //mela->setCandidateDecayMode(TVar::CandidateDecay_Stable);                                                                                                                                            
+    mela->setCandidateDecayMode(TVar::CandidateDecay_WW);
+    mela->setInputEvent(&daughter_bkg, &associated_bkg, 0, false);
+    //mela->setInputEvent(&daughter_coll, &associated_coll, 0, 0);                                                                                                                                         
+    mela->setCurrentCandidateFromIndex(0);  
+	  
+    //->WW non-Higgs Backgrounds                                                                                                                                                                                      
+    float RecoLevel_me_WW_bkg = 0.;
+
+    mela->setProcess(TVar::bkgWW, TVar::JHUGen, TVar::ZZGG);
     mela->computeProdP(RecoLevel_me_WW_bkg, true);
     MatrixElementsMap.insert({"RecoLevel_me_WW_bkg", RecoLevel_me_WW_bkg});
-	  
-    mela->setProcess(TVar::bkgZZ, TVar::JHUGen, TVar::JJVBF);
-    mela->computeProdP(RecoLevel_me_ZZ_bkg, true);
-    MatrixElementsMap.insert({"RecoLevel_me_ZZ_bkg", RecoLevel_me_ZZ_bkg});
-
-    mela->setProcess(TVar::bkgZGamma, TVar::JHUGen, TVar::JJVBF);
-    mela->computeProdP(RecoLevel_me_Zgamma_bkg, true);
-    MatrixElementsMap.insert({"RecoLevel_me_Zgamma_bkg", RecoLevel_me_Zgamma_bkg});
-	  
-    mela->setProcess(TVar::bkgWWZZ, TVar::JHUGen, TVar::JJVBF);
-    mela->computeProdP(RecoLevel_me_WWZZ_bkg, true);
-    MatrixElementsMap.insert({"RecoLevel_me_WWZZ_bkg", RecoLevel_me_WWZZ_bkg});
-	  
-    mela->setProcess(TVar::bkgZJets, TVar::JHUGen, TVar::JJVBF);
-    mela->computeProdP(RecoLevel_me_ZJets_bkg, true);
-    MatrixElementsMap.insert({"RecoLevel_me_ZJets_bkg", RecoLevel_me_ZJets_bkg});
 	  
 
     //Reset Event and return results
