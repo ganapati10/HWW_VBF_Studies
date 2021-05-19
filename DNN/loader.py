@@ -63,10 +63,7 @@ def load_dataset_vbf ( max_entries = -1 ):
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
     "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Q2V2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
-    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
     ]
  
   ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/mlljj.C+")
@@ -78,10 +75,7 @@ def load_dataset_vbf ( max_entries = -1 ):
 
   ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_VBF.C+")
   ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V2.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT2.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Phi.C+")
 
   chain = ROOT.TChain('Events')
 
@@ -91,8 +85,6 @@ def load_dataset_vbf ( max_entries = -1 ):
   chain.Add(dir16+'nanoLatino_VBFHToWWTo2L2Nu_M125__part1.root')
 
   ### Full 2017 ###
-
-  #chain.Add(dir17+'nanoLatino_VBFHToWWTo2L2Nu_M125__part0.root')
   
   for i in range(0, 22, 1):
         chain.Add(dir17+'nanoLatino_VBFHToWWTo2L2Nu_M125__part'+str(i)+'.root')
@@ -158,10 +150,7 @@ def load_dataset_ggh ( max_entries = -1 ):
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
     "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Q2V2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
-    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
     ]
  
 
@@ -174,25 +163,17 @@ def load_dataset_ggh ( max_entries = -1 ):
 
   ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_VBF.C+")
   ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V2.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT2.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
-
+  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
 
   chain = ROOT.TChain('Events')  
     
 
   ### Full 2016 ###
-    
-  #chain.Add(dir16+'nanoLatino_GluGluHToWWTo2L2Nu_alternative_M125__part0.root')
 
   for i in range(0, 21, 1):
         chain.Add(dir16+'nanoLatino_GGHjjToWWTo2L2Nu_minloHJJ_M125__part'+str(i)+'.root')
 
   ### Full 2017 ###
-
-  #chain.Add(dir17+'nanoLatino_GluGluHToWWTo2L2Nu_M125__part0.root')
 
   for i in range(0, 37, 1):
         chain.Add(dir17+'nanoLatino_GluGluHToWWTo2L2Nu_M125__part'+str(i)+'.root')
@@ -267,11 +248,8 @@ def load_dataset_top ( max_entries = -1 ):
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
     "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Q2V2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
-    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
-    ]
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+   ]
  
 
   ROOT.gROOT.ProcessLineSync(".L ./mlljj.C+")
@@ -283,10 +261,7 @@ def load_dataset_top ( max_entries = -1 ):
 
   ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_VBF.C+")
   ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V2.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT2.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
 
 
   chain = ROOT.TChain('Events')
@@ -294,8 +269,6 @@ def load_dataset_top ( max_entries = -1 ):
   
   ### Full 2016 ###
 
-  #chain.Add(dir16+'nanoLatino_TTTo2L2Nu__part0.root')  
-    
   for i in range(0, 72, 1):
         chain.Add(dir16+'nanoLatino_TTTo2L2Nu__part'+str(i)+'.root')
         
@@ -322,9 +295,7 @@ def load_dataset_top ( max_entries = -1 ):
         
     
   ### Full 2017 ### 
-    
-  #chain.Add(dir17+'nanoLatino_TTTo2L2Nu_PSWeights__part0.root')  
-    
+
   for i in range(0, 75, 1):
         chain.Add(dir17+'nanoLatino_TTTo2L2Nu_PSWeights__part'+str(i)+'.root')  
         
@@ -345,8 +316,6 @@ def load_dataset_top ( max_entries = -1 ):
         
     
   ### Full 2018 ###
-
-  #chain.Add(dir18+'nanoLatino_TTTo2L2Nu__part0.root')
 
   for i in range(0, 59, 1):
         chain.Add(dir18+'nanoLatino_TTTo2L2Nu__part'+str(i)+'.root')
@@ -423,10 +392,7 @@ def load_dataset_ww ( max_entries = -1 ):
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
     "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Q2V2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
-    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
     ]
  
 
@@ -439,10 +405,7 @@ def load_dataset_ww ( max_entries = -1 ):
 
   ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_VBF.C+")
   ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V2.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT2.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
 
 
   chain = ROOT.TChain('Events')
@@ -581,12 +544,8 @@ def load_dataset_dy ( max_entries = -1 ):
     "Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt", 
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1], 0)",
-    #"RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1], 1)",
-    #"RecoMELA_Q2V2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
+    "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
     #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
-    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
     ]
  
 
@@ -599,9 +558,6 @@ def load_dataset_dy ( max_entries = -1 ):
 
   ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_VBF.C+")
   ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V2.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_CT2.C+")
   #ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Phi.C+")
 
 
@@ -657,31 +613,21 @@ def load_dataset_dy ( max_entries = -1 ):
   chain.Add(dir16+'nanoLatino_DYJetsToLL_M-10to50-LO__part23.root')
   chain.Add(dir16+'nanoLatino_DYJetsToLL_M-10to50-LO__part24.root')
   chain.Add(dir16+'nanoLatino_DYJetsToLL_M-10to50-LO__part25.root')
-    
-  ### Full 2017 ###
 
-  #chain.Add(dir17+'nanoLatino_DYJetsToTT_MuEle_M-50__part0.root') # For test
   
+  ### Full 2017 ###
+ 
   for i in range(0, 73, 1):
     chain.Add(dir17+'nanoLatino_DYJetsToTT_MuEle_M-50__part'+str(i)+'.root')
-    
-    
-  #chain.Add(dir17+'nanoLatino_DYJetsToLL_M-10to50-LO_ext1__part0.root') # For test
     
   for i in range(0, 76, 1):
        chain.Add(dir17+'nanoLatino_DYJetsToLL_M-10to50-LO_ext1__part'+str(i)+'.root')
     
-
   ### Full 2018 ###
-    
-  #chain.Add(dir18+'nanoLatino_DYJetsToTT_MuEle_M-50__part0.root') # For test 
     
   for i in range(0, 101, 1):
     chain.Add(dir18+'nanoLatino_DYJetsToTT_MuEle_M-50__part'+str(i)+'.root')
-    
-  
-  #chain.Add(dir18+'nanoLatino_DYJetsToLL_M-10to50-LO_ext1__part0.root') # For test
-    
+        
   for i in range(0, 78, 1):
         chain.Add(dir18+'nanoLatino_DYJetsToLL_M-10to50-LO_ext1__part'+str(i)+'.root')
         
@@ -699,27 +645,20 @@ def load_dataset_dy ( max_entries = -1 ):
 
 
 if __name__ == '__main__':
-    print(load_dataset_vbf(10))
+    #print(load_dataset_vbf(10))
     #print(load_dataset_ggh(10))
     #print(load_dataset_top(10))
     #print(load_dataset_ww(10))
     #print(load_dataset_dy(10))
     
-    VARS = ["mjj", "log((abs(2*Lepton_eta[0]-CleanJet_eta[0]-CleanJet_eta[1])+abs(2*Lepton_eta[1]-CleanJet_eta[0]-CleanJet_eta[1]))/detajj)", 
-            "Jet_qgl[0]", "Jet_qgl[1]", "detajj", "Lepton_eta[0]-Lepton_eta[1]", "sqrt(CleanJet_eta[0]*CleanJet_eta[1] + CleanJet_phi[0]*CleanJet_phi[1])",
-            "dphill", "dphijjmet", "dphilljetjet", "drll", "Lepton_eta[0]", "Lepton_eta[1]", "Lepton_pt[0]", "Lepton_pt[1]", "Lepton_phi[0]", "Lepton_phi[1]", 
-            "CleanJet_eta[0]", "CleanJet_eta[1]", "CleanJet_eta[2]", "CleanJet_phi[0]", "CleanJet_phi[1]", "CleanJet_phi[2]", "abs(CleanJet_eta[2]-(CleanJet_eta[0]+CleanJet_eta[1])/2)*(CleanJet_pt[2]>30)",
-            "CleanJet_pt[0]", "CleanJet_pt[1]", "MET_pt", "mth", "ptll", 
-            "mlljj(Sum$(CleanJet_pt>30), nLepton, CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1])",
-            "mjjj(Sum$(CleanJet_pt>30), CleanJet_pt[0], CleanJet_pt[1], CleanJet_pt[2], CleanJet_phi[0], CleanJet_phi[1], CleanJet_phi[2], CleanJet_eta[0], CleanJet_eta[1], CleanJet_eta[2])", 
-            "Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt",  "mll", 
-            "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])", 
-            "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
-    ]
+    VARS = ["mjj", "Ctot", "Jet_qgl[0]", "Jet_qgl[1]", "detajj", "Lepton_eta[0]-Lepton_eta[1]", "drjj", "dphill", "dphijjmet", "dphilljetjet", 
+            "drll", "Lepton_eta[0]", "Lepton_eta[1]", "Lepton_pt[0]", "Lepton_pt[1]", "Lepton_phi[0]", "Lepton_phi[1]", "CleanJet_eta[0]", 
+            "CleanJet_eta[1]", "CleanJet_eta[2]", "CleanJet_phi[0]", "CleanJet_phi[1]", "CleanJet_phi[2]", "JetDis", "CleanJet_pt[0]", 
+            "CleanJet_pt[1]", "MET_pt", "mth", "ptll", "mlljj", "mjjj", "pt_Total",  "mll", "RecoMELA_VBF", "RecoMELA_Q2V1", "RecoMELA_Phi"]
 
     NDIM = len(VARS)
 
-    '''
+    
     print("Starting VBF daatsets \n")
     
     dataset_vbf = load_dataset_vbf(-1)
@@ -738,27 +677,27 @@ if __name__ == '__main__':
     dataset_top = load_dataset_top(-1)
     
     print("Closing Top datasets \n")
-    '''
+    
     print("Starting WW datasets \n")
     
     dataset_ww = load_dataset_ww(-1)
     
     print("Closing WW datasets \n")
-    '''
+    
     print("Starting DY datasets \n")
     
     dataset_dy = load_dataset_dy(-1)
     
     print("Closing DY datasets \n")
-    '''
-
-    #df_vbf = pd.DataFrame(dataset_vbf,columns=VARS)
-    #df_ggh = pd.DataFrame(dataset_ggh,columns=VARS)
-    #df_top = pd.DataFrame(dataset_top,columns=VARS)
-    df_ww = pd.DataFrame(dataset_ww,columns=VARS)
-    #df_dy = pd.DataFrame(dataset_dy,columns=VARS)
     
-    '''
+
+    df_vbf = pd.DataFrame(dataset_vbf,columns=VARS)
+    df_ggh = pd.DataFrame(dataset_ggh,columns=VARS)
+    df_top = pd.DataFrame(dataset_top,columns=VARS)
+    df_ww = pd.DataFrame(dataset_ww,columns=VARS)
+    df_dy = pd.DataFrame(dataset_dy,columns=VARS)
+    
+    
     print("Moving datasets to pickle files \n")
     
     df_vbf.to_pickle('dataset_vbf.pkl')
@@ -770,15 +709,15 @@ if __name__ == '__main__':
     print("Second done") 
     
     df_top.to_pickle('dataset_top.pkl')
-    '''
+    
     print("Third done") 
     
     df_ww.to_pickle('dataset_ww.pkl')
-    '''
+    
     print("Fourth done") 
     
     df_dy.to_pickle('dataset_dy.pkl')
     
     print("All done") 
-    ''' 
+    
     
