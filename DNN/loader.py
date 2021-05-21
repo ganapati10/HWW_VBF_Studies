@@ -47,35 +47,37 @@ def load_dataset_vbf ( max_entries = -1 ):
     "Lepton_phi[1]",  
     "CleanJet_eta[0]",
     "CleanJet_eta[1]",
-    "CleanJet_eta[2]",
     "CleanJet_phi[0]",
     "CleanJet_phi[1]",
-    "CleanJet_phi[2]",
-    "abs(CleanJet_eta[2]-(CleanJet_eta[0]+CleanJet_eta[1])/2)*(CleanJet_pt[2]>30)",
     "CleanJet_pt[0]",
     "CleanJet_pt[1]",
-    "MET_pt",
+    "PuppiMET_pt",
+    "PuppiMET_phi",  
     "mth",
+    "mTi",
+    "mtw2",
+    "Lepton_eta[0]-CleanJet_eta[0]",
+    "Lepton_eta[0]-CleanJet_eta[1]",
+    "Lepton_eta[1]-CleanJet_eta[0]",
+    "Lepton_eta[1]-CleanJet_eta[1]",  
     "ptll",
     "mlljj(Sum$(CleanJet_pt>30), nLepton, CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1])",
-    "mjjj(Sum$(CleanJet_pt>30), CleanJet_pt[0], CleanJet_pt[1], CleanJet_pt[2], CleanJet_phi[0], CleanJet_phi[1], CleanJet_phi[2], CleanJet_eta[0], CleanJet_eta[1], CleanJet_eta[2])",
     "Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt", 
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
+    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
     ]
  
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/mlljj.C+")
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/mjjj.C+")
-  
+  ROOT.gROOT.ProcessLineSync(".L mlljj.C+")
   
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/JHUGenMELA/MELA/data/slc7_amd64_gcc700/libmcfm_707.so","", kTRUE);')
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/lib/slc7_amd64_gcc700/libJHUGenMELAMELA.so","", kTRUE);')  
 
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_VBF.C+")
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Phi.C+")
+  ROOT.gROOT.ProcessLineSync(".L RecoMELA_VBF.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_CT1.C+")
 
   chain = ROOT.TChain('Events')
 
@@ -134,36 +136,37 @@ def load_dataset_ggh ( max_entries = -1 ):
     "Lepton_phi[1]",  
     "CleanJet_eta[0]",
     "CleanJet_eta[1]",
-    "CleanJet_eta[2]",
     "CleanJet_phi[0]",
     "CleanJet_phi[1]",
-    "CleanJet_phi[2]",
-    "abs(CleanJet_eta[2]-(CleanJet_eta[0]+CleanJet_eta[1])/2)*(CleanJet_pt[2]>30)",
     "CleanJet_pt[0]",
     "CleanJet_pt[1]",
-    "MET_pt",
+    "PuppiMET_pt",
+    "PuppiMET_phi",  
     "mth",
+    "mTi",
+    "mtw2",
+    "Lepton_eta[0]-CleanJet_eta[0]",
+    "Lepton_eta[0]-CleanJet_eta[1]",
+    "Lepton_eta[1]-CleanJet_eta[0]",
+    "Lepton_eta[1]-CleanJet_eta[1]",  
     "ptll",
     "mlljj(Sum$(CleanJet_pt>30), nLepton, CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1])",
-    "mjjj(Sum$(CleanJet_pt>30), CleanJet_pt[0], CleanJet_pt[1], CleanJet_pt[2], CleanJet_phi[0], CleanJet_phi[1], CleanJet_phi[2], CleanJet_eta[0], CleanJet_eta[1], CleanJet_eta[2])",
     "Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt", 
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
+    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
     ]
  
-
-  ROOT.gROOT.ProcessLineSync(".L ./mlljj.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./mjjj.C+")
-
-   
+  ROOT.gROOT.ProcessLineSync(".L mlljj.C+")
+  
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/JHUGenMELA/MELA/data/slc7_amd64_gcc700/libmcfm_707.so","", kTRUE);')
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/lib/slc7_amd64_gcc700/libJHUGenMELAMELA.so","", kTRUE);')  
 
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_VBF.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
+  ROOT.gROOT.ProcessLineSync(".L RecoMELA_VBF.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_CT1.C+")
 
   chain = ROOT.TChain('Events')  
     
@@ -232,36 +235,37 @@ def load_dataset_top ( max_entries = -1 ):
     "Lepton_phi[1]",  
     "CleanJet_eta[0]",
     "CleanJet_eta[1]",
-    "CleanJet_eta[2]",
     "CleanJet_phi[0]",
     "CleanJet_phi[1]",
-    "CleanJet_phi[2]",
-    "abs(CleanJet_eta[2]-(CleanJet_eta[0]+CleanJet_eta[1])/2)*(CleanJet_pt[2]>30)",
     "CleanJet_pt[0]",
     "CleanJet_pt[1]",
-    "MET_pt",
+    "PuppiMET_pt",
+    "PuppiMET_phi",  
     "mth",
+    "mTi",
+    "mtw2",
+    "Lepton_eta[0]-CleanJet_eta[0]",
+    "Lepton_eta[0]-CleanJet_eta[1]",
+    "Lepton_eta[1]-CleanJet_eta[0]",
+    "Lepton_eta[1]-CleanJet_eta[1]",  
     "ptll",
     "mlljj(Sum$(CleanJet_pt>30), nLepton, CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1])",
-    "mjjj(Sum$(CleanJet_pt>30), CleanJet_pt[0], CleanJet_pt[1], CleanJet_pt[2], CleanJet_phi[0], CleanJet_phi[1], CleanJet_phi[2], CleanJet_eta[0], CleanJet_eta[1], CleanJet_eta[2])",
     "Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt", 
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
-   ]
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
+    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
+    ]
  
-
-  ROOT.gROOT.ProcessLineSync(".L ./mlljj.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./mjjj.C+")
-
-   
+  ROOT.gROOT.ProcessLineSync(".L mlljj.C+")
+  
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/JHUGenMELA/MELA/data/slc7_amd64_gcc700/libmcfm_707.so","", kTRUE);')
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/lib/slc7_amd64_gcc700/libJHUGenMELAMELA.so","", kTRUE);')  
 
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_VBF.C+")
-  ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
+  ROOT.gROOT.ProcessLineSync(".L RecoMELA_VBF.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_CT1.C+")
 
 
   chain = ROOT.TChain('Events')
@@ -376,36 +380,37 @@ def load_dataset_ww ( max_entries = -1 ):
     "Lepton_phi[1]",  
     "CleanJet_eta[0]",
     "CleanJet_eta[1]",
-    "CleanJet_eta[2]",
     "CleanJet_phi[0]",
     "CleanJet_phi[1]",
-    "CleanJet_phi[2]",
-    "abs(CleanJet_eta[2]-(CleanJet_eta[0]+CleanJet_eta[1])/2)*(CleanJet_pt[2]>30)",
     "CleanJet_pt[0]",
     "CleanJet_pt[1]",
-    "MET_pt",
+    "PuppiMET_pt",
+    "PuppiMET_phi",  
     "mth",
+    "mTi",
+    "mtw2",
+    "Lepton_eta[0]-CleanJet_eta[0]",
+    "Lepton_eta[0]-CleanJet_eta[1]",
+    "Lepton_eta[1]-CleanJet_eta[0]",
+    "Lepton_eta[1]-CleanJet_eta[1]",  
     "ptll",
     "mlljj(Sum$(CleanJet_pt>30), nLepton, CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1])",
-    "mjjj(Sum$(CleanJet_pt>30), CleanJet_pt[0], CleanJet_pt[1], CleanJet_pt[2], CleanJet_phi[0], CleanJet_phi[1], CleanJet_phi[2], CleanJet_eta[0], CleanJet_eta[1], CleanJet_eta[2])",
     "Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt", 
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
+    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
     ]
  
-
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/mlljj.C+")
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/mjjj.C+")
-
-   
+  ROOT.gROOT.ProcessLineSync(".L mlljj.C+")
+  
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/JHUGenMELA/MELA/data/slc7_amd64_gcc700/libmcfm_707.so","", kTRUE);')
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/lib/slc7_amd64_gcc700/libJHUGenMELAMELA.so","", kTRUE);')  
 
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_VBF.C+")
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L ./RecoMELA_Phi.C+")
+  ROOT.gROOT.ProcessLineSync(".L RecoMELA_VBF.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_CT1.C+")
 
 
   chain = ROOT.TChain('Events')
@@ -529,36 +534,37 @@ def load_dataset_dy ( max_entries = -1 ):
     "Lepton_phi[1]",  
     "CleanJet_eta[0]",
     "CleanJet_eta[1]",
-    "CleanJet_eta[2]",
     "CleanJet_phi[0]",
     "CleanJet_phi[1]",
-    "CleanJet_phi[2]",
-    "abs(CleanJet_eta[2]-(CleanJet_eta[0]+CleanJet_eta[1])/2)*(CleanJet_pt[2]>30)",
     "CleanJet_pt[0]",
     "CleanJet_pt[1]",
-    "MET_pt",
+    "PuppiMET_pt",
+    "PuppiMET_phi",  
     "mth",
+    "mTi",
+    "mtw2",
+    "Lepton_eta[0]-CleanJet_eta[0]",
+    "Lepton_eta[0]-CleanJet_eta[1]",
+    "Lepton_eta[1]-CleanJet_eta[0]",
+    "Lepton_eta[1]-CleanJet_eta[1]",  
     "ptll",
     "mlljj(Sum$(CleanJet_pt>30), nLepton, CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1])",
-    "mjjj(Sum$(CleanJet_pt>30), CleanJet_pt[0], CleanJet_pt[1], CleanJet_pt[2], CleanJet_phi[0], CleanJet_phi[1], CleanJet_phi[2], CleanJet_eta[0], CleanJet_eta[1], CleanJet_eta[2])",
     "Lepton_pt[0] + Lepton_pt[1] + CleanJet_pt[0] + CleanJet_pt[1] + MET_pt", 
     "mll",
     "RecoMELA_VBF(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1], Lepton_pdgId[0], Lepton_pdgId[1])",
-    "RecoMELA_Q2V1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
-    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_Phi(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",
+    #"RecoMELA_CT1(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])"
+    #"RecoMELA_CT2(Sum$(CleanJet_pt>30), nLepton, PuppiMET_pt, PuppiMET_phi, Lepton_pt[0], Lepton_pt[1], Lepton_phi[0], Lepton_phi[1], Lepton_eta[0], Lepton_eta[1], CleanJet_pt[0], CleanJet_pt[1], CleanJet_phi[0], CleanJet_phi[1], CleanJet_eta[0], CleanJet_eta[1],  Lepton_pdgId[0], Lepton_pdgId[1])",  
     ]
  
-
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/mlljj.C+")
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/mjjj.C+")
-
-   
+  ROOT.gROOT.ProcessLineSync(".L mlljj.C+")
+  
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/JHUGenMELA/MELA/data/slc7_amd64_gcc700/libmcfm_707.so","", kTRUE);')
   ROOT.gROOT.ProcessLineSync('gSystem->Load("/eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/lib/slc7_amd64_gcc700/libJHUGenMELAMELA.so","", kTRUE);')  
 
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_VBF.C+")
-  ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Q2V1.C+")
-  #ROOT.gROOT.ProcessLineSync(".L /eos/user/s/sblancof/SWAN_projects/HWW_VBF/CMSSW_10_6_4/src/RecoMELA_Phi.C+")
+  ROOT.gROOT.ProcessLineSync(".L RecoMELA_VBF.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_Phi.C+")
+  #ROOT.gROOT.ProcessLineSync(".L RecoMELA_CT1.C+")
 
 
   chain = ROOT.TChain('Events')
@@ -651,12 +657,12 @@ if __name__ == '__main__':
     #print(load_dataset_ww(10))
     #print(load_dataset_dy(10))
     
-    VARS = ["mjj", "Ctot", "Jet_qgl[0]", "Jet_qgl[1]", "detajj", "Lepton_eta[0]-Lepton_eta[1]", "drjj", "dphill", "dphijjmet", "dphilljetjet", 
-            "drll", "Lepton_eta[0]", "Lepton_eta[1]", "Lepton_pt[0]", "Lepton_pt[1]", "Lepton_phi[0]", "Lepton_phi[1]", "CleanJet_eta[0]", 
-            "CleanJet_eta[1]", "CleanJet_eta[2]", "CleanJet_phi[0]", "CleanJet_phi[1]", "CleanJet_phi[2]", "JetDis", "CleanJet_pt[0]", 
-            "CleanJet_pt[1]", "MET_pt", "mth", "ptll", "mlljj", "mjjj", "pt_Total",  "mll", "RecoMELA_VBF", "RecoMELA_Q2V1", "RecoMELA_Phi"]
+    #VARS = ["mjj", "Ctot", "Jet_qgl[0]", "Jet_qgl[1]", "detajj", "Lepton_eta[0]-Lepton_eta[1]", "drjj", "dphill", "dphijjmet", "dphilljetjet", 
+    #        "drll", "Lepton_eta[0]", "Lepton_eta[1]", "Lepton_pt[0]", "Lepton_pt[1]", "Lepton_phi[0]", "Lepton_phi[1]", "CleanJet_eta[0]", 
+    #        "CleanJet_eta[1]", "CleanJet_eta[2]", "CleanJet_phi[0]", "CleanJet_phi[1]", "CleanJet_phi[2]", "JetDis", "CleanJet_pt[0]", 
+    #        "CleanJet_pt[1]", "MET_pt", "mth", "ptll", "mlljj", "mjjj", "pt_Total",  "mll", "RecoMELA_VBF", "RecoMELA_Q2V1", "RecoMELA_Phi"]
 
-    NDIM = len(VARS)
+    #NDIM = len(VARS)
 
     
     print("Starting VBF daatsets \n")
@@ -691,11 +697,11 @@ if __name__ == '__main__':
     print("Closing DY datasets \n")
     
 
-    df_vbf = pd.DataFrame(dataset_vbf,columns=VARS)
-    df_ggh = pd.DataFrame(dataset_ggh,columns=VARS)
-    df_top = pd.DataFrame(dataset_top,columns=VARS)
-    df_ww = pd.DataFrame(dataset_ww,columns=VARS)
-    df_dy = pd.DataFrame(dataset_dy,columns=VARS)
+    df_vbf = pd.DataFrame(dataset_vbf)
+    df_ggh = pd.DataFrame(dataset_ggh)
+    df_top = pd.DataFrame(dataset_top)
+    df_ww = pd.DataFrame(dataset_ww)
+    df_dy = pd.DataFrame(dataset_dy)
     
     
     print("Moving datasets to pickle files \n")
