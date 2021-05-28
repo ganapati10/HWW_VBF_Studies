@@ -15,6 +15,9 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import sys
 
+argv = sys.argv
+sys.argv = argv[:1]
+
 def compute_prediction(mjj,
     Ctot,
     Jet_qgl0,
@@ -105,3 +108,23 @@ def compute_prediction(mjj,
   result = model.predict(input)
   
   return result[0]
+
+if __name__=='__main__':
+    
+    input_var = sys.argv
+    
+    input = 0
+
+    if(input_var[0]=='Load_DNN.py'):
+        input = input_var[1:]
+    elif(len(input_var==39)):
+        input = input_var
+      
+    if (input==0):
+        print("Error loading input variables")
+        return -999
+    
+    return compute_prediction(input)
+    
+    
+    
