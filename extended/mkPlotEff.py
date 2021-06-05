@@ -110,6 +110,10 @@ class mkPlotEff:
                 #print 'really before thstack ... three'
 
                 histos = {}
+                
+                signal = np.zeros(rango[0])
+                background = np.zeros(rango[0])
+                eff = np.zeros(rango[0])
 
                 for sampleName, plotdef in plot.iteritems():
                     if 'samples' in variable and sampleName not in variable['samples']:
@@ -127,57 +131,37 @@ class mkPlotEff:
                     if plotdef['isData']==1:
                         continue
                         
-                    histogram2D = ROOT.TH2F(sampleName+"_EffHist_"+variableName, sampleName+"_EffHist_"+variableName, len(np.asarray(rango[0]))-1, np.asarray(rango[0]), len(np.asarray(rango[1]))-1, np.asarray(rango[1]))
-                    print "------------"
-                    print "Bin test:"
-                    for i in range(1, len(np.asarray(rango[0]))):
-                        
-                        for j in range(1, len(np.asarray(rango[1]))):
-                            index = (len(np.asarray(rango[0]))-1)*(i-1)+j
-                            histogram2D.SetBinContent(i, j, histos[sampleName].GetBinContent((len(np.asarray(rango[0]))-1)*(i-1)+j))
-                            print "", index
-                    print "-------------"
-                            
-                            
-                    #histogram2D.SetFillColor(self._getColor(plotdef['color']))
-                    #histogram2D.SetFillStyle(3001)
                     
-                    if sampleName == "qqH_hww":
-                        histogram2D.SetMinimum(0)
-                        histogram2D.GetXaxis().SetTitle("pt_{ll}")
-                        histogram2D.GetYaxis().SetTitle("m_{jj}")
-                        histogram2D.SetTitle("qqH 2D Distribution")
-                        histogram2D.SetStats(False)
-                        histogram2D.Draw("COLZ")
-                        tcanvas.SetLogz(False)
-                        tcanvas.Draw()
-                        tcanvas.SaveAs(self._outputDirPlots + "/" + cutName + "_c_2D_" + variableName + "_" + sampleName + ".png")  #Save .png file
+                    cumulative = []
                     
-                    elif sampleName == "ggH_hww":
+                    for i in range(1, int(rango[0]+1)):
+                        sum = 0
+                        for j in range(i, int(rango[0]+1)):
+                            sum = sum + histos[sampleName].GetBinContent(j)
+                        cumulative.append(sum)
                         
-                        histogram2D.SetMinimum(0)
-                        histogram2D.GetXaxis().SetTitle("pt_{ll}")
-                        histogram2D.GetYaxis().SetTitle("m_{jj}")
-                        histogram2D.SetTitle("ggH 2D Distribution")
-                        histogram2D.SetStats(False)
-                        histogram2D.Draw("COLZ")
-                        tcanvas.SetLogz(False)
-                        tcanvas.Draw()
-                        tcanvas.SaveAs(self._outputDirPlots + "/" + cutName + "_c_2D_" + variableName + "_" + sampleName + ".png")  #Save .png file
+                    if plotdef['isSignal'] == 1:
+                        signal = signal + cumulative
                     else:
-                        continue
+                        background = background + cumulative
+                
+                for i in len(signal):
+                    eff[i] = signal[i]/np.sqrt(signal[i]+background[i])
+                
+                histogramEff = ROOT.TH1F(sampleName+"_EffHist_"+variableName, sampleName+"_EffHist_"+variableName, rango[0], np.linspace(rango[1], rango[2], rango[0]))
+                
+                for i in range(1, len(eff)+1):
+                    histogramEff.SetBinContent(i, eff[i-1])
                     
-
-
-    def _getColor(self, color):
-      if type(color) == int:
-        return color
-      elif type(color) == tuple:
-        # RGB
-        return ROOT.TColor.GetColor(*color)
-      elif type(color) == str:
-        # hex string
-        return ROOT.TColor.GetColor(color)
+                histogramEff.SetMinimum(0)
+                histogramEff.GetXaxis().SetTitle("DNN Cut")
+                histogramEff.GetYaxis().SetTitle("S/#sqrt{S+B}")
+                histogramEff.SetTitle("Cut Efficiency")
+                histogramEff.SetStats(False)
+                histogramEff.SetMarkerStyle(ROOT.kFullCircle)
+                histogramEff.Draw()
+                tcanvas.SetLogz(False)
+                tcanvas.SaveAs(self._outputDirPlots + "/" + cutName + "_c_Eff_" + variableName + ".png")  #Save .png file
 
 
 
