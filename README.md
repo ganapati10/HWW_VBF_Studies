@@ -92,7 +92,7 @@ combineCards.py VBF/events/datacard.txt DY/events/datacard.txt top/events/dataca
 
 text2workspace.py datacard_combined.txt -m 125
 
-text2workspace.py datacard_combined.txt -m 125 -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel --PO 'map=.*/qqH_hww_0:r_qqH_hww_0[1,-10,10]' --PO 'map=.*/ggH_hww_0:r_ggH_hww_0[1,-10,10]'
+text2workspace.py datacard_combined.txt -m 125 -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel --PO 'map=.*/qqH_hww:r_qqH_hww[1,-10,10]' --PO 'map=.*/ggH_hww:r_ggH_hww[1,-10,10]'
 
 popd
 ```
@@ -100,11 +100,11 @@ popd
 ## Impact plots (Asimov dataset)
 
 ```
-combineTool.py -M Impacts --expectSignal=1 -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --setParameters r_ggH_hww=1,r_qqH_hww=1 --redefineSignalPOIs r_qqH_hww --doInitialFit 
+combineTool.py -M Impacts -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --setParameters r_ggH_hww=1,r_qqH_hww=1 --redefineSignalPOIs r_qqH_hww --doInitialFit 
 
-combineTool.py -M Impacts --expectSignal=1 -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --setParameters r_ggH_hww=1,r_qqH_hww=1 --redefineSignalPOIs r_qqH_hww --doFits --job-mode=interactive --parallel=10
+combineTool.py -M Impacts -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --setParameters r_ggH_hww=1,r_qqH_hww=1 --redefineSignalPOIs r_qqH_hww --doFits --job-mode=interactive --parallel=10
 
-combineTool.py -M Impacts --expectSignal=1 -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --setParameters r_ggH_hww=1,r_qqH_hww=1 --redefineSignalPOIs r_qqH_hww -o impacts.json
+combineTool.py -M Impacts -d datacards/datacard_combined.root -m 125 -t -1 --rMin=-6 --rMax=10 --X-rtd MINIMIZER_analytic --cminDefaultMinimizerStrategy=0 --setParameters r_ggH_hww=1,r_qqH_hww=1 --redefineSignalPOIs r_qqH_hww -o impacts.json
 
 plotImpacts.py -i impacts.json -o impacts
 ```
