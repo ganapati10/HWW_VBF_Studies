@@ -11,7 +11,7 @@ python Tools/scripts/TestSignalRW.py -b -l
 Make plots from the new samples reweighted:
 
 ```
-mkPlot.py --pycfg=configuration_JJH.py --inputFile rootFileJJH/plots_JJH.root --showIntegralLegend 1
+mkPlot.py --pycfg=configuration_CP.py --inputFile rootFileJJH/plots_JJH.root --showIntegralLegend 1
 ```
 
 
