@@ -5,20 +5,20 @@ This files are rewritten to run a likelihood scan over the fai parameters. To do
 Reweighted the AC signals:
 
 ```
-python ../Tools/scripts/TestSignalRW.py -b -l
+python Tools/scripts/TestSignalRW.py -b -l
 ```
 
 Make plots from the new samples reweighted:
 
 ```
-mkPlot.py --pycfg=configuration.py --inputFile rootFileJJH/plots_JJH.root --showIntegralLegend 1
+mkPlot.py --pycfg=configuration_JJH.py --inputFile rootFileJJH/plots_JJH.root --showIntegralLegend 1
 ```
 
 
 Make new templates for the scan:
 
 ```
-python ../Tools/scripts/MakeAnaTemplates.py -b -l
+python Tools/scripts/MakeAnaTemplates.py -b -l
 
 mkDatacards.py --pycfg=configuration_hvv.py --inputFile rootFileJJH/plots_JJH_HVV.root
 ```
