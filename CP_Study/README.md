@@ -18,7 +18,7 @@ mkPlot.py --pycfg=configuration_CP.py --inputFile rootFileJJH/plots_JJH.root --s
 Make new templates for the scan:
 
 ```
-python ./Tools/MakeAnaTemplates.py -b -l
+python ./Tools/makeTemplates.py -b -l
 
 mkDatacards.py --pycfg=configuration_hvv.py --inputFile rootFileJJH/plots_JJH_HVV.root
 ```
