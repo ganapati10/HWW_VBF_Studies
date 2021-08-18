@@ -9,7 +9,7 @@ ROOT.gStyle.SetOptStat(0)
 ROOT.gStyle.SetOptTitle(0)
 
 #src = path.realpath("rootFileJJH/plots_JJH.root")
-src = path.realpath("rootFileJETS/plots_JETS.root")
+src = path.realpath("rootFile/plots_WW_2016_CP.root")
 #########################################################
 
 
