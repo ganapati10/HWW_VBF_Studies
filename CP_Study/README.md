@@ -36,7 +36,7 @@ rm combine_logger.out
 
 mv higgsCombineH0M_HVV.MultiDimFit.mH125*.root hists/higgsCombineH0M_HVV.MultiDimFit.mH125.root
 
-python scripts/PlotScan.py
+python plotScan.py
 ```
 
 
