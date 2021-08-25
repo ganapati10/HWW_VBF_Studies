@@ -26,7 +26,7 @@ mkDatacards.py --pycfg=configuration_hvv.py --inputFile rootFileJJH/plots_JJH_HV
 Then, move datacards to your combine folder and, for H0M, H0PH or H0l1, perform the scan:
 
 ```
-combineCards.py hww2l2v_13TeV_SRVBF=./datacards_2016_CP/hww2l2v_13TeV_SRVBF/KD_H0M/datacard.txt > ./cards/H0M_HVV.txt
+combineCards.py ./datacards_2016_CP/hww2l2v_13TeV_SRVBF/KD_H0M/datacard.txt > ./cards/H0M_HVV.txt
 
 text2workspace.py cards/H0M_HVV.txt -o cards/H0M_HVV.root -P HiggsAnalysis.CombinedLimit.HWWCouplings:HWWCouplings --PO H0M > cards/scale.txt
 
