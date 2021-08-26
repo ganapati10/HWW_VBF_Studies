@@ -31,10 +31,14 @@ combineCards.py ./datacards_2016_CP/hww2l2v_13TeV_SRVBF/KD_H0M/datacard.txt > ./
 text2workspace.py cards/H0M_HVV.txt -o cards/H0M_HVV.root -P HiggsAnalysis.CombinedLimit.HWWCouplings:HWWCouplings --PO H0M > cards/scale.txt
 
 combine -d cards/H0M_HVV.root -n H0M_HVV -M MultiDimFit -t -1 -m 125 --algo grid --points 1000 --setParameters muV=1.0,Fai=0.0 --redefineSignalPOIs=Fai
+combine -d cards/H0M_HVV.root -n H0M_HVV_muV -M MultiDimFit -t -1 -m 125 --algo grid --points 1000 --setParameters muV=1.0,Fai=0.0 --redefineSignalPOIs=muV
+combine -d cards/H0M_HVV.root -n H0M_HVV_FaimuV -M MultiDimFit -t -1 -m 125 --algo grid --points 1000 --setParameters muV=1.0,Fai=0.0 --redefineSignalPOIs=Fai,muV
 
 rm combine_logger.out
 
 mv higgsCombineH0M_HVV.MultiDimFit.mH125*.root hists/higgsCombineH0M_HVV.MultiDimFit.mH125.root
+mv higgsCombineH0M_HVV_muV.MultiDimFit.mH125*.root hists/higgsCombineH0M_HVV_muV.MultiDimFit.mH125.root
+mv higgsCombineH0M_HVV_FaimuV.MultiDimFit.mH125*.root hists/higgsCombineH0M_HVV_FaimuV.MultiDimFit.mH125.root
 
 python plotScan.py
 ```
