@@ -167,7 +167,7 @@ RecoME::evaluate(unsigned)
     if (jetn < 2) return -9999; //low number of jets
 
 	  
-    if(name_=='top'){
+    if(name_=="top"){
     	
 	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/top_leptonic/top_leptonic.lua");
     	configuration.getGlobalParameters().set("top_mass", 173.);  
@@ -200,7 +200,7 @@ RecoME::evaluate(unsigned)
 	
     	return (double)weights.back().first;
     
-    }else if(name_=='top_leptons'){
+    }else if(name_=="top_leptons"){
     
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/TTbar_FullyLeptonic/TTbar_FullyLeptonic.lua");
 
@@ -236,7 +236,7 @@ RecoME::evaluate(unsigned)
 	
     	return (double)weights.back().first;
     
-    }else if(name_=='VBF'){
+    }else if(name_=="VBF"){
     
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/qqH_hww_ME/higgs_jets.lua");
     	MoMEMta weight(configuration.freeze());
@@ -259,7 +259,7 @@ RecoME::evaluate(unsigned)
 	
     	return (double)weights.back().first;
     
-    }else if(name_=='DY'){
+    }else if(name_=="DY"){
     
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/DY_ME/DY_ME.lua");
     	MoMEMta weight(configuration.freeze());
@@ -282,7 +282,7 @@ RecoME::evaluate(unsigned)
 	
     	return (double)weights.back().first;
     
-    }else if(name_=='WW'){
+    }else if(name_=="WW"){
     
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/WW_ME/ww_df.lua");
 
@@ -315,7 +315,7 @@ RecoME::evaluate(unsigned)
 	
     	return (double)weights.back().first;
     
-    }else if(name_=='WW_leptons'){
+    }else if(name_=="WW_leptons"){
     
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/WW_leptonic_ME/WW_leptonic.lua");
 
@@ -357,7 +357,7 @@ RecoME::evaluate(unsigned)
   else return -9999; 
 }
 void
-RecoLevelME::bindTree_(multidraw::FunctionLibrary& _library)
+RecoME::bindTree_(multidraw::FunctionLibrary& _library)
 {
   //CleanJets
   _library.bindBranch(nCleanJet, "nCleanJet");
