@@ -49,12 +49,6 @@ protected:
   FloatValueReader* PuppiMET_pt{};
   FloatValueReader* PuppiMET_phi{};
 
-  UIntValueReader*  nSubJet{};
-  FloatArrayReader* SubJet_pt{};
-  FloatArrayReader* SubJet_eta{};
-  FloatArrayReader* SubJet_mass{};
-  FloatArrayReader* SubJet_phi{};
-
 private:
 
   Double_t LHCsqrts_= 13., mh_= 125.;
@@ -65,30 +59,28 @@ RecoME::RecoME(char const* name):
   TTreeFunction()
 {
   name_ = name;
-  ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_4/src/MoMEMta/examples/tt_fullyleptonic.lua");
-  MoMEMta weight(configuration.freeze());
 }
 
 double
 RecoME::evaluate(unsigned)
 {
-  //Map to store the ME
-  std::map<TString, float> MatrixElementsMap;
-
+	
   //Initializing 4-vectors
   TLorentzVector L1(0.,0.,0.,0.);
   TLorentzVector L2(0.,0.,0.,0.);
   TLorentzVector LL(0.,0.,0.,0.);
   TLorentzVector NuNu(0.,0.,0.,0.);
+  TLorentzVector Nu1(0.,0.,0.,0.);
+  TLorentzVector Nu2(0.,0.,0.,0.);
+  TLorentzVector W1(0.,0.,0.,0.);
+  TLorentzVector W2(0.,0.,0.,0.);
   TLorentzVector Higgs(0.,0.,0.,0.);
   TLorentzVector J1(0.,0.,0.,0.);
   TLorentzVector J2(0.,0.,0.,0.);
-  TLorentzVector J3(0.,0.,0.,0.);
 
   //Getting some values to select the events
   unsigned ncleanjet{*nCleanJet->Get()};
   unsigned nlep{*nLepton->Get()};
-  unsigned nsubjet{*nSubJet->Get()};
   float Pmet_pt{*PuppiMET_pt->Get()};
   float Pmet_phi{*PuppiMET_phi->Get()};
 
@@ -102,6 +94,8 @@ RecoME::evaluate(unsigned)
     int electrons = 0;
     int lep1 = 0;
     int lep2 = 0;
+	  
+    // Loop over muons and electrons
     for (unsigned int ilep = 0; ilep<nlep; ilep++){
      if (abs(Lepton_pdgId->At(ilep)) == 13){
     	++muons;
@@ -120,10 +114,11 @@ RecoME::evaluate(unsigned)
     }
 
     if (muons<1 || electrons<1){
-      return -9999; //If there is not an electron and a muon
+      return -9999; //If there is not an electron and a muon, return -9999
     }
     
     LL = L1 + L2;
+	  
     //Reconstructing Higgs 4 vector with MET
     double nunu_px = Pmet_pt*cos(Pmet_phi);
     double nunu_py = Pmet_pt*sin(Pmet_phi);
@@ -134,34 +129,212 @@ RecoME::evaluate(unsigned)
     NuNu.SetPxPyPzE(nunu_px, nunu_py, nunu_pz, nunu_e);
     Higgs = LL + NuNu;
 
+	  
+    // Reconstructing the W 4 vector using an aproximation
+    Nu1.SetPxPyPzE(-L2.Px(), -L2.Py(), 0, L2.Px()*L2.Px()+L2.Py()*L2.Py());
+    Nu2.SetPxPyPzE(-L1.Px(), -L1.Py(), 0, L1.Px()*L1.Px()+L1.Py()*L1.Py());
+
+    W1 = L1 + Nu1;  // if lep1 < 0 -> W1 is W+ pdgID=24                                                                                                                                                     
+    W2 = L2 + Nu2;
+	  
     //Selection for 2 jets
     int jetn = 0;
-    bool use3jet = false;
     for (unsigned int ijet = 0; ijet<ncleanjet; ijet++){
-
       if (CleanJet_pt->At(ijet)>30){ //Jet pt condition
 	      ++jetn;
 	      if (jetn==1) J1.SetPtEtaPhiM(CleanJet_pt->At(0), CleanJet_eta->At(0), CleanJet_phi->At(0), 0.0);
 	      if (jetn==2) J2.SetPtEtaPhiM(CleanJet_pt->At(1), CleanJet_eta->At(1), CleanJet_phi->At(1), 0.0);
-	      //if (jetn==3) J3.SetPtEtaPhiM(CleanJet_pt->At(2), CleanJet_eta->At(2), CleanJet_phi->At(2), 0.0);
-	      //	if (jetn==3) use3jet = true;
       }
 
     }
 
     if (jetn < 2) return -9999; //low number of jets
 
-    
-    momemta::Particle muon { "muon", LorentzVector(L1.Px(), L1.Py(), L1.Pz(), L1.E()), lep1 };
-    momemta::Particle electron { "electron", LorentzVector(L2.Px(), L2.Py(), L2.Pz(), L2.E()), lep2 };
-    momemta::Particle bjet1 { "bjet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 5 };
-    momemta::Particle bjet2 { "bjet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -5 };
-   
-    LorentzVector met_p4 {NuNu.Px(), NuNu.Py(), NuNu.Pz(), NuNu.E()};
-    
-    std::vector<std::pair<double, double>> weights = weight.computeWeights({muon, bjet1, electron, bjet2}, met_p4);
+	  
+    if(name_=='top'){
+    	
+	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/top_leptonic/top_leptonic.lua");
+    	configuration.getGlobalParameters().set("top_mass", 173.);  
+	MoMEMta weight(configuration.freeze());
 
-    return (double)weights.back().first;
+    	logging::set_level(logging::level::debug);
+
+    	ParameterSet lua_parameters;
+    	lua_parameters.set("USE_TF", true);
+    	lua_parameters.set("USE_PERM", true);
+	
+    	momemta::Particle wminus { "wminus", LorentzVector(W1.Px(), W1.Py(), W1.Pz(), W1.E()), -24 }; // W-                                                                                                     
+    	momemta::Particle wplus { "wplus", LorentzVector(W2.Px(), W2.Py(), W2.Pz(), W2.E()), 24 }; // W+                                                                                                        
+	
+    	if (lep1<0){
+    	  momemta::Particle wminus { "wminus", LorentzVector(W2.Px(), W2.Py(), W2.Pz(), W2.E()), -24 }; // W-                                                                                                   
+    	  momemta::Particle wplus { "wplus", LorentzVector(W1.Px(), W1.Py(), W1.Pz(), W1.E()), 24 }; // W+                                                                                                      
+    	}
+	
+    	momemta::Particle bjet1 { "bjet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 5 }; // Not necessary a bjet, but passed to MoMEMta as if it is                                                    
+    	momemta::Particle bjet2 { "bjet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -5 };
+	
+    	// normalize input for numerical estability                                                                                                                                                             
+    	normalizeInput_top(wminus.p4);
+    	normalizeInput_top(wplus.p4);
+    	normalizeInput_top(bjet1.p4);
+    	normalizeInput_top(bjet2.p4);
+	
+    	std::vector<std::pair<double, double>> weights = weight.computeWeights({wplus, bjet1, wminus, bjet2});
+	
+    	return (double)weights.back().first;
+    
+    }else if(name_=='top_leptons'){
+    
+    	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/TTbar_FullyLeptonic/TTbar_FullyLeptonic.lua");
+
+    	if (lep1 < 0){
+    	  configuration.getGlobalParameters().set("top_mass", 173.);
+    	}else{
+    	  ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/TTbar_FullyLeptonic/TTbar_FullyLeptonic_mue.lua");
+    	  configuration.getGlobalParameters().set("top_mass", 173.);
+    	}
+	    
+	MoMEMta weight(configuration.freeze());
+
+    	logging::set_level(logging::level::debug);
+	
+    	ParameterSet lua_parameters;
+    	lua_parameters.set("USE_TF", true);
+    	lua_parameters.set("USE_PERM", true);
+	
+    	momemta::Particle lepton1 { "lepton1", LorentzVector(L1.Px(), L1.Py(), L1.Pz(), L1.E()), lep1 }; // muon                                                                                                
+    	momemta::Particle lepton2 { "lepton2", LorentzVector(L2.Px(), L2.Py(), L2.Pz(), L2.E()), lep2 }; // electron                                                                                            
+    	momemta::Particle bjet1 { "bjet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 5 }; // Not necessary a bjet, but passed to MoMEMta as if it is                                                    
+    	momemta::Particle bjet2 { "bjet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -5 };
+	
+    	// normalize input for numerical estability                                                                                                                                                             
+    	normalizeInput(lepton1.p4);
+    	normalizeInput(lepton2.p4);
+    	normalizeInput(bjet1.p4);
+    	normalizeInput(bjet2.p4);
+	
+    	LorentzVector met_p4 {NuNu.Px(), NuNu.Py(), NuNu.Pz(), NuNu.E()};
+	
+    	std::vector<std::pair<double, double>> weights = weight.computeWeights({lepton1, bjet1, lepton2, bjet2}, met_p4);
+	
+    	return (double)weights.back().first;
+    
+    }else if(name_=='VBF'){
+    
+    	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/qqH_hww_ME/higgs_jets.lua");
+    	MoMEMta weight(configuration.freeze());
+	
+    	logging::set_level(logging::level::debug);
+	
+    	ParameterSet lua_parameters;
+    	lua_parameters.set("USE_TF", true);
+    	lua_parameters.set("USE_PERM", true);
+	                                                                                         
+    	momemta::Particle higgs { "higgs", LorentzVector(Higgs.Px(), Higgs.Py(), Higgs.Pz(), Higgs.E()), 25 }; // Higgs                                                                                         
+    	momemta::Particle jet1 { "jet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 1 };                                                     
+    	momemta::Particle jet2 { "jet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -1 };
+
+	normalizeInput_VBF(higgs.p4);
+    	normalizeInput_VBF(jet1.p4);
+    	normalizeInput_VBF(jet2.p4);
+
+    	std::vector<std::pair<double, double>> weights = weight.computeWeights({higgs, jet1, jet2});
+	
+    	return (double)weights.back().first;
+    
+    }else if(name_=='DY'){
+    
+    	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/DY_ME/DY_ME.lua");
+    	MoMEMta weight(configuration.freeze());
+	
+    	logging::set_level(logging::level::debug);
+	
+    	ParameterSet lua_parameters;
+    	lua_parameters.set("USE_TF", true);
+    	lua_parameters.set("USE_PERM", true);
+	                                                                                         
+    	momemta::Particle Z { "Z", LorentzVector(Higgs.Px(), Higgs.Py(), Higgs.Pz(), Higgs.E()), 23 }; // Z, same 4 vector as Higgs                                                                                                 
+    	momemta::Particle jet1 { "jet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 1 };                                                      
+    	momemta::Particle jet2 { "jet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -1 };
+	
+    	normalizeInput_DY(Z.p4);
+    	normalizeInput_DY(jet1.p4);
+    	normalizeInput_DY(jet2.p4);
+	
+    	std::vector<std::pair<double, double>> weights = weight.computeWeights({Z, jet1, jet2});
+	
+    	return (double)weights.back().first;
+    
+    }else if(name_=='WW'){
+    
+    	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/WW_ME/ww_df.lua");
+
+    	MoMEMta weight(configuration.freeze());
+	
+    	logging::set_level(logging::level::debug);
+	
+    	ParameterSet lua_parameters;
+    	lua_parameters.set("USE_TF", true);
+    	lua_parameters.set("USE_PERM", true);
+	
+    	momemta::Particle wminus { "wminus", LorentzVector(W1.Px(), W1.Py(), W1.Pz(), W1.E()), -24 }; // W-                                                                                                     
+    	momemta::Particle wplus { "wplus", LorentzVector(W2.Px(), W2.Py(), W2.Pz(), W2.E()), 24 }; // W+                                                                                                        
+	
+    	if (lep1<0){
+    	  momemta::Particle wminus { "wminus", LorentzVector(W2.Px(), W2.Py(), W2.Pz(), W2.E()), -24 }; // W-                                                                                                   
+    	  momemta::Particle wplus { "wplus", LorentzVector(W1.Px(), W1.Py(), W1.Pz(), W1.E()), 24 }; // W+                                                                                                      
+    	}
+	
+    	momemta::Particle jet1 { "jet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 1 };                                                       
+    	momemta::Particle jet2 { "jet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -1 };
+	
+    	// normalize input for numerical estability                                                                                                                                                             
+    	normalizeInput_WW(wminus.p4);
+    	normalizeInput_WW(wplus.p4);
+    	normalizeInput_WW(jet1.p4);
+    	normalizeInput_WW(jet2.p4);
+	
+    	std::vector<std::pair<double, double>> weights = weight.computeWeights({wplus, jet1, wminus, jet2});
+	
+    	return (double)weights.back().first;
+    
+    }else if(name_=='WW_leptons'){
+    
+    	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/WW_leptonic_ME/WW_leptonic.lua");
+
+    	if (lep1 < 0){
+    	  logging::set_level(logging::level::debug);
+    	}else{
+    	  ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/WW_leptonic_ME/WW_leptonic_mue.lua");
+    	}
+	    
+	MoMEMta weight(configuration.freeze());
+
+    	logging::set_level(logging::level::debug);
+	
+    	ParameterSet lua_parameters;
+    	lua_parameters.set("USE_TF", true);
+    	lua_parameters.set("USE_PERM", true);
+	
+    	momemta::Particle lepton1 { "lepton1", LorentzVector(L1.Px(), L1.Py(), L1.Pz(), L1.E()), lep1 }; // muon                                                                                                
+    	momemta::Particle lepton2 { "lepton2", LorentzVector(L2.Px(), L2.Py(), L2.Pz(), L2.E()), lep2 }; // electron                                                                                            
+    	momemta::Particle jet1 { "jet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 1 };                                                     
+    	momemta::Particle jet2 { "jet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -1 };
+	
+    	// normalize input for numerical estability                                                                                                                                                             
+    	normalizeInput(lepton1.p4);
+    	normalizeInput(lepton2.p4);
+    	normalizeInput(jet1.p4);
+    	normalizeInput(jet2.p4);
+	
+    	LorentzVector met_p4 {NuNu.Px(), NuNu.Py(), NuNu.Pz(), NuNu.E()};
+	
+    	std::vector<std::pair<double, double>> weights = weight.computeWeights({lepton1, jet1, lepton2, jet2}, met_p4);
+	
+    	return (double)weights.back().first;
+    
+    }
     
   }
   //End if(nCleanJet>=2 && nLepton>1)
@@ -185,10 +358,4 @@ RecoLevelME::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(MET_pt, "MET_pt");
   _library.bindBranch(PuppiMET_pt, "PuppiMET_pt");
   _library.bindBranch(PuppiMET_phi, "PuppiMET_phi");
-  //Subjets
-  _library.bindBranch(nSubJet, "nSubJet");
-  _library.bindBranch(SubJet_pt, "SubJet_pt");
-  _library.bindBranch(SubJet_eta, "SubJet_eta");
-  _library.bindBranch(SubJet_phi, "SubJet_phi");
-  _library.bindBranch(SubJet_mass, "SubJet_mass");
 }
