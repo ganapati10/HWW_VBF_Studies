@@ -13,6 +13,22 @@
 #include "momemta/Types.h"
 
 
+using LorentzVectorM = ROOT::Math::LorentzVector<ROOT::Math::PtEtaPhiM4D<float>>;
+
+using namespace momemta;
+
+void normalizeInput(LorentzVector& p4) {
+  if (p4.M() > 0)
+    return;
+
+  // Increase the energy until M is positive                                                                                                                                                                
+  p4.SetE(p4.P());
+  while (p4.M2() < 0) {
+    double delta = p4.E() * 1e-5;
+    p4.SetE(p4.E() + delta);
+  };
+}
+
 class RecoME : public multidraw::TTreeFunction {
 public:
   //Class Constructor 
@@ -175,10 +191,10 @@ RecoME::evaluate(unsigned)
     	momemta::Particle bjet2 { "bjet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -5 };
 	
     	// normalize input for numerical estability                                                                                                                                                             
-    	normalizeInput_top(wminus.p4);
-    	normalizeInput_top(wplus.p4);
-    	normalizeInput_top(bjet1.p4);
-    	normalizeInput_top(bjet2.p4);
+    	normalizeInput(wminus.p4);
+    	normalizeInput(wplus.p4);
+    	normalizeInput(bjet1.p4);
+    	normalizeInput(bjet2.p4);
 	
     	std::vector<std::pair<double, double>> weights = weight.computeWeights({wplus, bjet1, wminus, bjet2});
 	
@@ -235,9 +251,9 @@ RecoME::evaluate(unsigned)
     	momemta::Particle jet1 { "jet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 1 };                                                     
     	momemta::Particle jet2 { "jet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -1 };
 
-	normalizeInput_VBF(higgs.p4);
-    	normalizeInput_VBF(jet1.p4);
-    	normalizeInput_VBF(jet2.p4);
+	normalizeInput(higgs.p4);
+    	normalizeInput(jet1.p4);
+    	normalizeInput(jet2.p4);
 
     	std::vector<std::pair<double, double>> weights = weight.computeWeights({higgs, jet1, jet2});
 	
@@ -258,9 +274,9 @@ RecoME::evaluate(unsigned)
     	momemta::Particle jet1 { "jet1", LorentzVector(J1.Px(), J1.Py(), J1.Pz(), J1.E()), 1 };                                                      
     	momemta::Particle jet2 { "jet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -1 };
 	
-    	normalizeInput_DY(Z.p4);
-    	normalizeInput_DY(jet1.p4);
-    	normalizeInput_DY(jet2.p4);
+    	normalizeInput(Z.p4);
+    	normalizeInput(jet1.p4);
+    	normalizeInput(jet2.p4);
 	
     	std::vector<std::pair<double, double>> weights = weight.computeWeights({Z, jet1, jet2});
 	
@@ -290,10 +306,10 @@ RecoME::evaluate(unsigned)
     	momemta::Particle jet2 { "jet2", LorentzVector(J2.Px(), J2.Py(), J2.Pz(), J2.E()), -1 };
 	
     	// normalize input for numerical estability                                                                                                                                                             
-    	normalizeInput_WW(wminus.p4);
-    	normalizeInput_WW(wplus.p4);
-    	normalizeInput_WW(jet1.p4);
-    	normalizeInput_WW(jet2.p4);
+    	normalizeInput(wminus.p4);
+    	normalizeInput(wplus.p4);
+    	normalizeInput(jet1.p4);
+    	normalizeInput(jet2.p4);
 	
     	std::vector<std::pair<double, double>> weights = weight.computeWeights({wplus, jet1, wminus, jet2});
 	
