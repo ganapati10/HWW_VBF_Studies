@@ -8,9 +8,9 @@
 #include "TSystem.h"
 #include <map>
 #include "TString.h"
-#include "/afs/cern.ch/user/s/sblancof/miniconda3/envs/ME/include/momemta/ConfigurationReader.h"
-#include "/afs/cern.ch/user/s/sblancof/miniconda3/envs/ME/include/momemta/MoMEMta.h"
-#include "/afs/cern.ch/user/s/sblancof/miniconda3/envs/ME/include/momemta/Types.h"
+#include "momemta/ConfigurationReader.h"
+#include "momemta/MoMEMta.h"
+#include "momemta/Types.h"
 
 
 class RecoME : public multidraw::TTreeFunction {
