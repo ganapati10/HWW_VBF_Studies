@@ -173,7 +173,7 @@ RecoME::evaluate(unsigned)
     	configuration.getGlobalParameters().set("top_mass", 173.);  
 	MoMEMta weight(configuration.freeze());
 
-    	logging::set_level(logging::level::debug);
+    	logging::set_level(logging::level::off);
 
     	ParameterSet lua_parameters;
     	lua_parameters.set("USE_TF", true);
@@ -213,7 +213,7 @@ RecoME::evaluate(unsigned)
 	    
 	MoMEMta weight(configuration.freeze());
 
-    	logging::set_level(logging::level::debug);
+    	logging::set_level(logging::level::off);
 	
     	ParameterSet lua_parameters;
     	lua_parameters.set("USE_TF", true);
@@ -241,7 +241,7 @@ RecoME::evaluate(unsigned)
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/qqH_hww_ME/higgs_jets.lua");
     	MoMEMta weight(configuration.freeze());
 	
-    	logging::set_level(logging::level::debug);
+    	logging::set_level(logging::level::off);
 	
     	ParameterSet lua_parameters;
     	lua_parameters.set("USE_TF", true);
@@ -264,7 +264,7 @@ RecoME::evaluate(unsigned)
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/DY_ME/DY_ME.lua");
     	MoMEMta weight(configuration.freeze());
 	
-    	logging::set_level(logging::level::debug);
+    	logging::set_level(logging::level::off);
 	
     	ParameterSet lua_parameters;
     	lua_parameters.set("USE_TF", true);
@@ -288,7 +288,7 @@ RecoME::evaluate(unsigned)
 
     	MoMEMta weight(configuration.freeze());
 	
-    	logging::set_level(logging::level::debug);
+    	logging::set_level(logging::level::off);
 	
     	ParameterSet lua_parameters;
     	lua_parameters.set("USE_TF", true);
@@ -320,14 +320,14 @@ RecoME::evaluate(unsigned)
     	ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/WW_leptonic_ME/WW_leptonic.lua");
 
     	if (lep1 < 0){
-    	  logging::set_level(logging::level::debug);
+    	  logging::set_level(logging::level::off);
     	}else{
     	  ConfigurationReader configuration("/afs/cern.ch/work/s/sblancof/public/CMSSW_10_6_10/WW_leptonic_ME/WW_leptonic_mue.lua");
     	}
 	    
 	MoMEMta weight(configuration.freeze());
 
-    	logging::set_level(logging::level::debug);
+    	logging::set_level(logging::level::off);
 	
     	ParameterSet lua_parameters;
     	lua_parameters.set("USE_TF", true);
