@@ -44,6 +44,13 @@ Get some code from gitHub:
 ```git clone https://github.com/BlancoFS/...```
 
 
+Change condor scehduler if it's not running properly: 
+
+```
+export _condor_SCHEDD_HOST="bigbird02.cern.ch"
+```
+
+
 ## Run code:
 
 It should be done a Run.sh script to submit jobs in Slurm, the old way is for condor.
